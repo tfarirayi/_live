@@ -1,0 +1,84 @@
+<!--
+Phone number element
+@tfarirayi1
+-->
+
+<!-- Polymer dependency -->
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<!-- Paper elements -->
+<link rel="import" href="../bower_components/paper-material/paper-material.html">
+
+<dom-module id="phone-number">
+<template>
+    <style>
+        :host {
+            display: none;
+            width: auto;
+            margin: 8px;
+            color: #37474F;
+            font-family: 'Arvo', serif;
+        }
+
+        paper-material {
+            margin: auto;
+            max-width: 300px;
+            background-color: #CFD8DC; 
+            border-radius: 10px;
+            padding: 8px;
+            height: fit-content;
+            box-sizing: border-box;
+        }
+
+        span {
+            display: block;
+        }
+        
+        a, desc {
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        .desc {
+                text-align: left;
+                font-size: 12px;
+                padding-left: 4px;
+                color: #455A64;
+        }
+        
+        a {
+            color: #37474F;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .sep-title {
+            text-transform: uppercase;
+            text-align: center;
+            letter-spacing: 1px;
+            font-size: 13px;
+            color: #37474F;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+        
+    </style>
+
+<!-- Local dom here -->
+    <paper-material class="animated fadeIn">
+        <div class="sep-title">
+            <p>PHONE US</p>.
+        </div>
+        <div class="sec">
+            <a href="tel:+447449940700">07449 940 700</a>
+            <span class="desc">
+                1800HRS - 0000HRS or <em>send us a text</em>.
+            </span>
+        </div>
+    </paper-material>
+
+</template>
+<script>
+    Polymer({
+        is: 'phone-number'
+    });
+</script>
+</dom-module>

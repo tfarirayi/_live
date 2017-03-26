@@ -1,0 +1,102 @@
+<html><head><link rel="import" href="../bower_components/polymer/polymer.html">
+
+<link rel="import" href="../bower_components/paper-material/paper-material.html">
+<link rel="import" href="../bower_components/paper-input/paper-input-container.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+
+<link rel="import" href="../bower_components/iron-autogrow-textarea/iron-autogrow-textarea.html">
+<link rel="import" href="../bower_components/iron-input/iron-input.html">
+<link rel="import" href="../bower_components/iron-icon/iron-icon.html">
+
+<link rel="import" href="aws-sdk.html">
+
+</head><body><dom-module id="message-form">
+    <template>
+        <style>
+            :host {
+                display: none;
+                width: auto;
+                margin: 8px;
+            }
+
+            paper-material {
+                margin: auto;
+                max-width: 300px;
+                background-color: #CFD8DC;
+                border-radius: 10px;
+                padding: 8px;
+                height: fit-content;
+                box-sizing: border-box;
+                font-family: 'Arvo', monospace;
+            }
+
+            paper-input-container {
+                --paper-input-container-color: #546E7A;
+                --paper-input-container-focus-color: #607D8B;
+                --paper-input-container-underline: {
+                        background-color: transparent;
+                }
+                --paper-input-container-label: {
+                    font-size: 19px;
+                    color: #546E7A;
+                    font-family: 'Arvo', monospace;
+                }
+            }
+
+            paper-button {
+                margin: auto;
+                font-size: 14px;
+                text-align: center;
+                margin: 10px 5px;
+                background-color: #37474F;
+                color: #FF8A65;
+                border-radius: 2px;
+            }
+
+            .sep-title {
+                text-transform: uppercase;
+                text-align: center;
+                letter-spacing: 1px;
+                font-size: 13px;
+                color: #37474F;
+                margin-top: 15px;
+                margin-bottom: 15px;
+            }
+            .submit {
+                @apply(--layout-horizontal);
+                @apply(--layout-center);
+                width: 100%;
+            }
+            .alert {
+                @apply(--layout-flex);
+                padding: 0px 8px;
+                font-size: 13px;
+                font-family: 'Roboto', monospace;
+            }
+        </style>
+
+
+
+    <paper-material class="animated fadeIn">
+        <div class="sep-title">
+            <p>MESSAGE US</p>
+            .
+        </div>
+        <paper-input-container always-float-label="">
+            <label>Email</label>
+            <input is="iron-input" type="email" prevent-invalid-input="" on-input="revalidate" spellcheck="false" label="Email" bind-value="{{email}}">
+        </paper-input-container>
+        <paper-input-container always-float-label="">
+            <label>Message</label>
+            <iron-autogrow-textarea id="text" rows="2" minlength="10" value="{{message}}" spellcheck="false" class="paper-input-input"></iron-autogrow-textarea>
+        </paper-input-container>
+        <div class="submit">
+            <paper-button on-click="send" raised="">Send</paper-button>
+            <span class="alert">[[response]]</span>
+        </div>
+    </paper-material>
+
+</template>
+<script>Polymer({is:"message-form",behaviors:[Polymer.IronValidatableBehavior],properties:{invalid:{notify:!0,type:Boolean,value:!1},message:{type:String,notify:!0},email:{type:String,notify:!0},response:String,sent:Boolean},revalidate:function(e){this.invalid=!e.target.validate()},ready:function(){AWS.config.region="eu-west-1",AWS.config.credentials=new AWS.CognitoIdentityCredentials({IdentityPoolId:"eu-west-1:29a3ccbb-f1e8-4801-87cb-171af721855a"})},send:function(){var e=new AWS.Lambda({region:"eu-west-1",apiVersion:"2015-03-31"}),i={FunctionName:"message",InvocationType:"RequestResponse",LogType:"Tail",Payload:JSON.stringify({message:this.message,email:this.email})},s=this,n=function(e,i){"200"==e?(s.response="Sent!",s.message=""):s.response="Failed"};this.message&&!this.invalid&&this.email?(this.response="Sending...",e.invoke(i,function(e,i){n(e?e:i.StatusCode)})):(this.message||(this.response="Empty message"),this.email||(this.response="Empty email"),this.invalid&&(this.response="Check your email"))}});</script>
+</dom-module>
+</body></html>

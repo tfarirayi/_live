@@ -1,0 +1,77 @@
+[
+    {
+        "ref": "https://www.braintreepayments.com/en-gb/faq",
+        "id": "1",
+        "name": "Braintree Payments",
+        "desc": "MERCHANT SERVICES",
+        "content": "Braintree Payments have a commission based pricing model. Cards and Digital wallets are charged at 1.9% + 0.20GBP per transaction, 2.4% + 0.20GBP for American Express.",
+        "note": "No monthly charges."
+    },
+    {
+        "ref": "https://aws.amazon.com/dynamodb/",
+        "id": "2",
+        "name": "AWS DynamoDB",
+        "desc": "CUSTOMER & ORDER RECORDS",
+        "why": "DynamoDB is a NoSQL database service which will provide simple data storage for your website.",
+        "content": "The DynamoDB free tier includes 25 GB of storage and up to 200M requests, per month.",
+        "note": "Free tier does not expire."
+    },
+    {
+        "ref": "https://aws.amazon.com/lambda/",
+        "id": "3",
+        "name": "AWS Lambda",
+        "desc": "PURCHASE LOGIC",
+        "why": "The functions that process your website's data are deployed to the cloud as individual components, making for a nimble and manageable website architecture. ",
+        "content": "AWS Lambda free tier includes 1M free requests per month and up to 3.2M GB-seconds of compute time per month, depending on the memory required to run your logic.",
+        "note": "Free tier does not expire. "
+    },
+    {
+        "ref": "https://aws.amazon.com/api-gateway/",
+        "id": "4",
+        "name": "AWS API Gateway",
+        "desc": "PURCHASE LOGIC",
+        "content": "APIs allow injection of processed data into the website. The API Gateway free tier includes 1M API calls per month.",
+        "note": "Free tier expires after 12 months & available to new API Gateway customers only."
+    },
+    {
+        "ref": "https://www.mailgun.com/pricing",
+        "id": "5",
+        "name": "Mailgun API",
+        "desc": "CONTACT FORM & SERVICE EMAILS",
+        "content": "Mailgun offers a free account allowing you to send up to 10K transactional emails per month. At no extra cost you also get the ability to track email events such as: 'delivered', 'failed', 'opened'.",
+        "note": "If you need to send more than 10K emails, scaling can be enabled by adding payment details."
+    },
+    {
+        "ref": "https://aws.amazon.com/s3/",
+        "id": "6",
+        "name": "AWS S3 Storage",
+        "desc": "WEBSITE HOSTING",
+        "content": "To make your website accessible through the web, it needs to be stored and hosted on a web server. The AWS S3 hosting free tier offers 5GB standard storage, 20K GET requests and 2K PUT requests, per month. ",
+        "note": "Free tier expires after 12 months & available to new S3 customers only. Refer to pricing for storage and requests only. "
+    },
+    {
+        "ref": "https://aws.amazon.com/cognito/",
+        "id": "7",
+        "name": "Amazon Cognito",
+        "desc": "User accounts",
+        "content": "Allow your customers to create accounts on your website, and sign-in to view their data such as 'delivery details', 'order history', 'receipts' etc.",
+        "note": "The Cognito Identity free tier allows 50K Monthly Active Users and does not expire."
+    },
+    {
+        "ref": "https://www.1and1.co.uk/domain-names",
+        "id": "8",
+        "name": "1&1 Internet",
+        "desc": "DOMAIN HOSTING",
+        "content": "Your web address or domain [e.g kioskwebdev.co.uk] needs to be hosted separately with a Domain Registrar.",
+        "note": "12 months domain hosting included - .co.uk only."
+    },
+    {
+        "ref": "https://gsuite.google.co.uk/intl/en_uk/solutions/new-business/",
+        "id": "9",
+        "name": "G Suite",
+        "desc": "Business email",
+        "content": "G Suite Professional offers 30GB of storage for email and documents. A 12 month subscription for one user is included as part of this implementation. 14-day free trial is available. ",
+        "note": "Allows addition of group email aliases at no extra cost - e.g software@kioskwebdev.co.uk & support@kioskwebdev.co.uk. "
+
+    }
+]

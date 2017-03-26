@@ -1,0 +1,28 @@
+<html><head><link rel="import" href="../bower_components/polymer/polymer.html">
+
+<link rel="import" href="message-form.html">
+<link rel="import" href="business-info.html">
+<link rel="import" href="phone-number.html">
+
+</head><body><dom-module id="dyna-div">
+<template>
+    <style>
+        :host {
+            color: #455A64;   
+            display: block;
+        }
+
+        .open {
+            display: block;
+        }
+    </style>
+    
+
+    <phone-number id="contact"></phone-number>
+    <message-form id="message"></message-form>
+    <business-info id="about"></business-info>
+
+</template>
+<script>Polymer({is:"dyna-div",properties:{contact:{type:Boolean,value:!1,observer:"_contact"},about:{type:Boolean,value:!1,observer:"_about"},message:{type:Boolean,value:!1,observer:"_message"}},_contact:function(e,o){this.$$("#contact").toggleClass("open",e)},_about:function(e,o){this.$$("#about").toggleClass("open",e)},_message:function(e,o){this.$$("#message").toggleClass("open",e)}});</script>
+</dom-module>
+</body></html>

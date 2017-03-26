@@ -1,0 +1,228 @@
+<!--
+Main application container element
+@tfarirayi1
+-->
+<!-- Dependencies -->
+<!-- Polymer dependency -->
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<!-- App elements -->
+<link rel="import" href="../bower_components/app-route/app-route.html">
+<link rel="import" href="../bower_components/app-route/app-location.html">
+<!-- Iron elements -->
+<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
+<!-- Paper elements -->
+<link rel="import" href="../bower_components/paper-scroll-header-panel/paper-scroll-header-panel.html">
+<link rel="import" href="../bower_components/paper-toolbar/paper-toolbar.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+
+<link href='//fonts.googleapis.com/css?family=Arvo|Space+Mono|Roboto' rel='stylesheet'>
+<!-- Custom elements -->
+<link rel="import" href="dyna-div.html">
+<link rel="import" href="my-icons.html">
+
+<dom-module id="my-app">
+<template>
+    <style>
+        :host {
+            display: block;
+            @apply(--layout-fullbleed);
+            @apply(--layout-vertical);
+        }
+
+        .content {
+            display: none;
+        }
+
+        /* logo link */
+        a {
+            color: #455A64;
+        }
+
+        /* logo link */
+        .main-title {
+            @apply(--layout-horizontal);
+            @apply(--layout-center);
+            font-family: 'Space Mono', monospace;
+            font-size: 18px;
+            line-height: 120%;
+            color: #455A64;
+            height: 66px;
+        }
+
+        paper-button, a {
+            text-transform: none;
+            text-decoration: none;
+            padding: 0px;
+            font-family: 'Space Mono', monospace;
+        }
+
+        paper-button a:focus {
+            font-weight: normal;
+        }
+
+        /* toggle header buttons */
+        .active-btn {
+            color: #FF8A65;
+        }
+
+        paper-scroll-header-panel {
+            background-color: #263238;
+            @apply(--layout-flex);
+            /* background for toolbar full size */
+            --paper-scroll-header-panel-full-header: {
+                /*background-color: #B0BEC5;*/
+                background-color: #CFD8DC;
+            };
+            /* background for toolbar condensed */
+            --paper-scroll-header-panel-condensed-header: {
+                background-color: #263238;
+            };
+        }
+
+        paper-toolbar {
+            /* custom toolbar height for condense */
+            height: 132px;
+            background-color: transparent;
+            color: #455A64;
+        }
+    </style>
+<!-- Local dom here -->
+    <!-- Routing -->
+    <app-location route="{{route}}"></app-location>
+    <app-route
+        route="{{route}}"
+        pattern="/:page"
+        data="{{routeData}}"
+        tail="{{tail}}">
+    </app-route>
+
+    <!-- Header -->
+    <paper-scroll-header-panel id="header" condenses keep-condensed-header condensed-header-height="66">
+
+        <!-- Toolbar -->
+        <paper-toolbar bottom-justify="start" justify="end">
+            <paper-icon-button id="contact" on-click="toggleContact" icon="my-icons:phone-iphone"></paper-icon-button>
+            <paper-icon-button id="message" on-click="toggleMessage" icon="my-icons:mail"></paper-icon-button>
+            <paper-icon-button id="about" on-click="toggleAbout" icon="my-icons:info-outline"></paper-icon-button>
+
+            <div class="bottom main-title">
+                <a href="/home" tabindex="-1">
+                    <paper-button on-click="home" noink>Kiosk<br>WEB-DEV&trade;</paper-button>
+                </a>
+            </div>
+        </paper-toolbar>
+
+            <dyna-div   id="contact"
+                        message="[[message]]"
+                        contact="[[contact]]"
+                        about=[[about]]>
+            </dyna-div>
+
+            <iron-pages id="content" class="animated fadeIn view" attr-for-selected="id" fallback-selection="home" selected="[[page]]">
+                    <home-page id="home" unresolved></home-page>
+                    <eshop-page id="eshop" unresolved></eshop-page>
+                    <ebooking-page id="ebooking" unresolved></ebooking-page>
+                    <regular-web id="regular"></regular-web>
+                    <aftersales-page id="aftersales"></aftersales-page>
+            </iron-pages>
+
+    </paper-scroll-header-panel>
+
+</template>
+    <script>
+        Polymer ({
+            is: 'my-app',
+
+            properties: {
+
+                page: {
+                    type: String,
+                    reflectToAttribute: true,
+                    observer: '_pageChanged'
+                },
+
+                contact: {
+                    type: Boolean,
+                    value: false
+                },
+
+                about: {
+                    type: Boolean,
+                    value: false
+                },
+
+                message: {
+                    type: Boolean,
+                    value: false
+                },
+
+                hidden: {
+                    type: Boolean,
+                    value: false
+                }
+            },
+
+            _pageChanged: function(page) {
+                var resolvedPageUrl = this.resolveUrl(page + '-page.html');
+                this.importHref(resolvedPageUrl, null, this._show404, true);
+            },
+
+            _routePageChanged: function(page) {
+                this.page = page || 'home';
+            },
+
+            _show404: function() {
+                this.page = '404';
+            },
+
+            observers: [
+                'watchState(contact, about, message)',
+                'toggleContent(hidden)',
+                'watchRoute(route)',
+                '_routePageChanged(routeData.page)'
+            ],
+
+            home: function() {
+                    if (this.contact) this.toggleContact();
+                    if (this.message) this.toggleMessage();
+                    if (this.about) this.toggleAbout();
+            },
+
+            toggleContent: function(hidden) {
+                this.$$('#content').toggleClass('content', hidden);
+            },
+
+            watchRoute: function(route) {
+                if (route.path != '/home') {
+                    this.$.header.scroller.scrollTop = 0;
+                }
+
+            },
+
+            watchState: function(contact, about, message) {
+                if (!contact && !about && !message) {
+                    this.hidden = false;
+                } else {
+                    this.hidden = true;
+                }
+            },
+
+            toggleContact: function() {
+                this.contact = !this.contact;
+                this.$$('#contact').toggleClass('active-btn', this.contact);
+            },
+
+            toggleAbout: function() {
+                this.about = !this.about;
+                this.$$('#about').toggleClass('active-btn', this.about);
+            },
+
+            toggleMessage: function(event) {
+                this.message = !this.message;
+                this.$$('#message').toggleClass('active-btn', this.message);
+            },
+
+        });
+    </script>
+</dom-module>

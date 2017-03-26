@@ -1,0 +1,199 @@
+<html><head><meta charset="UTF-8"><link rel="import" href="my-app.html"></head><body><dom-module id="eshop-page">
+<template>
+    <style>
+        :host {
+            display: block;
+            @apply(--layout-horizontal);
+            @apply(--layout-center-justified);
+            @apply(--layout-wrap);
+            padding-bottom: 10%;
+            max-width: 800px;
+            margin: auto;
+            font-family: 'Arvo', serif;
+        }
+
+        .sec {
+            @apply(--layout-vertical);
+        }
+
+        .title {
+            color: #90a4ae;
+        }
+        .intro {
+            text-align: left;
+            padding: 5px 10px;
+            font-size: 15px;
+            color: #90a4ae;
+        }
+
+        .notes {
+            color: #78909C;
+            font-size: 14px;
+        }
+
+        paper-material {
+            color: #FF8A65;
+            background-color: #37474F;
+            border-radius: 10px;
+            width: 300px;
+            margin: 10px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            height: fit-content;
+        }
+
+        a {
+            text-decoration: none;
+            color: #FF8A65;
+        }
+
+        paper-button:focus {
+            font-weight: normal;
+        }
+        
+        paper-button {
+            text-transform: none;
+            display: block;
+            text-align: center;
+            max-width: 280px;
+            margin: auto;
+            border-radius: 0px;
+            background-color: #263238;
+            font-family: 'Space Mono', monospace;
+        }
+        
+        .desc {
+            color: #78909C;
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+        
+        .sep-title {
+            text-transform: uppercase;
+            text-align: center;
+            letter-spacing: 1px;
+            font-size: 13px;
+            color: #78909C;
+            margin-top: 15px;
+            margin-bottom: 15px;
+
+        }
+
+        paper-item {
+            padding-top: 5px;
+            padding-bottom: 5px;
+            padding-left: 10px;
+            font-family: 'Arvo', serif;
+        }
+    
+        .secondary {
+            padding-left: 2px;
+            text-align: left;
+            color: #78909C;
+            font-size: 13px;
+            line-height: 130%;
+        }
+            
+        .primary {
+            text-align: left;
+        }
+        
+        .cost {
+            color: #B0BEC5;
+            font-size: 15px;
+            font-family: 'Space Mono', monospace;
+        }
+        
+        .highlight {
+            color: #B0BEC5;
+        }
+    </style>
+
+
+    <div class="sec">
+        <paper-material elevation="0">
+            <div class="sep-title cost">
+                <p>1,364 GBP</p>
+            </div>
+            <p class="intro">
+                Built on top of our REGULAR impl, your <span class="highlight">E-SHOP implementation</span> is packaged into a <em>smart website</em> and a business-centric <em>web portal</em>.
+            </p>
+            <p class="intro">
+                Through the web portal your business can manage and consume the website's data, while the website allows users to perform the set of high-level business functions outlined in the WEBSITE FUNCTIONS section.
+            </p>
+            <p class="intro">
+                We program these functions to suit your business paradigm and run them on cloud-based infrastructure services for <em>automatic scaling</em> and <em>pay-as-you-go pricing</em>. Consequently, your website can handle traffic surges without prior upgrades, and its operating costs are based on its size and are directly proportional to user demand.
+            </p>
+            <p class="intro">
+                Your organisation will be registered with the <em>relevant</em> set of services detailed in the INFRASTRUCTURE &amp; COSTS section below, which outlines the max service accounts required for the available use cases. 
+            </p>
+            <p class="intro notes">
+                The service accounts relevant for individual implementations differ and will be determined at the requirements gathering stage. Visit the reference links for official provider pricing &amp; documentation.
+            </p>
+            <a href="/aftersales" tabindex="-1">
+                    <paper-button>After Sales</paper-button>
+                </a>
+
+            <div class="sep-title">.</div>
+        </paper-material>
+
+        <paper-material elevation="0">
+            <div class="sep-title">
+                <p>
+                Infrastructure &amp; costs
+                </p>
+            </div>
+            <iron-ajax auto="" url="data/eshop-services.json" handle-as="json" last-response="{{iaas}}"></iron-ajax>
+                <template is="dom-repeat" items="[[iaas]]">
+                    <collapse-button title="[[item.name]]" content="[[item.content]]" note="[[item.note]]" desc="[[item.desc]]" ref="[[item.ref]]" why="[[item.why]]"></collapse-button>
+                </template>
+            <div class="sep-title">.</div>
+        </paper-material>
+    </div>
+
+    <div class="sec">
+        <paper-material elevation="0">
+            <div class="sep-title">
+                <p>Website functions</p>
+            </div>
+            <iron-ajax auto="" url="data/eshop-functions.json" handle-as="json" last-response="{{eshop}}"></iron-ajax>
+                <template is="dom-repeat" items="[[eshop]]">
+                    <paper-item two-line="" class="function" id$="button[[item.id]]">
+                        <paper-item-body>
+                            <div class="primary">
+                                [[item.name]]
+                            </div>
+                            <div class="secondary" secondary="">
+                                [[item.options]]
+                            </div>
+                        </paper-item-body>
+                    </paper-item>
+                </template>
+            <div class="sep-title">.</div>
+        </paper-material>
+
+        <paper-material elevation="0">
+            <div class="sep-title">
+               <p>Web portal functions</p>
+            </div>
+            <iron-ajax auto="" url="data/eshop-portal.json" handle-as="json" last-response="{{portal}}"></iron-ajax>
+            <template is="dom-repeat" items="[[portal]]">
+                <paper-item class="function" two-line="">
+                    <paper-item-body>
+                        <div class="primary">
+                            [[item.name]]
+                        </div>  
+                        <div class="secondary" secondary="">
+                            [[item.desc]]
+                        </div>
+                    </paper-item-body>
+                </paper-item>
+            </template>
+            <div class="sep-title">.</div>
+        </paper-material>
+    </div>
+
+</template>
+<script>Polymer({is:"eshop-page",properties:{isOpen:{type:Boolean,value:!1},isClosed:{type:Boolean,value:!0}},created:function(){this.removeAttribute("unresolved")}});</script>
+</dom-module>
+</body></html>

@@ -1,0 +1,20 @@
+[
+    {
+        "name": "Consume Traffic Data",
+        "desc": "Google analytics allows you free access to anonymous data about your traffic collected by Google. The main benefit of data as a collection is the ability to study and understand the vague patterns your visitors generate as a group."
+    },
+    {
+        "name": "Purchase Cycle Management",
+        "desc": "Receive orders and process them virtually, in conjunction with your physical fulfilment process."
+    },
+    {
+        "name": "Stock Management",
+        "desc": "Manage your virtual stock; stock details (name, quantity, price, images etc.)."
+
+    },
+    {
+        "name": "Usage Summaries",
+        "desc": "Your infrastructure usage is concantenated into a single view for quick glance summaries."
+    }
+
+]

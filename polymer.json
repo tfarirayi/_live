@@ -1,0 +1,31 @@
+{
+    "entrypoint": "index.html",
+    "shell": "src/my-app.html",
+    "fragments": [
+        "src/home-page.html",
+        "src/eshop-page.html",
+        "src/ebooking-page.html",
+        "src/regular-page.html",
+        "src/aftersales-page.html"
+    ],
+    
+    "sources": [
+        "src/**/*",
+        "images/**/*",
+        "bower.json"
+    ],
+    
+    "includeDependencies": [
+        "manifest.json",
+        "bower_components/webcomponentsjs/webcomponents-lite.min.js"
+    ],
+
+    "builds": [{
+        "name": "dist",
+        "addServiceWorker": true,
+        "insertPrefetchLinks": true,
+        "html": {
+            "minify": true
+        }
+    }]
+}

@@ -1,0 +1,251 @@
+<!--
+Homepage element
+@tfarirayi1
+-->
+
+<!-- Polymer dependency -->
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<!-- Iron elements -->
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../bower_components/iron-icon/iron-icon.html">
+<!-- Paper elements -->
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+g<link rel="import" href="../bower_components/paper-tooltip/paper-tooltip.html"><!-- Custom Element -->
+<link rel="import" href="download-login.html">
+<link rel="import" href="my-icons.html">
+
+<dom-module id="home-page">
+<template>
+    <style>
+        :host {
+            display: block;
+            @apply(--layout-vertical);
+            @apply(--layout-center);
+            font-family: 'Arvo', serif;
+            line-height: 120%;
+        }
+
+        .sep-title {
+            text-transform: uppercase;
+            text-align: center;
+            letter-spacing: 1px;
+            font-size: 13px;
+            color: #607D8B;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        .row--one {
+            @apply(--layout-horizontal);
+            max-width: 320px;
+            color: #B0BEC5;
+            text-align: center;
+        }
+
+        .row--two {
+            @apply(--layout-horizontal);
+            max-width: 250px;
+            color: #B0BEC5;
+            text-align: left;
+        }
+
+        .row--three {
+            @apply(--layout-horizontal);
+            @apply(--layout-center-justified);
+            @apply(--layout-wrap);
+            max-width: 700px;
+        }
+
+        .row--four {
+            @apply(--layout-horizontal);
+            margin: 10px;
+            max-width: 300px;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .row--five {
+            @apply(--layout-horizontal);
+        }
+
+        .r-three {
+            max-width: 250px;
+            padding: 1px 10px;
+        }
+
+        .aim--one {
+            text-align: left;
+            color: #90A4AE;
+            color: #B0BEC5;
+        }
+
+        .aim--two {
+            text-align: right;
+            color: #90A4AE;
+        }
+
+        .aim--three {
+            text-align: right;
+            color: #90A4AE;
+            color: #78909C;
+        }
+
+        paper-button.route {
+            font-family: 'Arvo', serif;
+            margin: 10px 5px;
+            background-color: #37474F;
+            color: #FF8A65;
+            text-transform: none;
+            width: 135.25px;
+            font-size: 15px;
+            font-weight: normal;
+            padding: 12px auto;
+        }
+
+        paper-button.route:focus {
+            font-weight: normal;
+        }
+
+        paper-button.download {
+            background-color: #006064;
+            margin-bottom: 10em;
+            margin-top: 10px;
+            color: #bdbdbd;
+            font-weight: bold;
+            text-align: center;
+
+        }
+
+        paper-button.download {
+              --paper-button-disabled: {
+                background-color: rgba(0,96,100 ,0.5) !important;
+            }
+        }
+        a {
+            text-decoration: none;
+        }
+        .build-icon {
+            --iron-icon-height: 20px;
+            --iron-icon-width: 20px;
+        }
+
+        paper-tooltip.smartdef {
+            --paper-tooltip-background: #FF8A65;
+            --paper-tooltip: {
+                max-width: 200px;
+                font-size: 13px;
+                color: #212121;
+            }
+            --paper-tooltip-opacity: 1;
+        }
+        u {
+            text-decoration: none;
+            border-bottom: 1px solid #FF8A65;
+        }
+    </style>
+
+<!-- Local dom here -->
+    <div class="sep-title">
+        <p>Welcome to Kiosk...
+        </p>
+    </div>
+
+    <div class="row--one">
+        <p class="intro">We provide a <span id="one"><u>smart website</u></span> service for small and budding organisations called web implementations.
+        </p>
+    </div>
+    
+    <paper-tooltip margin-top="5" animation-delay="0" position="top" class="smartdef" for="one" fit-to-visible-bounds="true">
+        We use the phrase to simply define websites that allow high-level user interaction through a set of predefined functions.
+    </paper-tooltip>
+
+    <div class="row--two">
+        <p>These implementations serve as a one-stop platform allowing small organisations to leverage the benefits of cloud-based computing infrastructure services without the overhead costs of an in-house web developer.
+        </p>
+    </div>
+
+    <div class="sep-title">
+        <p>
+            <iron-icon icon="my-icons:list"></iron-icon>
+            Business purpose
+        </p>
+    </div>
+
+    <div class="row--three">
+
+        <div class="r-three ">
+            <p class="aim--one">i) Provide a less-technical and affordable website implementation service
+            </p>
+        </div>
+
+        <div class="r-three">
+            <p class="aim--two">ii) Transparently forecast the financial costs of running and scaling such a website
+            </p>
+        </div>
+
+        <div class="r-three">
+            <p class="aim--three">iii) Translate the website's output data into a defined business paradigm
+            </p>
+        </div>
+
+    </div>
+
+    <div class="sep-title">
+        <p>
+            <iron-icon class="build-icon" icon="my-icons:build"></iron-icon>
+            implementations
+        </p>
+    </div>
+
+    <div class="row--four">
+        <a href="/regular"><paper-button raised class="route">REGULAR</paper-button>
+        </a>
+        <br>
+        <a href="/eshop"><paper-button raised class="route">E-SHOP</paper-button>
+        </a>
+        <a href="/ebooking"><paper-button raised class="route">E-BOOKING</paper-button>
+        </a>
+    </div>
+
+    <div class="sep-title">
+        <p>
+            <iron-icon icon="my-icons:file-download"></iron-icon>
+            Downloads
+        </p>
+    </div>
+
+    <div class="row--six">
+        <download-login unverified="{{verified}}" authorized="{{}}"></download-login>
+    </div>
+
+    <div class="row--five">
+        <paper-button class="download" on-click="verify" disabled="{{verified}}" raised>Download <br>Web Portal
+        </paper-button>
+    </div>
+
+</template>
+<script>
+    Polymer ({
+        is: 'home-page',
+
+        properties: {
+
+            verified: {
+                type: Boolean,
+            },
+
+            authorized: {
+                type: Boolean,
+
+            },
+
+        },
+
+        verify: function() {
+            this.authorized = false;
+
+        }
+
+    });
+</script>
+</dom-module>

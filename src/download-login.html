@@ -1,0 +1,95 @@
+<!--
+Dowload gateway
+@tfarirayi1
+-->
+<!-- Polymer dependency -->
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<!-- Paper elements -->
+<link rel="import" href="../bower_components/paper-material/paper-material.html">
+<link rel="import" href="../bower_components/paper-input/paper-input-container.html">
+<!-- Iron elements -->
+<link rel="import" href="../bower_components/iron-input/iron-input.html">
+
+<dom-module id="download-login">
+    <template>
+        <style>
+            :host {
+                display: block;
+            }
+
+            paper-material:focus {
+                background-color: #CFD8DC;
+
+            }
+
+            paper-material {
+                margin: auto;
+                max-width: 300px;
+                background-color: #B0BEC5;
+                border-radius: 10px;
+                padding: 8px;
+                height: fit-content;
+                box-sizing: border-box;
+                font-family: 'Arvo', monospace;
+            }
+
+            paper-input-container {
+                --paper-input-container-color: #455A64;
+                --paper-input-container-focus-color: #546E7A;
+                --paper-input-container-underline: {
+                        background-color: transparent;
+                }
+                --paper-input-container-label: {
+                    font-size: 19px;
+                    color: #455A64;
+                    font-family: 'Arvo', monospace;
+                }
+            }
+
+            .sep-title {
+                text-transform: uppercase;
+                text-align: center;
+                letter-spacing: 1px;
+                font-size: 13px;
+                color: #37474F;
+                margin-top: 15px;
+                margin-bottom: 15px;
+            }
+        </style>
+
+        <!-- Local dom here -->
+        <paper-material>
+            <!--<div class="sep-title">Verify</div>-->
+            <paper-input-container always-float-label>
+                <label>Customer code</label>
+                <input is="iron-input" maxlength="13" bind-value="{{value}}" allowed-pattern="[0-9]"  >
+            </paper-input-container>
+        </paper-material>
+
+    </template>
+    <script>
+        Polymer({
+            is: 'download-login',
+
+            properties: {
+                value: {
+                    type: String,
+                    notify: true,
+                    observer: '_value',
+                },
+
+                unverified: {
+                    type: Boolean,
+                    value: true,
+                    notify: true,
+                }
+            },
+
+            _value: function(oldValue, newValue) {
+                if (oldValue && oldValue.length >= 12 ) this.unverified = false;
+                else this.unverified = true;
+            }
+
+        });
+    </script>
+</dom-module>
