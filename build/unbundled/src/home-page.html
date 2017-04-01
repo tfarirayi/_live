@@ -30,15 +30,15 @@
         }
 
         .row--one {
-            @apply(--layout-horizontal);
-            max-width: 320px;
+            @apply(--layout-vertical);
+            max-width: 300px;
             color: #B0BEC5;
             text-align: center;
         }
 
         .row--two {
             @apply(--layout-horizontal);
-            max-width: 250px;
+            max-width: 260px;
             color: #B0BEC5;
             text-align: left;
         }
@@ -134,7 +134,23 @@
         }
         u {
             text-decoration: none;
-            border-bottom: 1px solid #FF8A65;
+            border-bottom: 1px dotted #FF8A65;
+        }
+        .define {
+            cursor: pointer;
+        }
+
+        .show {
+            display: block;
+        }
+
+        .def {
+            font-size: 13px;
+            width: 90%;
+            text-align: right;
+            margin: auto;
+            color: #90A4AE;
+      
         }
     </style>
 
@@ -145,40 +161,39 @@
     </div>
 
     <div class="row--one">
-        <p class="intro">We provide a <span id="one"><u>smart website</u></span> service for small and budding organisations called web implementations.
+        <p class="intro">We provide a <span class="define" on-click="define"><u>smart website</u></span> service for small to medium sized operations called web implementations.
         </p>
+        <span id="def" class="def">
+          <u>"We use the phrase 'smart website' to define simply, a website that allows high-level user interaction through a set of predefined functions."</u>
+        </span>
     </div>
     
-    <paper-tooltip margin-top="5" animation-delay="0" position="top" class="smartdef" for="one" fit-to-visible-bounds="true">
-        We use the phrase to simply define websites that allow high-level user interaction through a set of predefined functions.
-    </paper-tooltip>
 
     <div class="row--two">
-        <p>These implementations serve as a one-stop platform allowing small organisations to leverage the benefits of cloud-based computing infrastructure services without the overhead costs of an in-house web developer.
+        <p>Our implementations serve as a one-stop platform allowing small-scale organisations to leverage the benefits of cloud-based computing infrastructure services, without the overhead costs of an in-house web developer...
         </p>
     </div>
 
     <div class="sep-title">
         <p>
             <iron-icon icon="my-icons:list"></iron-icon>
-            Business purpose
+            Business intents
         </p>
     </div>
-
     <div class="row--three">
 
         <div class="r-three">
-            <p class="aim--one">i) Provide a less-technical and affordable website implementation service
+            <p class="aim--one">Provide a less-technical and affordable website implementation service
             </p>
         </div>
 
         <div class="r-three">
-            <p class="aim--two">ii) Transparently forecast the financial costs of running and scaling such a website
+            <p class="aim--two">Transparently forecast the financial costs of running and scaling such a website
             </p>
         </div>
 
         <div class="r-three">
-            <p class="aim--three">iii) Translate the website's output data into a defined business paradigm
+            <p class="aim--three">Translate the website's output data into a defined business paradigm
             </p>
         </div>
 
@@ -187,7 +202,7 @@
     <div class="sep-title">
         <p>
             <iron-icon class="build-icon" icon="my-icons:build"></iron-icon>
-            implementations
+           Our <br>implementations
         </p>
     </div>
 
@@ -218,6 +233,6 @@
     </div>
 
 </template>
-<script>Polymer({is:"home-page",properties:{verified:{type:Boolean},authorized:{type:Boolean}},verify:function(){this.authorized=!1}});</script>
+<script>Polymer({is:"home-page",properties:{verified:{type:Boolean},authorized:{type:Boolean},open:{type:Boolean,value:!1}},define:function(){this.open=!this.open,this.toggleClass("show",this.open),console.log()},verify:function(){this.authorized=!1}});</script>
 </dom-module>
 </body></html>
