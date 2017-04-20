@@ -16,7 +16,9 @@ Main application container element
 <link rel="import" href="../bower_components/paper-toolbar/paper-toolbar.html">
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 
-<link href='//fonts.googleapis.com/css?family=Arvo|Space+Mono|Roboto' rel='stylesheet'>
+<link rel="import" href="../bower_components/paper-styles/shadow.html">
+
+<link href='//fonts.googleapis.com/css?family=Arvo|Space+Mono|Roboto|Source+Code+Pro' rel='stylesheet'>
 <!-- Custom elements -->
 <link rel="import" href="dyna-div.html">
 <link rel="import" href="my-icons.html">
@@ -73,18 +75,24 @@ Main application container element
             --paper-scroll-header-panel-full-header: {
                 /*background-color: #B0BEC5;*/
                 background-color: #CFD8DC;
+                border-radius: 0px 0px 16px 16px;
+
             };
             /* background for toolbar condensed */
             --paper-scroll-header-panel-condensed-header: {
                 background-color: #263238;
+                color: red !important;
             };
         }
 
         paper-toolbar {
             /* custom toolbar height for condense */
-            height: 132px;
+            /*@apply(--shadow-elevation-2dp);*/
+            height: 124px;
             background-color: transparent;
             color: #455A64;
+            border-radius: 0px 0px 8px 8px;
+
         }
     </style>
 <!-- Local dom here -->
@@ -126,6 +134,10 @@ Main application container element
                     <regular-web id="regular"></regular-web>
                     <aftersales-page id="aftersales"></aftersales-page>
             </iron-pages>
+            <div>
+              <br><br><br><br><br><br><br><br><br><br>
+            </div>
+
 
     </paper-scroll-header-panel>
 
@@ -166,6 +178,10 @@ Main application container element
             _pageChanged: function(page) {
                 var resolvedPageUrl = this.resolveUrl(page + '-page.html');
                 this.importHref(resolvedPageUrl, null, this._show404, true);
+                this.$$('#header').scroll(0, true);
+            },
+
+            attached: function() {
             },
 
             _routePageChanged: function(page) {
@@ -195,7 +211,9 @@ Main application container element
 
             watchRoute: function(route) {
                 if (route.path != '/home') {
-                    this.$.header.scroller.scrollTop = 0;
+                    // this.$.header.scroll(0, true);
+                    // this.$$('#header').scroll(66, true);
+
                 }
 
             },

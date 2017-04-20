@@ -10,7 +10,9 @@
 <link rel="import" href="../bower_components/paper-toolbar/paper-toolbar.html">
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 
-<link href="//fonts.googleapis.com/css?family=Arvo|Space+Mono|Roboto" rel="stylesheet">
+<link rel="import" href="../bower_components/paper-styles/shadow.html">
+
+<link href="//fonts.googleapis.com/css?family=Arvo|Space+Mono|Roboto|Source+Code+Pro" rel="stylesheet">
 
 <link rel="import" href="dyna-div.html">
 <link rel="import" href="my-icons.html">
@@ -67,18 +69,24 @@
             --paper-scroll-header-panel-full-header: {
                 /*background-color: #B0BEC5;*/
                 background-color: #CFD8DC;
+                border-radius: 0px 0px 16px 16px;
+
             };
             /* background for toolbar condensed */
             --paper-scroll-header-panel-condensed-header: {
                 background-color: #263238;
+                color: red !important;
             };
         }
 
         paper-toolbar {
             /* custom toolbar height for condense */
-            height: 132px;
+            /*@apply(--shadow-elevation-2dp);*/
+            height: 124px;
             background-color: transparent;
             color: #455A64;
+            border-radius: 0px 0px 8px 8px;
+
         }
     </style>
 
@@ -113,10 +121,14 @@
                     <regular-web id="regular"></regular-web>
                     <aftersales-page id="aftersales"></aftersales-page>
             </iron-pages>
+            <div>
+              <br><br><br><br><br><br><br><br><br><br>
+            </div>
+
 
     </paper-scroll-header-panel>
 
 </template>
-    <script>Polymer({is:"my-app",properties:{page:{type:String,reflectToAttribute:!0,observer:"_pageChanged"},contact:{type:Boolean,value:!1},about:{type:Boolean,value:!1},message:{type:Boolean,value:!1},hidden:{type:Boolean,value:!1}},_pageChanged:function(t){var e=this.resolveUrl(t+"-page.html");this.importHref(e,null,this._show404,!0)},_routePageChanged:function(t){this.page=t||"home"},_show404:function(){this.page="404"},observers:["watchState(contact, about, message)","toggleContent(hidden)","watchRoute(route)","_routePageChanged(routeData.page)"],home:function(){this.contact&&this.toggleContact(),this.message&&this.toggleMessage(),this.about&&this.toggleAbout()},toggleContent:function(t){this.$$("#content").toggleClass("content",t)},watchRoute:function(t){"/home"!=t.path&&(this.$.header.scroller.scrollTop=0)},watchState:function(t,e,o){t||e||o?this.hidden=!0:this.hidden=!1},toggleContact:function(){this.contact=!this.contact,this.$$("#contact").toggleClass("active-btn",this.contact)},toggleAbout:function(){this.about=!this.about,this.$$("#about").toggleClass("active-btn",this.about)},toggleMessage:function(t){this.message=!this.message,this.$$("#message").toggleClass("active-btn",this.message)}});</script>
+    <script>Polymer({is:"my-app",properties:{page:{type:String,reflectToAttribute:!0,observer:"_pageChanged"},contact:{type:Boolean,value:!1},about:{type:Boolean,value:!1},message:{type:Boolean,value:!1},hidden:{type:Boolean,value:!1}},_pageChanged:function(t){var e=this.resolveUrl(t+"-page.html");this.importHref(e,null,this._show404,!0),this.$$("#header").scroll(0,!0)},attached:function(){},_routePageChanged:function(t){this.page=t||"home"},_show404:function(){this.page="404"},observers:["watchState(contact, about, message)","toggleContent(hidden)","watchRoute(route)","_routePageChanged(routeData.page)"],home:function(){this.contact&&this.toggleContact(),this.message&&this.toggleMessage(),this.about&&this.toggleAbout()},toggleContent:function(t){this.$$("#content").toggleClass("content",t)},watchRoute:function(t){t.path},watchState:function(t,e,o){this.hidden=!!(t||e||o)},toggleContact:function(){this.contact=!this.contact,this.$$("#contact").toggleClass("active-btn",this.contact)},toggleAbout:function(){this.about=!this.about,this.$$("#about").toggleClass("active-btn",this.about)},toggleMessage:function(t){this.message=!this.message,this.$$("#message").toggleClass("active-btn",this.message)}});</script>
 </dom-module>
 </body></html>

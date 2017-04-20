@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "kiosk-f8d09"
+    "default": "kiosk-f8d09",
+    "staging": "test1-c13c2"
   }
 }
