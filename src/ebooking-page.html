@@ -19,18 +19,43 @@ E-Booking page element
 <template>
      <style>
         :host {
-            display: block;
+
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: center;
+            line-height: 120%;
+            margin: auto;
+            font-family: 'Arvo', serif;
+
+            /*display: block;
             @apply(--layout-horizontal);
             @apply(--layout-center-justified);
             @apply(--layout-wrap);
             padding-bottom: 10%;
             max-width: 800px;
             margin: auto;
-            font-family: 'Arvo', serif;
+            font-family: 'Arvo', serif;*/
         }
 
         .sec {
-            @apply(--layout-vertical);
+            align-self: flex-start;
+            flex: 1;
+            flex-basis: 300px;
+            min-width: 256px;
+            max-width: 300px;
+            box-sizing: border-box;
+            height: fit-content;
+            margin: 4px;             
+        }
+
+        .sub {
+            max-width: 300px;
+            border-radius: 8px;
+            margin: auto;
+            padding: 4px 0px;
+            text-align: center;
+            height: fit-content;
+            box-sizing: border-box;            
         }
 
         .title {
@@ -53,8 +78,8 @@ E-Booking page element
             color: #FF8A65;
             background-color: #37474F;
             border-radius: 10px;
-            max-width: 300px;
-            margin: 10px;
+            width: 100%;
+            margin: auto;
             padding-top: 10px;
             padding-bottom: 10px;
             height: fit-content;
@@ -81,15 +106,16 @@ E-Booking page element
             color: #FF8A65;
         }
 
-
+        
         .sep-title {
             text-transform: uppercase;
             text-align: center;
             letter-spacing: 1px;
-            font-size: 13px;
-            color: #78909C;
-            margin-top: 15px;
-            margin-bottom: 15px;
+            font-size: 16px;
+            color: #607D8B;
+            margin-top: 2em;
+            margin-bottom: 2em;
+            font-family: 'Space Mono', monospace;
         }
 
         paper-item {
@@ -124,15 +150,22 @@ E-Booking page element
 
 <!-- Local dom here  -->
     <div class="sec">
+        <div class="sub">
           <paper-material elevation="0">
              <div class="sep-title cost">
-                 <p>1,186 GBP</p>
+                 <p>987 GBP</p>
              </div>
                 <p class="intro">
-                    Built on top of our REGULAR impl, your <span class="highlight">E-BOOKING implementation</span> is packaged into a <em>smart website</em> and a business-centric <em>web portal</em>.
+                    Suitable for:<br>
+                    Beauty Salons,<br>
+                    Barbershops,<br>
+                    Restuarants etc <br>
+                    <!--Built on top of our REGULAR impl, your <span class="highlight">E-BOOKING implementation</span> is packaged into a <em>smart website</em> and a business-centric <em>web portal</em>.-->
                 </p>
                 <p class="intro">
-                        Through the web portal your business can manage and consume the website's data, while the website allows users to perform the set of high-level business functions outlined in the WEBSITE FUNCTIONS section.
+                    Customer Capabilities:<br>
+                    Read
+                        <!--Through the web portal your business can manage and consume the website's data, while the website allows users to perform the set of high-level business functions outlined in the WEBSITE FUNCTIONS section.-->
                 </p>
                 <p class="intro">
                     We program these functions to suit your business paradigm and run them on cloud-based infrastructure services for <em>automatic scaling</em> and <em>pay-as-you-go pricing</em>. Consequently, your website can handle traffic surges without prior upgrades, and its operating costs are based on its size and are directly proportional to user demand.
@@ -148,7 +181,8 @@ E-Booking page element
                 </a>
              <div class="sep-title">&period;</div>
           </paper-material>
-
+        </div>
+        <div class="sub">
           <paper-material elevation="0">
              <div class="sep-title">
                  <p>Infrastructure &amp; costs</p>
@@ -165,9 +199,11 @@ E-Booking page element
                </template>
              <div class="sep-title">&period;</div>
           </paper-material>
+        </div>
     </div>
 
     <div class="sec">
+        <div class="sub">
          <paper-material elevation="0">
              <div class="sep-title">
                  <p>Website functions</p>
@@ -187,6 +223,9 @@ E-Booking page element
                  </template>
              <div class="sep-title">&period;</div>
          </paper-material>
+        </div>
+
+        <div class="sub">
 
          <paper-material elevation="0">
              <div class="sep-title">
@@ -207,6 +246,7 @@ E-Booking page element
              </template>
              <div class="sep-title">&period;</div>
          </paper-material>
+        </div>
     </div>
 
 </template>
