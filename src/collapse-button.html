@@ -12,11 +12,12 @@ Collapse container with button
         <style>
             :host {
                 display: block;
+                text-align: center;
             }
             
             .sep-title {
                 text-transform: uppercase;
-                text-align: center;
+                /*text-align: center;*/
                 letter-spacing: 1px;
                 font-size: 13px;
                 color: #78909C;
@@ -25,12 +26,13 @@ Collapse container with button
             }
 
             /* button with display block */
-            paper-button {
+            div {
                 text-transform: none;
                 display: block;
-                text-align: center;
+                text-align: inherit;
                 width: 100%;
                 margin: auto;
+                padding: 13px;                
                 border-radius: 0px;
                 font-weight: normal;
                 font-family: 'Arvo', monospace;
@@ -80,19 +82,26 @@ Collapse container with button
         </style>
 
         <!-- Local dom here -->
-        <paper-button on-click="toggle">[[title]]<br><span id="desc" class="desc">[[desc]]</span></paper-button>
-            <iron-collapse>
-                <div class="content">
-                    <p>[[why]]</p>
-                    <p>[[content]]</p>
-                    <p class="note">[[note]]</p>
-                    <span>
-                        <a target="_blank" href="[[ref]]">Refer here</a>
-                    </span>
-                </div>
-                <div class="sep-title">.
-                </div>
-            </iron-collapse>
+        <div>
+            [[title]]<br>
+            <span class="desc">
+                [[desc]]
+            </span>
+            <br>
+            <span>
+                <a target="_blank" href="[[ref]]">Refer here</a>
+            </span>
+        </div>
+        <iron-collapse>
+            <div class="content">
+                <p>[[why]]</p>
+                <p>[[content]]</p>
+                <p class="note">[[note]]</p>
+                
+            </div>
+            <!--<div class="sep-title">.-->
+            <!--</div>-->
+        </iron-collapse>
 
     </template>
     <script>

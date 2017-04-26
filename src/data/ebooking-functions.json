@@ -1,22 +1,18 @@
 [
     {
         "name": "Sign Up & Login",
-        "options": "Users can create an account using 1 of 1 or 1 of 2 of methods possible: Facebook, Amazon, Twitter, Google, Email Address, Username, Phone Number (extra charges for sms verification)."
+        "options": "Customers can create accounts on your website using 1 of 1 or 1 of 2 methods available: Facebook, Amazon, Twitter, Google, Email Address, Username and *Phone Number (*extra charges for sms verification)."
     },
     {
-        "name": "Submit Jobs",
-        "options": "Account holders can submit requests for jobs or bookings. Hair appointments or table bookings are good examples of jobs."
+        "name": "Submit Bookings",
+        "options": "Account holders can create and submit bookings through your website."
     },
     {
-        "name": "View Jobs",
-        "options": "Once a job has been accepted customers can be updated through the stages of the fulfilment process."
+        "name": "View Submitted Bookings",
+        "options": "Account holders can access their booking records on your website."
     },
     {
         "name": "Save & Edit Booking Details",
-        "options": "Regular cutomers will benefit from an option that eases the booking flow."
-    },
-    {
-        "name": "Contact form",
-        "options": "Users can reach you without leaving your site."
+        "options": "Customers can ease the booking process by prefilling booking details. Users can save their Name, Address, Contact Phone, Contact email."
     }
 ]
