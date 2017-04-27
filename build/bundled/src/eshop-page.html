@@ -2,55 +2,60 @@
 <template>
     <style>
         :host {
-            display: block;
-            @apply(--layout-horizontal);
-            @apply(--layout-center-justified);
-            @apply(--layout-wrap);
-            padding-bottom: 10%;
-            max-width: 800px;
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: center;
             margin: auto;
+            padding: 4px;
+            line-height: 120%;
             font-family: 'Arvo', serif;
         }
 
         .sec {
-            @apply(--layout-vertical);
+            align-self: flex-start;
+            flex: 1;
+            flex-basis: 300px;
+            min-width: 256px;
+            max-width: 300px;
+            box-sizing: border-box;
+            height: fit-content;
+            margin: 0px 4px;
         }
 
-        .title {
-            color: #90a4ae;
+        .sub {
+            max-width: 300px;
+            border-radius: 8px;
+            margin: auto;
+            padding: 4px 0px;
+            text-align: center;
+            height: fit-content;
+            box-sizing: border-box;
         }
+
         .intro {
             text-align: left;
-            padding: 5px 10px;
+            padding: 5px 13px;
             font-size: 15px;
-            color: #90a4ae;
+            color: #B0BEC5;
         }
 
         .notes {
             color: #78909C;
             font-size: 14px;
+            text-align: center;
         }
 
         paper-material {
             color: #FF8A65;
             background-color: #37474F;
             border-radius: 10px;
-            width: 300px;
-            margin: 10px;
+            width: 100%;
+            margin: auto;
             padding-top: 10px;
             padding-bottom: 10px;
             height: fit-content;
         }
 
-        a {
-            text-decoration: none;
-            color: #FF8A65;
-        }
-
-        paper-button:focus {
-            font-weight: normal;
-        }
-        
         paper-button {
             text-transform: none;
             display: block;
@@ -61,22 +66,24 @@
             background-color: #263238;
             font-family: 'Space Mono', monospace;
         }
+
+        paper-button:focus {
+            font-weight: normal;
+        }
         
-        .desc {
-            color: #78909C;
-            font-size: 12px;
-            text-transform: uppercase;
+        a {
+            text-decoration: none;
+            color: #FF8A65;
         }
         
         .sep-title {
             text-transform: uppercase;
             text-align: center;
             letter-spacing: 1px;
-            font-size: 13px;
+            font-size: 16px;
             color: #78909C;
-            margin-top: 15px;
-            margin-bottom: 15px;
-
+            margin-top: 2em;
+            margin-bottom: 2em;
         }
 
         paper-item {
@@ -103,60 +110,101 @@
             font-size: 15px;
             font-family: 'Space Mono', monospace;
         }
+
+        u {
+            text-decoration: none;
+            border-bottom: 1px dotted #FF8A65;
+        }
+
+        u.title {
+            text-decoration: none;
+            border-bottom: 1px dotted #90A4AE;
+            line-height: 180%;
+        }
         
         .highlight {
             color: #B0BEC5;
         }
+
+        .title {
+            color: #90a4ae;
+        }
+
+        collapse-button {
+            text-align: left;
+        }
     </style>
 
 
+    
     <div class="sec">
-        <paper-material elevation="0">
-            <div class="sep-title cost">
-                <p>1,364 GBP</p>
-            </div>
-            <p class="intro">
-                Built on top of our REGULAR impl, your <span class="highlight">E-SHOP implementation</span> is packaged into a <em>smart website</em> and a business-centric <em>web portal</em>.
-            </p>
-            <p class="intro">
-                Through the web portal your business can manage and consume the website's data, while the website allows users to perform the set of high-level business functions outlined in the WEBSITE FUNCTIONS section.
-            </p>
-            <p class="intro">
-                We program these functions to suit your business paradigm and run them on cloud-based infrastructure services for <em>automatic scaling</em> and <em>pay-as-you-go pricing</em>. Consequently, your website can handle traffic surges without prior upgrades, and its operating costs are based on its size and are directly proportional to user demand.
-            </p>
-            <p class="intro">
-                Your organisation will be registered with the <em>relevant</em> set of services detailed in the INFRASTRUCTURE &amp; COSTS section below, which outlines the max service accounts required for the available use cases. 
-            </p>
-            <p class="intro notes">
-                The service accounts relevant for individual implementations differ and will be determined at the requirements gathering stage. Visit the reference links for official provider pricing &amp; documentation.
-            </p>
-            <a href="/aftersales" tabindex="-1">
+
+        <div class="sub">
+            
+            <paper-material elevation="0">
+                <div class="sep-title cost">
+                    <p>
+                        <u class="title">Cost:</u> 1,364 
+                    </p>
+                </div>
+                <p class="intro">
+                    <u class="title">Suitable for:</u><br>Product based Businesses
+                </p>
+                <p class="intro">
+                    <u class="title">Website features:</u>
+                    <br>• Contact form
+                    <br>• Responsive Design
+                    <br>• Shopping Basket
+                </p>
+                <p class="intro">
+                    Your organisation will be registered with the <em>relevant</em> set of services detailed in the INFRASTRUCTURE &amp; COSTS section below, which outlines the max service accounts required for the available use cases. 
+                </p>
+                <p class="intro notes">
+                    The relevant service accounts for individual implementations differ and will be determined at the design stage. Visit the reference links for official provider pricing &amp; documentation.
+                </p>
+                <a href="/aftersales" tabindex="-1">
                     <paper-button>After Sales</paper-button>
                 </a>
+                
+                <div class="sep-title">
+                    .
+                </div>
+            </paper-material>
+        </div>
 
-            <div class="sep-title">.</div>
-        </paper-material>
-
-        <paper-material elevation="0">
-            <div class="sep-title">
-                <p>
-                Infrastructure &amp; costs
-                </p>
-            </div>
-            <iron-ajax auto="" url="data/eshop-services.json" handle-as="json" last-response="{{iaas}}"></iron-ajax>
+        <div class="sub">
+            
+            <paper-material elevation="0">
+                <div class="sep-title">
+                    <p>Infrastructure &amp; costs</p>
+                </div>
+                
+                <iron-ajax auto="" url="data/eshop-services.json" handle-as="json" last-response="{{iaas}}"></iron-ajax>
+                
                 <template is="dom-repeat" items="[[iaas]]">
                     <collapse-button title="[[item.name]]" content="[[item.content]]" note="[[item.note]]" desc="[[item.desc]]" ref="[[item.ref]]" why="[[item.why]]"></collapse-button>
                 </template>
-            <div class="sep-title">.</div>
-        </paper-material>
+                
+                <div class="sep-title">
+                    .
+                </div>
+            </paper-material>
+        </div>
+
     </div>
 
+    
     <div class="sec">
-        <paper-material elevation="0">
-            <div class="sep-title">
-                <p>Website functions</p>
-            </div>
-            <iron-ajax auto="" url="data/eshop-functions.json" handle-as="json" last-response="{{eshop}}"></iron-ajax>
+
+        <div class="sub">
+            
+            <paper-material elevation="0">
+                <div class="sep-title">
+                    <p>Website functions</p>
+                </div>
+                
+                <iron-ajax auto="" url="data/eshop-functions.json" handle-as="json" last-response="{{eshop}}"></iron-ajax>
+                
                 <template is="dom-repeat" items="[[eshop]]">
                     <paper-item two-line="" class="function" id$="button[[item.id]]">
                         <paper-item-body>
@@ -169,31 +217,44 @@
                         </paper-item-body>
                     </paper-item>
                 </template>
-            <div class="sep-title">.</div>
-        </paper-material>
+                
+                <div class="sep-title">
+                    .
+                </div>
+            </paper-material>
+        </div>
 
-        <paper-material elevation="0">
-            <div class="sep-title">
-               <p>Web portal functions</p>
-            </div>
-            <iron-ajax auto="" url="data/eshop-portal.json" handle-as="json" last-response="{{portal}}"></iron-ajax>
-            <template is="dom-repeat" items="[[portal]]">
-                <paper-item class="function" two-line="">
-                    <paper-item-body>
-                        <div class="primary">
-                            [[item.name]]
-                        </div>  
-                        <div class="secondary" secondary="">
-                            [[item.desc]]
-                        </div>
-                    </paper-item-body>
-                </paper-item>
-            </template>
-            <div class="sep-title">.</div>
-        </paper-material>
+        <div class="sub">
+            
+            <paper-material elevation="[[raise]]">
+                <div class="sep-title">
+                    <p>Web portal functions</p>
+                </div>
+                
+                <iron-ajax auto="" url="data/eshop-portal.json" handle-as="json" last-response="{{portal}}"></iron-ajax>
+                
+                <template is="dom-repeat" items="[[portal]]">
+                    <paper-item class="function" two-line="">
+                        <paper-item-body>
+                            <div class="primary">
+                                [[item.name]]
+                            </div>  
+                            <div class="secondary" secondary="">
+                                [[item.desc]]
+                            </div>
+                        </paper-item-body>
+                    </paper-item>
+                </template>
+                
+                <div class="sep-title">
+                    .
+                </div>
+            </paper-material>
+        </div>
+
     </div>
 
 </template>
-<script>Polymer({is:"eshop-page",properties:{isOpen:{type:Boolean,value:!1},isClosed:{type:Boolean,value:!0}},created:function(){this.removeAttribute("unresolved")}});</script>
+<script>Polymer({is:"eshop-page",properties:{raise:{type:Number,value:1}},created:function(){this.removeAttribute("unresolved")}});</script>
 </dom-module>
 </body></html>

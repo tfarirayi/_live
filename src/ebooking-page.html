@@ -7,11 +7,11 @@ E-Booking page element
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <!-- Iron elements -->
 <link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
-<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html"> 
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
 <!-- Paper elements -->
 <link rel="import" href="../bower_components/paper-material/paper-material.html">
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
-<link rel="import" href="../bower_components/paper-item/paper-item.html"> 
+<link rel="import" href="../bower_components/paper-item/paper-item.html">
 <!-- Custom elements -->
 <link rel="import" href="collapse-button.html">
 
@@ -19,23 +19,13 @@ E-Booking page element
 <template>
      <style>
         :host {
-
             display: flex;
             flex-flow: row wrap;
             justify-content: center;
-            line-height: 120%;
             margin: auto;
-            font-family: 'Arvo', serif;
             padding: 4px;
-
-            /*display: block;
-            @apply(--layout-horizontal);
-            @apply(--layout-center-justified);
-            @apply(--layout-wrap);
-            padding-bottom: 10%;
-            max-width: 800px;
-            margin: auto;
-            font-family: 'Arvo', serif;*/
+            line-height: 120%;
+            font-family: 'Arvo', serif;
         }
 
         .sec {
@@ -46,42 +36,37 @@ E-Booking page element
             max-width: 300px;
             box-sizing: border-box;
             height: fit-content;
-            margin: 0px 4px;             
+            margin: 0px 4px;
         }
 
         .sub {
             max-width: 300px;
             border-radius: 8px;
+            padding: 3px;
+            margin-top: 8px;
             margin: auto;
-            padding: 4px 0px;
             text-align: center;
             height: fit-content;
-            box-sizing: border-box;            
+            box-sizing: border-box;
         }
-
-       
 
         .intro {
             text-align: left;
             padding: 5px 13px;
             font-size: 15px;
-            color: #90a4ae;
             color: #B0BEC5;
-
         }
 
         .notes {
-            color: #78909C;
             color: #90a4ae;
-            
             font-size: 14px;
+            font-style: italic;
             text-align: center;
         }
 
         paper-material {
             color: #FF8A65;
             background-color: #37474F;
-            /*background-color: transparent;*/
             border-radius: 10px;
             width: 100%;
             margin: auto;
@@ -90,11 +75,6 @@ E-Booking page element
             height: fit-content;
         }
 
-        paper-button:focus {
-            font-weight: normal;
-        }
-
-        /* button links */
         paper-button {
             text-transform: none;
             display: block;
@@ -106,12 +86,15 @@ E-Booking page element
             font-family: 'Space Mono', monospace;
         }
 
+        paper-button:focus {
+            font-weight: normal;
+        }
+
         a {
             text-decoration: none;
             color: #FF8A65;
         }
 
-        
         .sep-title {
             text-transform: uppercase;
             text-align: center;
@@ -150,21 +133,6 @@ E-Booking page element
             padding: 0px 10px;
         }
 
-        .highlight {
-            color: #B0BEC5;
-        }
-        
-        .def {
-            font-size: 13px;
-            width: 90%;
-            text-align: right;
-            font-style: italic;
-            margin: auto;
-            color: #90A4AE;
-            color: #90a4ae;
-            
-        }
-
         u {
             text-decoration: none;
             border-bottom: 1px dotted #FF8A65;
@@ -176,6 +144,10 @@ E-Booking page element
           line-height: 180%;
         }
         
+        .highlight {
+            color: #B0BEC5;
+        }
+
         .title {
             color: #90a4ae;
         }
@@ -186,107 +158,131 @@ E-Booking page element
      </style>
 
 <!-- Local dom here  -->
+    <!-- Column 1 -->
     <div class="sec">
+
         <div class="sub">
-          <paper-material elevation="1">
-             <div class="sep-title cost">
-                 <p><u class="title">Cost:</u> 987 GBP</p>
-             </div>
+            <!-- Inner Content -->
+            <paper-material elevation="[[raise]]">
+                <p class="intro">
+                    Appointment/Reservation<br> website...
+                </p>
+                <div class="sep-title cost">
+                    <p>
+                        <u class="title">Charge:</u> 987 GBP
+                    </p>
+                </div>
                 <p class="intro">
                     <u class="title">Suitable for:</u><br>Service Businesses
-                    <!--Built on top of our REGULAR impl, your <span class="highlight">E-BOOKING implementation</span> is packaged into a <em>smart website</em> and a business-centric <em>web portal</em>.-->
                 </p>
                 <p class="intro">
-                    <u class="title">Website features:</u><br>
-                    &bull; Contact form<br>
-                    &bull; Responsive Design<br>
-                    &bull; Booking System
-                        <!--Through the web portal your business can manage and consume the website's data, while the website allows users to perform the set of high-level business functions outlined in the WEBSITE FUNCTIONS section.-->
+                    <u class="title">Website features:</u>
+                    <br>&bull; Contact form
+                    <br>&bull; Responsive Design
+                    <br>&bull; Booking System
+                    <br>&bull; SEO
+
                 </p>
-                <!--<p class="intro">
-                    We program these functions to suit your business paradigm and run them on cloud-based infrastructure services for <em>automatic scaling</em> and <em>pay-as-you-go pricing</em>. Consequently, your website can handle traffic surges without prior upgrades, and its operating costs are based on its size and are directly proportional to user demand.
-                </p>-->
                 <p class="intro">
-                    Your organisation will be registered on the <em>relevant</em> set of cloud services detailed in the INFRASTRUCTURE &amp; COSTS section below, which outlines the maximum service accounts required for the available features. 
+                    Your organisation will be registered on the <em>relevant</em> set of cloud services detailed in the INFRASTRUCTURE &amp; COSTS section below, which outlines the maximum service accounts required for the available features.
                 </p>
                 <p class="intro notes">
-                    <!--<span class="def p">
-        <u>"We use the phrase 'smart website' to define simply, a website that allows high-level user interaction through a set of predefined functions."</u>
-      </span><-->
-        </-->
-                    <!--<span class="def">-->
                     The relevant service accounts for individual implementations differ and will be determined at the design stage. Visit the reference links for official provider pricing &amp; documentation.
-                    <!--</span>-->
                 </p>
                 <a href="/aftersales" tabindex="-1">
                     <paper-button>After Sales</paper-button>
                 </a>
-             <div class="sep-title">&period;</div>
-          </paper-material>
+                <!-- Separation -->
+                <div class="sep-title">
+                    &period;
+                </div>
+            </paper-material>
         </div>
+
         <div class="sub">
-          <paper-material elevation="1">
-             <div class="sep-title cost">
-                 <p>Infrastructure &amp; <br>Running costs</p>
-             </div>
-               <iron-ajax auto url="data/ebooking-services.json" handle-as="json" last-response="{{iaas}}"></iron-ajax>
-               <template is="dom-repeat" items="[[iaas]]">
-               <collapse-button
-                    title=[[item.name]]
-                   
-                   desc=[[item.desc]]
-                    ref=[[item.ref]]></collapse-button>
-               </template>
-             <div class="sep-title">&period;</div>
-          </paper-material>
+            <!-- Inner Content -->
+            <paper-material elevation="[[raise]]">
+                <div class="sep-title cost">
+                    <p>Infrastructure &amp;<br>Running costs</p>
+                </div>
+                <!-- Data for iaas -->                
+                <iron-ajax auto url="data/ebooking-services.json" handle-as="json" last-response="{{iaas}}"></iron-ajax>
+                <!-- Repeat collapse-button -->
+                <template is="dom-repeat" items="[[iaas]]">
+                    <collapse-button
+                        title=[[item.name]]
+
+                        desc=[[item.desc]]
+                        ref=[[item.ref]]>
+                    </collapse-button>
+                </template>
+                <!-- Separation -->
+                <div class="sep-title">
+                    &period;
+                </div>
+            </paper-material>
         </div>
+
     </div>
 
+    <!-- Column 2 -->
     <div class="sec">
+
         <div class="sub">
-         <paper-material elevation="1">
+        <!-- Inner Content -->
+         <paper-material elevation="[[raise]]">
              <div class="sep-title cost">
                  <p>Customer features</p>
              </div>
+             <!-- Data for customer features -->
              <iron-ajax auto url="data/ebooking-functions.json" handle-as="json" last-response="{{eres}}"></iron-ajax>
-                 <template is="dom-repeat" items="[[eres]]">
-                     <paper-item two-line class="function" id$="button[[item.id]]">
-                         <paper-item-body>
-                             <div class="primary">
-                                 [[item.name]]
-                             </div>
-                             <div class="secondary" secondary>
-                                 [[item.options]]
-                             </div>
-                         </paper-item-body>
-                     </paper-item>
-                 </template>
-             <div class="sep-title">&period;</div>
-         </paper-material>
+                <!-- Repeat paper-item -->
+                <template is="dom-repeat" items="[[eres]]">
+                    <paper-item two-line class="function" id$="button[[item.id]]">
+                        <paper-item-body>
+                            <div class="primary">
+                                [[item.name]]
+                            </div>
+                            <div class="secondary" secondary>
+                                [[item.options]]
+                            </div>
+                        </paper-item-body>
+                    </paper-item>
+                </template>
+                <!-- Separation -->
+                <div class="sep-title">
+                    .
+                </div>
+            </paper-material>
         </div>
 
         <div class="sub">
-
-         <paper-material elevation="1">
-             <div class="sep-title cost">
-                 <p>Management features</p>
-             </div>
-             <iron-ajax auto url="data/ebooking-portal.json" handle-as="json" last-response="{{portal}}"></iron-ajax>
-             <template is="dom-repeat" items="[[portal]]">
-                 <paper-item class="function" two-line>
-                     <paper-item-body>
-                         <div class="primary">
-                             [[item.name]]
-                         </div>
-                         <div class="secondary" secondary>
-                             [[item.desc]]
-                         </div>
-                     </paper-item-body>
-                 </paper-item>
-             </template>
-             <div class="sep-title">&period;</div>
-         </paper-material>
+            <!-- Inner Content -->
+            <paper-material elevation="[[raise]]">
+                <div class="sep-title cost">
+                    <p>Management features</p>
+                </div>
+                <!-- Data for management features -->
+                <iron-ajax auto url="data/ebooking-portal.json" handle-as="json" last-response="{{portal}}"></iron-ajax>
+                <template is="dom-repeat" items="[[portal]]">
+                    <paper-item class="function" two-line>
+                        <paper-item-body>
+                            <div class="primary">
+                                [[item.name]]
+                            </div>
+                            <div class="secondary" secondary>
+                                [[item.desc]]
+                            </div>
+                        </paper-item-body>
+                    </paper-item>
+                </template>
+                <!-- Separation -->
+                <div class="sep-title">
+                    .
+                </div>
+            </paper-material>
         </div>
+
     </div>
 
 </template>
@@ -296,10 +292,11 @@ E-Booking page element
 
         properties: {
 
-            isOpen: {
-                type: Boolean,
-                value: false
+            raise: {
+                type: Number,
+                value: 1
             }
+
         },
 
         created: function() {

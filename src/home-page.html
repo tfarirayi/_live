@@ -10,7 +10,7 @@ Homepage element
 <link rel="import" href="../bower_components/iron-icon/iron-icon.html">
 <!-- Paper elements -->
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
-g<link rel="import" href="../bower_components/paper-tooltip/paper-tooltip.html"><!-- Custom Element -->
+<link rel="import" href="../bower_components/paper-tooltip/paper-tooltip.html"><!-- Custom Element -->
 <link rel="import" href="download-login.html">
 <link rel="import" href="my-icons.html">
 
@@ -29,12 +29,12 @@ g<link rel="import" href="../bower_components/paper-tooltip/paper-tooltip.html">
         .sec {
             align-self: flex-start;
             flex: 1;
-            flex-basis: 600px;
+            flex-basis: 300px;
             min-width: 256px;
-            box-sizing: border-box;
             max-width: 300px;
+            box-sizing: border-box;
             height: fit-content;
-            margin: 8px;
+            margin: 0px 4px;
         }
 
         .sub {
@@ -45,6 +45,7 @@ g<link rel="import" href="../bower_components/paper-tooltip/paper-tooltip.html">
             margin: auto;
             text-align: center;
             height: fit-content;
+            box-sizing: border-box;
         }
 
         .sep-title {
@@ -215,20 +216,19 @@ g<link rel="import" href="../bower_components/paper-tooltip/paper-tooltip.html">
   <div class="sub">
 
     <div class="sep-title">
-        <p>Welcome to Kiosk...
+        <p>Welcome to Kiosk
         </p>
     </div>
 
     <div class="row--one">
-      <span class="intro p">We provide web development services to small &amp; medium sized operations across the UK.
+      <span class="intro p">
+          We provide web development services to small &amp; medium sized operations across the UK.
       </span>
-      <!--<span class="def p">
-        <u>"We use the phrase 'smart website' to define simply, a website that allows high-level user interaction through a set of predefined functions."</u>
-      </span>-->
     </div>
 
     <div class="row--two">
-      <span class="p">Our services are called <u>implementations</u> and they serve as a one-stop platform allowing small-scale organisations to easily adopt scalable IT systems through the use of cloud-based computing services.
+      <span class="p">
+          Our services are called implementations and they serve as a one-stop platform allowing small-scale organisations to easily adopt scalable IT systems through the use of cloud-based computing services.
       </span>
     </div>
 
@@ -236,71 +236,57 @@ g<link rel="import" href="../bower_components/paper-tooltip/paper-tooltip.html">
   <div class="sub">
     <div class="sep-title">
       <p>
-            <!-- <iron-icon icon="my-icons:list"></iron-icon> -->
           <u class="title">Business intents</u>
       </p>
     </div>
 
     <div class="row--three">
-        <!-- <div class="r-three "> -->
-            <p class="aim--one">Provide an easily accessible IT System implementation service at a consumer level
-            </p>
+        <span class="aim--one p">Provide an easily accessible IT System implementation service at a consumer level
+        </span>
 
-            <div class="dot">
-              .
-            </div>
-        <!-- </div> -->
+        <div class="dot">
+            .
+        </div>
 
-        <!-- <div class="r-three"> -->
-            <!--<p class="aim--two">Translate the website's output data into a defined business paradigm
-            </p>-->
-<!--
-            <div class="dot">
-              .
-            </div>-->
-        <!-- </div> -->
-
-        <!-- <div class="r-three"> -->
-            <p class="aim--two">Create visually appealing and utilitarian website interfaces to increase the probability of customer conversion 
-            </p>
-        <!-- </div> -->
-
+        <span class="aim--two">Create visually appealing and utilitarian website interfaces to increase the probability of customer conversion 
+        </span>
     </div>
   </div>
 </div>
 
 <div class="sec">
   <div class="sub">
-
-
-
+    <!-- Inner Content -->
     <div class="sep-title">
         <p>
-            <!-- <iron-icon class="build-icon" icon="my-icons:build"></iron-icon> -->
            <u class="title">Our implementations</u>
         </p>
     </div>
 
     <div class="row--four">
-        <a href="/regular"><paper-button raised class="route">REGULAR</paper-button>
+        <a href="/regular">
+            <paper-button raised class="route">REGULAR</paper-button>
         </a>
-        <a href="/eshop"><paper-button raised class="route">E-SHOP</paper-button>
+        <a href="/eshop">
+            <paper-button raised class="route">E-SHOP</paper-button>
         </a>
-        <a href="/ebooking"><paper-button raised class="route">E-BOOKING</paper-button>
+        <a href="/ebooking">
+            <paper-button raised class="route">E-BOOKING</paper-button>
         </a>
     </div>
 
     <div class="sep-title">
         <p>
             <iron-icon icon="my-icons:file-download"></iron-icon>
-            <!-- Downloads -->
         </p>
     </div>
 
     <div class="row--five">
         <download-login unverified="{{verified}}" authorized="{{}}"></download-login>
         <paper-button class="download" on-click="verify" disabled="{{verified}}" raised>
-          Download<br>Web Portal
+          Download
+          <br>
+          Web Portal
         </paper-button>
     </div>
 </div>
@@ -320,7 +306,6 @@ g<link rel="import" href="../bower_components/paper-tooltip/paper-tooltip.html">
 
             authorized: {
                 type: Boolean,
-
             },
 
             open: {

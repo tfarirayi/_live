@@ -4,51 +4,42 @@
 <link rel="import" href="../bower_components/iron-icon/iron-icon.html">
 
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
-</head><body>g<link rel="import" href="../bower_components/paper-tooltip/paper-tooltip.html">
+<link rel="import" href="../bower_components/paper-tooltip/paper-tooltip.html">
 <link rel="import" href="download-login.html">
 <link rel="import" href="my-icons.html">
 
-<dom-module id="home-page">
+</head><body><dom-module id="home-page">
 <template>
     <style>
         :host {
-            /*display: block;*/
-            /*@apply(--layout-vertical);*/
-            /*@apply(--layout-center);*/
-            font-family: 'Arvo', serif;
-            line-height: 120%;
-            /*padding-bottom: 10em;*/
-
             display: flex;
             flex-flow: row wrap;
             justify-content: center;
+            line-height: 120%;
+            font-family: 'Arvo', serif;
             margin: auto;
-            /*align-items: center;*/
-            /*@apply(--layout-fullbleed);*/
         }
 
         .sec {
-          align-self: flex-start;
-          /*padding: 8px;*/
-          flex: 1;
-          flex-basis: 600px;
-          min-width: 256px;
-          box-sizing: border-box;
-          max-width: 300px;
-          height: fit-content;
-          margin: 8px;
+            align-self: flex-start;
+            flex: 1;
+            flex-basis: 300px;
+            min-width: 256px;
+            max-width: 300px;
+            box-sizing: border-box;
+            height: fit-content;
+            margin: 0px 4px;
         }
 
         .sub {
-          max-width: 300px;
-          /*background-color: lightgrey;*/
-          border-radius: 8px;
-          padding: 3px;
-          margin-top: 8px;
-          margin: auto;
-          text-align: center;
-          height: fit-content;
-          /*font-family: 'Gabriela', serif;*/
+            max-width: 300px;
+            border-radius: 8px;
+            padding: 3px;
+            margin-top: 8px;
+            margin: auto;
+            text-align: center;
+            height: fit-content;
+            box-sizing: border-box;
         }
 
         .sep-title {
@@ -63,13 +54,11 @@
         }
 
         .dot {
-          text-align: center;
-          font-size: 16px;
-          margin-top: 8px;
-          margin-bottom: 8px;
-          color: #607D8B;
-
-
+            text-align: center;
+            font-size: 16px;
+            margin-top: 8px;
+            margin-bottom: 8px;
+            color: #607D8B;
         }
 
         .row--one {
@@ -89,8 +78,6 @@
 
         .row--three {
             @apply(--layout-vertical);
-            /*@apply(--layout-center-justified);*/
-            /*@apply(--layout-end);*/
             max-width: 260px;
             margin: auto;
             text-align: center;
@@ -100,7 +87,6 @@
             @apply(--layout-horizontal);
             @apply(--layout-wrap);
             @apply(--layout-center-justified);
-            /*padding: 3px;*/
             max-width: 300px;
             text-align: center;
         }
@@ -118,18 +104,14 @@
         }
 
         .aim--one {
-            /*text-align: left;*/
             color: #B0BEC5;
-            /*color: #B0BEC5;*/
         }
 
         .aim--two {
-            /*text-align: left;*/
             color: #90A4AE;
         }
 
         .aim--three {
-            /*text-align: left;*/
             color: #78909C;
         }
 
@@ -228,20 +210,19 @@
   <div class="sub">
 
     <div class="sep-title">
-        <p>Welcome to Kiosk
+        <p><u>Welcome to Kiosk</u>
         </p>
     </div>
 
     <div class="row--one">
-      <span class="intro p">We provide a <u>smart website</u> service for small to medium sized operations called web implementations.
-      </span>
-      <span class="def p">
-        <u>"We use the phrase 'smart website' to define simply, a website that allows high-level user interaction through a set of predefined functions."</u>
+      <span class="intro p">
+          We provide web development services to small &amp; medium sized operations across the UK.
       </span>
     </div>
 
     <div class="row--two">
-      <span class="p">Our implementations serve as a one-stop platform allowing small-scale organisations to leverage the benefits of cloud-based computing infrastructure services, without the overhead costs of an in-house web developer...
+      <span class="p">
+          Our services are called implementations and they serve as a one-stop platform allowing small-scale organisations to easily adopt scalable IT systems through the use of cloud-based computing services.
       </span>
     </div>
 
@@ -249,71 +230,57 @@
   <div class="sub">
     <div class="sep-title">
       <p>
-            
           <u class="title">Business intents</u>
       </p>
     </div>
 
     <div class="row--three">
-        
-            <p class="aim--one">Provide a less-technical and affordable website implementation service
-            </p>
+        <span class="aim--one p">Provide an easily accessible IT System implementation service at a consumer level
+        </span>
 
-            <div class="dot">
-              .
-            </div>
-        
+        <div class="dot">
+            .
+        </div>
 
-        
-            <p class="aim--two">Transparently forecast the financial costs of running and scaling such a website
-            </p>
-
-            <div class="dot">
-              .
-            </div>
-        
-
-        
-            <p class="aim--three">Translate the website's output data into a defined business paradigm
-            </p>
-        
-
+        <span class="aim--two">Create visually appealing and utilitarian website interfaces to increase the probability of customer conversion 
+        </span>
     </div>
   </div>
 </div>
 
 <div class="sec">
   <div class="sub">
-
-
-
+    
     <div class="sep-title">
         <p>
-            
            <u class="title">Our implementations</u>
         </p>
     </div>
 
     <div class="row--four">
-        <a href="/regular"><paper-button raised="" class="route">REGULAR</paper-button>
+        <a href="/regular">
+            <paper-button raised="" class="route">REGULAR</paper-button>
         </a>
-        <a href="/eshop"><paper-button raised="" class="route">E-SHOP</paper-button>
+        <a href="/eshop">
+            <paper-button raised="" class="route">E-SHOP</paper-button>
         </a>
-        <a href="/ebooking"><paper-button raised="" class="route">E-BOOKING</paper-button>
+        <a href="/ebooking">
+            <paper-button raised="" class="route">E-BOOKING</paper-button>
         </a>
     </div>
 
     <div class="sep-title">
         <p>
             <iron-icon icon="my-icons:file-download"></iron-icon>
-            
         </p>
     </div>
 
     <div class="row--five">
         <download-login unverified="{{verified}}" authorized="{{}}"></download-login>
         <paper-button class="download" on-click="verify" disabled="{{verified}}" raised="">
-          Download<br>Web Portal
+          Download
+          <br>
+          Web Portal
         </paper-button>
     </div>
 </div>

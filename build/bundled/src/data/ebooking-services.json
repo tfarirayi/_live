@@ -4,7 +4,7 @@
         "id": "2",
         "name": "AWS Lambda",
         "desc": "BOOKING CYCLE LOGIC",
-        "why": "The functions that process your website's data are deployed to the cloud as individual components, making for a nimble and manageable website architecture. ",
+        "why": "Bookin",
         "content": "AWS Lambda free tier includes 1M free requests per month and up to 3.2M GB-seconds of compute time per month, depending on the memory required to run your logic.",
         "note": "Free tier does not expire. "
     },
@@ -52,7 +52,7 @@
     {
         "ref": "https://www.1and1.co.uk/domain-names",
         "id": "8",
-        "name": "1&1 Internet",
+        "name": "1and1 Internet",
         "desc": "DOMAIN HOSTING",
         "content": "Your web address or domain [e.g kioskwebdev.co.uk] needs to be hosted separately with a Domain Registrar.",
         "note": "12 months domain hosting included - .co.uk only."
@@ -61,7 +61,7 @@
         "ref": "https://gsuite.google.co.uk/intl/en_uk/solutions/new-business/",
         "id": "9",
         "name": "G Suite",
-        "desc": "Business email",
+        "desc": "Business email (12 months complementary)",
         "content": "G Suite Professional offers 30GB of storage for email and documents. A 12 month subscription for one user is included as part of this implementation. 14-day free trial is available. ",
         "note": "Allows addition of group email aliases at no extra cost - e.g software@kioskwebdev.co.uk & support@kioskwebdev.co.uk. "
     }
