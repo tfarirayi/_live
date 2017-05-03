@@ -27,6 +27,7 @@ Message form element with lambda function
 
             paper-material {
                 margin: auto;
+                margin-top: 8px;
                 max-width: 300px;
                 background-color: #CFD8DC;
                 border-radius: 10px;
@@ -79,9 +80,35 @@ Message form element with lambda function
                 font-size: 13px;
                 font-family: 'Roboto', monospace;
             }
+
+            .email {
+                text-align: center;
+            }
+            .email a {
+                text-decoration: none;
+                color: inherit;
+                color: #37474F;
+                color: #D84315;
+                /*font-family: 'Roboto', monospace;*/
+                font-size: 15px;
+            }
+            .email a:hover {
+                text-decoration: underline;
+            }
         </style>
 
 <!-- Local dom here -->
+    <paper-material>
+        <div class="sep-title">
+            <p>email us</p>
+            .
+        </div>
+        <div class="email">
+            <p>
+                <a href="mailto:tich.farirayi@kioskwebdev.co.uk">tich.farirayi@kioskwebdev.co.uk</a>
+            </p>
+        </div>
+    </paper-material>
 
     <paper-material class="animated fadeIn">
         <div class="sep-title">
@@ -100,7 +127,10 @@ Message form element with lambda function
             <paper-button on-click="send" raised>Send</paper-button>
             <span class="alert">[[response]]</span>
         </div>
+        
     </paper-material>
+
+
 
 </template>
 <script>

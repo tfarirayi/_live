@@ -1,44 +1,27 @@
 [
     {
         "ref": "https://aws.amazon.com/lambda/",
-        "id": "1",
         "name": "AWS Lambda",
-        "desc": "CONTACT FORM LOGIC",
-        "why": "We use a custom function to send your contact form emails.",
-        "content": "AWS Lambda free tier includes 1M free requests per month and up to 3.2M GB-seconds of compute time per month, depending on the memory required to run your logic.",
-        "note": "Free tier does not expire. "
+        "desc": "CONTACT FORM LOGIC"
     },
     {
         "ref": "https://www.mailgun.com/pricing",
-        "id": "2",
         "name": "Mailgun API",
-        "desc": "CONTACT FORM EMAIL",
-        "content": "Mailgun offers a free account allowing you to send up to 10K transactional emails per month. At no extra cost you also get the ability to track email events such as: delivered, failed, opened.",
-        "note": "If you need to send more than 10K emails, scaling can be enabled by adding payment details."
+        "desc": "CONTACT FORM EMAIL"
     },
     {
         "ref": "https://aws.amazon.com/s3/",
-        "id": "3",
         "name": "AWS S3 Storage",
-        "desc": "WEBSITE HOSTING",
-        "content": "To make your website accessible through the web, it needs to be stored and hosted on a web server. The AWS S3 hosting free tier offers 5GB standard storage, 20K GET requests and 2K PUT requests, per month. ",
-        "note": "Free tier expires after 12 months & available to new S3 customers only. Refer to pricing for storage and requests only. "
+        "desc": "WEBSITE HOSTING"
     },
     {
         "ref": "https://www.1and1.co.uk/domain-names",
-        "id": "4",
         "name": "1&1 Internet",
-        "desc": "DOMAIN HOSTING",
-        "content": "Your web address or domain [e.g kioskwebdev.co.uk] needs to be hosted separately with a Domain Registrar.",
-        "note": "12 months domain hosting included - .co.uk only."
+        "desc": "DOMAIN HOSTING"
     },
     {
         "ref": "https://gsuite.google.co.uk/intl/en_uk/solutions/new-business/",
-        "id": "5",
         "name": "G Suite",
-        "desc": "Business email (3 months complementary)",
-        "content": "G Suite Professional offers 30GB of storage for email and documents. A 3 month subscription for one user is included as part of this implementation. 14-day free trial is available. ",
-        "note": "Allows addition of group email aliases at no extra cost - e.g software@kioskwebdev.co.uk & support@kioskwebdev.co.uk. "
-
+        "desc": "Business email (3 months complementary)"
     }
 ]

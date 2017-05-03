@@ -1,22 +1,18 @@
 [
     {
-        "name": "Sign Up & Login",
-        "options": "Users can create an account using 1 of 1 or 1 of 2 of methods possible: Facebook, Amazon, Twitter, Google, Email Address, Username, Phone Number (extra charges for sms verification)."
-    },
-    {
         "name": "Checkout",
-        "options": "Customers can checkout their baskets securely. With SSL and Braintree Payments's hosted fields, your website is compliant with the 'PCI DSS Self-Assessment Questionnaire A (SAQ A)'."
+        "options": "Customers can checkout their baskets securely. With SSL (https) and Braintree Payments's hosted fields, our implementation is compliant with the 'PCI DSS Self-Assessment Questionnaire A (SAQ A)'."
     },
     {
-        "name": "View Receipts & Orders",
-        "options": "Account holders can sign-in to view receipts for purchases they made on your website; as well as the status of their orders - from placement to fulfilment."
+        "name": "Sign Up & Login",
+        "options": "Users can create accounts on your website using 1 of 1 or 1 of 2 methods available: Facebook, Amazon, Twitter, Google, Email Address, Username and *Phone Number (*extra charges for sms verification)."
     },
     {
-        "name": "Save & Edit Delivery Details",
-        "options": "Regular customers will benefit from an option that eases the checkout flow."
+        "name": "View Receipts & Orders placed",
+        "options": "Account holders can monitor their orders and view receipts of completed purchases."
     },
     {
-        "name": "Contact form",
-        "options": "Users can reach you without leaving your site."
+        "name": "Save Checkout Details",
+        "options": "Account holders can ease the checkout flow by pre-filling checkout details. Users can save and edit their Name, Address, Contact Phone, Contact email. Customers cannot save their card details."
     }
 ]

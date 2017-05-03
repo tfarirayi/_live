@@ -8,12 +8,15 @@ E-Booking page element
 <!-- Iron elements -->
 <link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../bower_components/iron-icon/iron-icon.html">
 <!-- Paper elements -->
 <link rel="import" href="../bower_components/paper-material/paper-material.html">
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../bower_components/paper-item/paper-item.html">
 <!-- Custom elements -->
 <link rel="import" href="collapse-button.html">
+<link rel="import" href="service-button.html">
+
 
 <dom-module id="ebooking-page">
 <template>
@@ -75,21 +78,6 @@ E-Booking page element
             height: fit-content;
         }
 
-        paper-button {
-            text-transform: none;
-            display: block;
-            text-align: center;
-            max-width: 280px;
-            margin: auto;
-            border-radius: 0px;
-            background-color: #263238;
-            font-family: 'Space Mono', monospace;
-        }
-
-        paper-button:focus {
-            font-weight: normal;
-        }
-
         a {
             text-decoration: none;
             color: #FF8A65;
@@ -103,6 +91,17 @@ E-Booking page element
             color: #607D8B;
             margin-top: 2em;
             margin-bottom: 2em;
+            font-family: 'Space Mono', monospace;
+        }
+
+        .inner-title {
+            text-transform: uppercase;
+            text-align: center;
+            letter-spacing: 1px;
+            font-size: 16px;
+            color: #607D8B;
+            margin-top: 1em;
+            margin-bottom: 1em;
             font-family: 'Space Mono', monospace;
         }
 
@@ -152,9 +151,31 @@ E-Booking page element
             color: #90a4ae;
         }
 
-        collapse-button {
-            text-align: left;
+        .git {
+            @apply(--layout-horizontal);
+            @apply(--layout-center-justified);
+            @apply(--layout-center);
+            /*padding: 8px;*/
+            font-size: 13px;
+            text-transform: uppercase;
+            font-family: 'Space Mono', monospace;
+            
         }
+
+        collapse-button {
+            /*height: 36px !important;*/
+            margin-bottom: 13px;
+        }
+
+        .spacer {
+            @apply(--layout-flex);
+        }
+
+        iron-icon {
+            --iron-icon-height: 21px;
+            --iron-icon-width: 21px;
+        }
+   
      </style>
 
 <!-- Local dom here  -->
@@ -166,7 +187,7 @@ E-Booking page element
             <paper-material elevation="[[raise]]">
                 <div class="sep-title cost">
                     <p>
-                        <u class="title">Charge:</u> 987 GBP
+                        <u class="title">Charge:</u> 610 GBP
                     </p>
                 </div>
                 <p class="intro">
@@ -174,7 +195,7 @@ E-Booking page element
                     <br>&bull; Contact form
                     <br>&bull; Responsive Design
                     <br>&bull; Booking System
-                    <br>&bull; SEO
+                    <br>&bull; Service Catalogue
                 </p>
                 <p class="intro">
                     <u class="title">Suitable for:</u><br>Service Businesses
@@ -185,13 +206,23 @@ E-Booking page element
                 <p class="intro notes">
                     The relevant service accounts for individual implementations differ and will be determined at the design stage. Visit the reference links for official provider pricing &amp; documentation.
                 </p>
-                <a href="/aftersales" tabindex="-1">
-                    <paper-button>After Sales</paper-button>
-                </a>
-                <!-- Separation -->
-                <div class="sep-title">
-                    &period;
-                </div>
+                <collapse-button title="After Sales">
+                <p>&bull; Monitor your website and resolve technical issues.</p>
+                </collapse-button>
+                   <!--<div class="inner-title">.-->
+                    <!--</div>-->
+                    <paper-button on-click="contact" noink class="git">
+                        <iron-icon class="mail" icon="my-icons:mail"></iron-icon>
+                        <span class=""><u>Enquire or Proceed</u></span>
+                        <!--<span class="spacer"></span>-->
+                    </paper-button>
+                    <paper-button noink class="git" on-click="log">
+                        <iron-icon class="link" icon="my-icons:link"></iron-icon>
+                        <span class=""><u>Demo</u></span>
+                        <!--<span class="spacer"></span>-->
+                    </paper-button>
+                    <div class="sep-title">.
+                    </div>
             </paper-material>
         </div>
 
@@ -205,12 +236,12 @@ E-Booking page element
                 <iron-ajax auto url="data/ebooking-services.json" handle-as="json" last-response="{{iaas}}"></iron-ajax>
                 <!-- Repeat collapse-button -->
                 <template is="dom-repeat" items="[[iaas]]">
-                    <collapse-button
+                    <service-button
                         title=[[item.name]]
 
                         desc=[[item.desc]]
                         ref=[[item.ref]]>
-                    </collapse-button>
+                    </service-button>
                 </template>
                 <!-- Separation -->
                 <div class="sep-title">
@@ -297,6 +328,14 @@ E-Booking page element
 
         created: function() {
             this.removeAttribute('unresolved');
+        },
+
+        contact: function() {
+            this.fire('contact', {})
+        },
+
+        log: function(event) {
+            console.log(event);
         }
 
     });

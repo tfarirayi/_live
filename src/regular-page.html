@@ -13,6 +13,7 @@ Regular impl page element
 <link rel="import" href="../bower_components/paper-item/paper-item.html">
 <!-- Custom elements -->
 <link rel="import" href="collapse-button.html">
+<link rel="import" href="service-button.html">
 
 <dom-module id="regular-web">
 <template>
@@ -164,7 +165,7 @@ Regular impl page element
           <paper-material elevation="[[raise]]">
                 <div class="sep-title cost">
                     <p>
-                        <u class="title">Charge:</u> 754 GBP
+                        <u class="title">Charge:</u> 377 GBP
                     </p>
                 </div>
                 <p class="intro">
@@ -174,7 +175,7 @@ Regular impl page element
                     <br>&bull; SEO
                 </p>
                 <p class="intro">
-                    <u class="title">Suitable for:</u><br>All
+                    <u class="title">Suitable for:</u><br>Any
                 </p>
                 
                 <p class="intro">
@@ -197,13 +198,13 @@ Regular impl page element
              </div>
                <iron-ajax auto url="/src/data/regular-services.json" handle-as="json" last-response="{{iaas}}"></iron-ajax>
                <template is="dom-repeat" items="[[iaas]]">
-               <collapse-button
+               <service-button
                     title=[[item.name]]
                     content=[[item.content]]
                     note=[[item.note]]
                     desc=[[item.desc]]
                     ref=[[item.ref]]
-                    why=[[item.why]]></collapse-button>
+                    why=[[item.why]]></service-button>
                </template>
              <div class="sep-title">&period;</div>
           </paper-material>

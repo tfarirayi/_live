@@ -40,8 +40,9 @@
         }
 
         .notes {
-            color: #78909C;
+            color: #90a4ae;
             font-size: 14px;
+            font-style: italic;
             text-align: center;
         }
 
@@ -81,7 +82,7 @@
             text-align: center;
             letter-spacing: 1px;
             font-size: 16px;
-            color: #78909C;
+            color: #607D8B;
             margin-top: 2em;
             margin-bottom: 2em;
         }
@@ -109,6 +110,8 @@
             color: #B0BEC5;
             font-size: 15px;
             font-family: 'Space Mono', monospace;
+            padding: 0px 10px;
+            text-align: right;
         }
 
         u {
@@ -144,20 +147,22 @@
             <paper-material elevation="0">
                 <div class="sep-title cost">
                     <p>
-                        <u class="title">Cost:</u> 1,364 
+                        <u class="title">Charge:</u> 843 GBP
                     </p>
                 </div>
-                <p class="intro">
-                    <u class="title">Suitable for:</u><br>Product based Businesses
-                </p>
                 <p class="intro">
                     <u class="title">Website features:</u>
                     <br>• Contact form
                     <br>• Responsive Design
                     <br>• Shopping Basket
+                    <br>• Product Catalogue
                 </p>
                 <p class="intro">
-                    Your organisation will be registered with the <em>relevant</em> set of services detailed in the INFRASTRUCTURE &amp; COSTS section below, which outlines the max service accounts required for the available use cases. 
+                    <u class="title">Suitable for:</u><br>Product based Businesses
+                </p>
+                <p class="intro">
+                    Your organisation will be registered on the <em>relevant</em> set of cloud services detailed in the INFRASTRUCTURE &amp; COSTS section below, which outlines the maximum service accounts required for the available features.
+
                 </p>
                 <p class="intro notes">
                     The relevant service accounts for individual implementations differ and will be determined at the design stage. Visit the reference links for official provider pricing &amp; documentation.
@@ -175,14 +180,14 @@
         <div class="sub">
             
             <paper-material elevation="0">
-                <div class="sep-title">
-                    <p>Infrastructure &amp; costs</p>
+                <div class="sep-title cost">
+                    <p>Infrastructure &amp;<br>running costs</p>
                 </div>
                 
                 <iron-ajax auto="" url="data/eshop-services.json" handle-as="json" last-response="{{iaas}}"></iron-ajax>
                 
                 <template is="dom-repeat" items="[[iaas]]">
-                    <collapse-button title="[[item.name]]" content="[[item.content]]" note="[[item.note]]" desc="[[item.desc]]" ref="[[item.ref]]" why="[[item.why]]"></collapse-button>
+                    <service-button title="[[item.name]]" content="[[item.content]]" note="[[item.note]]" desc="[[item.desc]]" ref="[[item.ref]]" why="[[item.why]]"></service-button>
                 </template>
                 
                 <div class="sep-title">
@@ -199,8 +204,8 @@
         <div class="sub">
             
             <paper-material elevation="0">
-                <div class="sep-title">
-                    <p>Website functions</p>
+                <div class="sep-title cost">
+                    <p>Customer Features</p>
                 </div>
                 
                 <iron-ajax auto="" url="data/eshop-functions.json" handle-as="json" last-response="{{eshop}}"></iron-ajax>
@@ -227,8 +232,8 @@
         <div class="sub">
             
             <paper-material elevation="[[raise]]">
-                <div class="sep-title">
-                    <p>Web portal functions</p>
+                <div class="sep-title cost">
+                    <p>Management Features</p>
                 </div>
                 
                 <iron-ajax auto="" url="data/eshop-portal.json" handle-as="json" last-response="{{portal}}"></iron-ajax>

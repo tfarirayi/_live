@@ -59,8 +59,9 @@ Main application container element
             font-family: 'Space Mono', monospace;
         }
 
-        paper-button a:focus {
+        paper-button a:focus, paper-button:focus {
             font-weight: normal;
+            text-decoration: none;
         }
 
         /* toggle header buttons */
@@ -175,6 +176,10 @@ Main application container element
                 }
             },
 
+            listeners: {
+                'contact': '_contact'
+            },
+
             _pageChanged: function(page) {
                 var resolvedPageUrl = this.resolveUrl(page + '-page.html');
                 this.importHref(resolvedPageUrl, null, this._show404, true);
@@ -207,6 +212,11 @@ Main application container element
 
             toggleContent: function(hidden) {
                 this.$$('#content').toggleClass('content', hidden);
+            },
+
+            _contact: function() {
+                this.toggleContact();
+                this.toggleMessage();
             },
 
             watchRoute: function(route) {

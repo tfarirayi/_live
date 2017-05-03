@@ -1,0 +1,92 @@
+<!--
+Collapse container with button
+@tfarirayi1
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/iron-collapse/iron-collapse.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+
+<dom-module id="service-button">
+    <template>
+        <style>
+            :host {
+                display: block;
+                text-align: left;
+                font-family: 'Arvo', monospace;                
+            }
+
+            .main {
+                display: block;
+                width: 100%;
+                margin: auto;
+                padding: 13px;
+            }
+
+            .desc {
+                color: #90A4AE;
+                font-size: 14px;
+                text-transform: none;
+            }
+
+            .ref a {
+                text-decoration: none;
+                color: rgba(207,216,220 ,1);
+                text-transform: uppercase;
+                font-size: 13px;
+            }
+
+            .ref a:hover {
+                text-decoration: underline;
+            }
+
+        </style>
+
+        <!-- Local dom here -->
+        <div class="main">
+            <span class="title">
+                [[title]]
+            </span>
+            
+            <br>
+            
+            <span class="desc">
+                [[desc]]
+            </span>
+            
+            <br>
+            
+            <span class="ref">
+                <a target="_blank" href="[[ref]]">Refer here</a>
+            </span>
+        </div>
+
+    </template>
+    <script>
+        Polymer({
+            is: 'service-button',
+            properties: {
+                title: String,
+                desc: String,
+                ref: String,
+                open: {
+                    type: Boolean,
+                    value: false,
+                    observer: '_toggle'
+                }
+            },
+
+            _toggle: function(newValue, oldValue) {
+                this.toggleClass('closed', !newValue, this.$$('#desc'));
+                this.toggleClass('open', newValue, this.$$('#desc'));
+            },
+
+            toggle: function() {
+                this.open = !this.open;
+                this.$$('iron-collapse').toggle();
+            }
+
+        });
+    </script>
+
+</dom-module>

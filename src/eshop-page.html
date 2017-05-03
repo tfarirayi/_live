@@ -13,6 +13,7 @@ E-Shop page element
 <link rel="import" href="../bower_components/paper-item/paper-item.html">
 <!-- Custom elements -->
 <link rel="import" href="collapse-button.html">
+<link rel="import" href="service-button.html">
 
 <dom-module id="eshop-page">
 <template>
@@ -58,7 +59,7 @@ E-Shop page element
         .notes {
             color: #90a4ae;
             font-size: 14px;
-            text-align: center;
+            font-style: italic;
             text-align: center;
         }
 
@@ -163,7 +164,7 @@ E-Shop page element
             <paper-material elevation="0">
                 <div class="sep-title cost">
                     <p>
-                        <u class="title">Charge:</u> 1,364 GBP
+                        <u class="title">Charge:</u> 843 GBP
                     </p>
                 </div>
                 <p class="intro">
@@ -171,7 +172,7 @@ E-Shop page element
                     <br>&bull; Contact form
                     <br>&bull; Responsive Design
                     <br>&bull; Shopping Basket
-                    <br>&bull; SEO
+                    <br>&bull; Product Catalogue
                 </p>
                 <p class="intro">
                     <u class="title">Suitable for:</u><br>Product based Businesses
@@ -203,13 +204,13 @@ E-Shop page element
                 <iron-ajax auto url="data/eshop-services.json" handle-as="json" last-response="{{iaas}}"></iron-ajax>
                 <!-- Repeat collapse-button -->
                 <template is="dom-repeat" items="[[iaas]]">
-                    <collapse-button 
+                    <service-button 
                         title=[[item.name]] 
                         content=[[item.content]]
                         note=[[item.note]]
                         desc=[[item.desc]] 
                         ref=[[item.ref]]
-                        why=[[item.why]]></collapse-button>
+                        why=[[item.why]]></service-button>
                 </template>
                 <!-- Separation -->
                 <div class="sep-title">

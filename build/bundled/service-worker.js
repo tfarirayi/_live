@@ -29,7 +29,7 @@
 
 
 /* eslint-disable quotes, comma-spacing */
-var PrecacheConfig = [["/bower_components/webcomponentsjs/webcomponents-lite.min.js","0f329c3b35c26bd4f98c68268cb7fee1"],["/index.html","37ad15296993a653755e103632dcf703"],["/manifest.json","3a04e8a314ddbd80ea81bed625d8e8de"],["/src/aftersales-page.html","5e09ebd4137e910b56a60256988a47a6"],["/src/ebooking-page.html","41e9e1d7fab34ce763839ffa101da247"],["/src/eshop-page.html","88a96555086c7455072a0ba10bce70d1"],["/src/home-page.html","080106d257e0525b43bc0d8424a8465d"],["/src/my-app.html","d8da05c9392694c6ee2b96b9a2815c73"],["/src/regular-page.html","72f1aa6f03ec3ac6be79361e52e1612a"]];
+var PrecacheConfig = [["/bower_components/webcomponentsjs/webcomponents-lite.min.js","02395895d5d08242c6ba93518a6da2c5"],["/index.html","9f50bdedcafdd9e9ee975fb1bee7a7d8"],["/manifest.json","3a04e8a314ddbd80ea81bed625d8e8de"],["/src/aftersales-page.html","7ab4020ea05650fa260db1b3835ddb02"],["/src/ebooking-page.html","85f3d82fdac559076c45ceb41204f860"],["/src/eshop-page.html","e1caeec0d4a34ce2aa7627a911aec6b4"],["/src/home-page.html","bb248b28a25e77da54c5cbce2bba65d1"],["/src/my-app.html","8aeef480ed688b450f587045886af451"],["/src/regular-page.html","7e7fb3cd5523fcaeb53a32b2c8d486c6"]];
 /* eslint-enable quotes, comma-spacing */
 var CacheNamePrefix = 'sw-precache-v1--' + (self.registration ? self.registration.scope : '') + '-';
 
