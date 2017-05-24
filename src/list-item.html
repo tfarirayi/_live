@@ -1,0 +1,269 @@
+<!--
+@tfarirayi1
+Shop list item
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/iron-collapse/iron-collapse.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../bower_components/paper-styles/shadow.html">
+<link rel="import" href="../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../bower_components/paper-listbox/paper-listbox.html">
+<link rel="import" href="../bower_components/paper-radio-button/paper-radio-button.html">
+<link rel="import" href="../bower_components/paper-radio-group/paper-radio-group.html">
+<link rel="import" href="../bower_components/paper-slider/paper-slider.html">
+
+
+<link href="https://fonts.googleapis.com/css?family=Arvo|Raleway|Space+Mono|Playfair+Display|Comfortaa" rel="stylesheet">
+
+<dom-module id="list-item">
+  <template>
+    <style>
+      :host {
+        display: block;
+        max-width: 300px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 3px;
+        color: #212121;
+        border-radius: 2px;
+        background-color: #ECEFF1;
+        @apply(--shadow-elevation-2dp);
+      }
+
+      .main {
+        @apply(--layout-horizontal);
+        @apply(--layout-center);        
+      }
+
+      paper-button.details {
+        @apply(--layout-vertical);
+        @apply(--layout-start);   
+        padding-left: 5px;     
+        text-transform: none;
+      }
+
+      paper-button.details:focus {
+        text-decoration: none;
+        font-weight: normal;
+      }
+
+      .title {
+        font-size: 16px;
+        font-family: 'Comfortaa', cursive;       
+        text-decoration: underline;
+      }
+
+      .title:hover {
+        text-decoration: underline;
+      }
+
+      .price {
+        font-family: 'Raleway', sans-serif;
+        font-size: 18px;        
+      }
+
+      iron-icon.arrow {
+        color: #424242;
+      }
+
+      .image {
+        max-width: 60px;
+        margin: auto;
+        padding: 5px;
+      }
+
+      img.thumb {
+        max-width: 100%;
+        height: auto;
+      }
+
+      .collapse {
+        padding: 13px;
+        text-align: center;
+      }
+      
+      .size {
+        margin: 8px 0px;
+        width: 100%;
+        text-align: center;
+      }
+
+      .indicator {
+        text-align: left;
+        text-transform: uppercase;
+        font-size: 13px;
+        letter-spacing: 1px;
+        margin-top: 5px;
+        padding: 5px;
+        border-radius: 2px;
+        color: #ECEFF1;
+        background-color: #37474F;
+        font-family: 'Raleway', sans-serif;  
+        width: fit-content;      
+      }
+
+      paper-radio-group.select-size {
+        --paper-radio-group-item-padding: 5px;
+        padding: 13px 0px;
+      }
+
+      paper-radio-button {
+        font-family: 'Comfortaa', cursive;       
+        --paper-radio-button-size: 14px;
+        --paper-radio-button-label-spacing: 5px;
+        --paper-radio-button-checked-color: #BF360C;
+        --paper-radio-button-unchecked-color: rgba(191,54,12 , 0.9);
+        --paper-radio-button-label: {
+          font-size: 15px;
+        }
+      }
+
+      .quantity {
+        margin: 8px 0px; 
+        text-align: left;   
+        width: 100%;    
+      }
+
+      paper-slider.select-quantity {
+        --paper-slider-knob-start-color: #BF360C;
+        --paper-slider-knob-start-border-color: #BF360C;
+        --paper-slider-knob-color: #BF360C;
+        --paper-slider-active-color: #BF360C;
+        --paper-slider-container-color: #212121;
+        margin: auto;
+      }
+
+      paper-button.basket {
+        text-transform: uppercase;
+        font-family: 'Raleway', sans-serif;        
+        color: #263238;
+        font-size: 14px;
+      }
+
+      paper-button.basket:focus {
+        text-decoration: none;
+      }
+
+      iron-icon.basket {
+        --iron-icon-height: 22px;
+        --iron-icon-width: 22px;
+      }
+
+      /* utilities */
+
+      .spacer {
+        @apply(--layout-flex);
+      }
+
+      .sep-title {
+        text-transform: uppercase;
+        text-align: center;
+        letter-spacing: 1px;
+        font-size: 16px;
+        color: #607D8B;
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+        font-family: 'Space Mono', monospace;
+      }
+    </style>
+    <!-- Dom here -->
+    <!-- Visible div -->
+    <div class="main">
+      <!-- Drop control button -->
+      <paper-button class="details" on-click="toggle" noink>
+        <span class="title">
+          [[title]]
+        </span>
+        <span class="price">
+          £[[price]]
+        </span>
+        <iron-icon class="arrow" icon="{{arrow}}"></iron-icon>
+      </paper-button>
+      
+        <span class="spacer"></span>      
+      <!--<paper-icon-button icon="add-circle"></paper-icon-button>-->
+      <div class="image">
+        <img class="thumb" src="{{thumb}}">
+      </div>
+    </div>
+
+    <!-- Drop div -->
+    <iron-collapse id="collapse">
+      <div class="collapse">
+        <div class="size">
+         <div class="indicator">Size:</div>          
+         <paper-radio-group class="select-size" selected="small">
+            <paper-radio-button noink name="small">Small</paper-radio-button>
+            <paper-radio-button noink name="medium">Medium</paper-radio-button>
+            <paper-radio-button noink name="large">Large</paper-radio-button>
+          </paper-radio-group>
+        </div>
+
+        <div class="quantity">
+          <div class="indicator">Quantity:</div>
+          <paper-slider class="select-quantity" value="1" editable min="1" max="100"></paper-slider>
+        </div>
+
+        <!--<div class="sep-title">-->
+          <!--&period;-->
+        <!--</div>-->
+
+        <paper-button class="basket">
+          <iron-icon class="basket" icon="shopping-basket"></iron-icon>
+          &nbsp;Add to basket
+        </paper-button>
+      </div>
+    </iron-collapse>
+
+
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'list-item',
+
+      properties: {
+
+        title: String,
+
+        desc: String,
+
+        price: String,
+   
+        arrow: {
+          type: String,
+          value: 'arrow-drop-down'
+        },
+        
+        dropped: {
+          type: Boolean,
+          value: true,
+          observer: '_arrow'
+        }
+
+      },
+
+      toggle: function() {
+          this.$.collapse.toggle();
+          this.dropped = !this.dropped;
+      },
+
+      _arrow: function(newValue, oldValue) {
+        if (newValue) this.arrow = 'arrow-drop-down';
+        if (!newValue) this.arrow = 'arrow-drop-up';
+      },
+
+      formatPrice: function(price) {
+        return price ? '£' + price.toFixed(2) : '';
+      }
+
+    });
+  </script>
+</dom-module>

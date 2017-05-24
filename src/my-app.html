@@ -8,6 +8,10 @@ Main application container element
 <!-- App elements -->
 <link rel="import" href="../bower_components/app-route/app-route.html">
 <link rel="import" href="../bower_components/app-route/app-location.html">
+<link rel="import" href="../bower_components/app-layout/app-header/app-header.html">
+<link rel="import" href="../bower_components/app-layout/app-header-layout/app-header-layout.html">
+<link rel="import" href="../bower_components/app-layout/app-toolbar/app-toolbar.html">
+<link rel="import" href="../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
 <!-- Iron elements -->
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
@@ -15,85 +19,66 @@ Main application container element
 <link rel="import" href="../bower_components/paper-scroll-header-panel/paper-scroll-header-panel.html">
 <link rel="import" href="../bower_components/paper-toolbar/paper-toolbar.html">
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
-
 <link rel="import" href="../bower_components/paper-styles/shadow.html">
-
+<!-- Google fonts -->
 <link href='//fonts.googleapis.com/css?family=Arvo|Space+Mono|Roboto|Source+Code+Pro' rel='stylesheet'>
 <!-- Custom elements -->
-<link rel="import" href="dyna-div.html">
 <link rel="import" href="my-icons.html">
 
 <dom-module id="my-app">
 <template>
     <style>
         :host {
-            display: block;
             @apply(--layout-fullbleed);
             @apply(--layout-vertical);
         }
 
-        .content {
-            display: none;
+        app-header-layout {
+    
         }
 
-        /* logo link */
-        a {
-            color: #455A64;
+        app-header {
+            @apply(--shadow-elevation-4dp);
+            height: 112px;
+            color: #212121;
+            border-radius: 0px 0px 16px 16px;
+            background-color: #CFD8DC;
+            --app-header-background-rear-layer: {
+                /* The header is blue when condensed */
+                background-color: blue;
+            };
         }
 
-        /* logo link */
         .main-title {
-            @apply(--layout-horizontal);
-            @apply(--layout-center);
+            line-height: 120%;
+        }
+        
+        paper-button, a {
+            color: inherit;
             font-family: 'Space Mono', monospace;
             font-size: 18px;
-            line-height: 120%;
-            color: #455A64;
-            height: 66px;
-        }
-
-        paper-button, a {
-            text-transform: none;
-            text-decoration: none;
             padding: 0px;
-            font-family: 'Space Mono', monospace;
+            text-align: center;
+            text-decoration: none;
+            text-transform: none;
         }
 
-        paper-button a:focus, paper-button:focus {
+        paper-button:focus, a:focus {
             font-weight: normal;
             text-decoration: none;
         }
 
-        /* toggle header buttons */
-        .active-btn {
-            color: #FF8A65;
+        app-toolbar.top-bar {
+            height: 50px;
+            @apply(--layout-horizontal);
+            @apply(--layout-center-justified);
         }
 
-        paper-scroll-header-panel {
-            background-color: #263238;
-            @apply(--layout-flex);
-            /* background for toolbar full size */
-            --paper-scroll-header-panel-full-header: {
-                /*background-color: #B0BEC5;*/
-                background-color: #CFD8DC;
-                border-radius: 0px 0px 16px 16px;
-
-            };
-            /* background for toolbar condensed */
-            --paper-scroll-header-panel-condensed-header: {
-                background-color: #263238;
-                color: red !important;
-            };
-        }
-
-        paper-toolbar {
-            /* custom toolbar height for condense */
-            /*@apply(--shadow-elevation-2dp);*/
-            height: 124px;
-            background-color: transparent;
-            color: #455A64;
-            border-radius: 0px 0px 8px 8px;
-
+        app-toolbar.bottom-bar {
+            height: 52px;
+            @apply(--layout-horizontal);
+            @apply(--layout-start);
+            @apply(--layout-center-justified);
         }
     </style>
 <!-- Local dom here -->
@@ -107,40 +92,45 @@ Main application container element
     </app-route>
 
     <!-- Header -->
-    <paper-scroll-header-panel id="header" condenses keep-condensed-header condensed-header-height="66">
+    <!--<paper-scroll-header-panel id="header" no-reveal scroll-away-topbar keep-condensed-header condensed-header-height="51">-->
 
-        <!-- Toolbar -->
-        <paper-toolbar bottom-justify="start" justify="end">
-            <paper-icon-button id="contact" on-click="toggleContact" icon="my-icons:phone-iphone"></paper-icon-button>
-            <paper-icon-button id="message" on-click="toggleMessage" icon="my-icons:mail"></paper-icon-button>
-            <paper-icon-button id="about" on-click="toggleAbout" icon="my-icons:info-outline"></paper-icon-button>
+            <app-header-layout id="header" fullbleed>
+                <app-header condenses fixed>
+                <!-- Toolbar -->
+                <!--<paper-toolbar bottom-justify="center" justify="center">-->
+                <app-toolbar class="top-bar" >
+                    <paper-icon-button icon="my-icons:phone-iphone"></paper-icon-button>
+                    <paper-icon-button icon="my-icons:mail"></paper-icon-button>
+                    <paper-icon-button icon="my-icons:info-outline"></paper-icon-button>
+                </app-toolbar>
+                <app-toolbar class="bottom-bar" sticky>
+                    <div class="bottom main-title">
+                        <a href="/home" tabindex="-1">
+                            <paper-button noink>Orange House<br>WEB-DEV</paper-button>
+                        </a>
+                    </div>
+                </app-toolbar>
+                <!--</paper-toolbar>-->
+                </app-header>
 
-            <div class="bottom main-title">
-                <a href="/home" tabindex="-1">
-                    <paper-button on-click="home" noink>Kiosk<br>WEB-DEV&trade;</paper-button>
-                </a>
-            </div>
-        </paper-toolbar>
+                    <iron-pages id="content"
+                        attr-for-selected="id" 
+                        fallback-selection="home" 
+                        selected="[[page]]">
 
-            <dyna-div   id="contact"
-                        message="[[message]]"
-                        contact="[[contact]]"
-                        about=[[about]]>
-            </dyna-div>
+                        <home-page id="home" unresolved></home-page>
+                        <ebooking-page id="ebooking" unresolved></ebooking-page>
+                        <eshop-page id="eshop" unresolved></eshop-page>
+                        <regular-web id="regular" unresolved></regular-web>
+                        
+                    </iron-pages>
 
-            <iron-pages id="content" class="animated fadeIn view" attr-for-selected="id" fallback-selection="home" selected="[[page]]">
-                    <home-page id="home" unresolved></home-page>
-                    <eshop-page id="eshop" unresolved></eshop-page>
-                    <ebooking-page id="ebooking" unresolved></ebooking-page>
-                    <regular-web id="regular"></regular-web>
-                    <aftersales-page id="aftersales"></aftersales-page>
-            </iron-pages>
-            <div>
-              <br><br><br><br><br><br><br><br><br><br>
-            </div>
+                    <div>
+                        <br><br><br><br><br><br><br><br><br><br>
+                    </div>
+            </app-header-layout>
 
-
-    </paper-scroll-header-panel>
+    <!--</paper-scroll-header-panel>-->
 
 </template>
     <script>
@@ -153,103 +143,33 @@ Main application container element
                     type: String,
                     reflectToAttribute: true,
                     observer: '_pageChanged'
-                },
-
-                contact: {
-                    type: Boolean,
-                    value: false
-                },
-
-                about: {
-                    type: Boolean,
-                    value: false
-                },
-
-                message: {
-                    type: Boolean,
-                    value: false
-                },
-
-                hidden: {
-                    type: Boolean,
-                    value: false
                 }
+
             },
 
-            listeners: {
-                'contact': '_contact'
+            observers: [
+                '_routePageChanged(routeData.page)'
+            ],
+
+            created: function() {
+                this.removeAttribute('unresolved');
             },
 
             _pageChanged: function(page) {
                 var resolvedPageUrl = this.resolveUrl(page + '-page.html');
                 this.importHref(resolvedPageUrl, null, this._show404, true);
-                this.$$('#header').scroll(0, true);
-            },
-
-            attached: function() {
+                // Scroll to top on page change
+                this.$.header.scroll(0, true);
             },
 
             _routePageChanged: function(page) {
+                // Set to home page if page is undefined
                 this.page = page || 'home';
             },
 
             _show404: function() {
-                this.page = '404';
-            },
-
-            observers: [
-                'watchState(contact, about, message)',
-                'toggleContent(hidden)',
-                'watchRoute(route)',
-                '_routePageChanged(routeData.page)'
-            ],
-
-            home: function() {
-                    if (this.contact) this.toggleContact();
-                    if (this.message) this.toggleMessage();
-                    if (this.about) this.toggleAbout();
-            },
-
-            toggleContent: function(hidden) {
-                this.$$('#content').toggleClass('content', hidden);
-            },
-
-            _contact: function() {
-                this.toggleContact();
-                this.toggleMessage();
-            },
-
-            watchRoute: function(route) {
-                if (route.path != '/home') {
-                    // this.$.header.scroll(0, true);
-                    // this.$$('#header').scroll(66, true);
-
-                }
-
-            },
-
-            watchState: function(contact, about, message) {
-                if (!contact && !about && !message) {
-                    this.hidden = false;
-                } else {
-                    this.hidden = true;
-                }
-            },
-
-            toggleContact: function() {
-                this.contact = !this.contact;
-                this.$$('#contact').toggleClass('active-btn', this.contact);
-            },
-
-            toggleAbout: function() {
-                this.about = !this.about;
-                this.$$('#about').toggleClass('active-btn', this.about);
-            },
-
-            toggleMessage: function(event) {
-                this.message = !this.message;
-                this.$$('#message').toggleClass('active-btn', this.message);
-            },
+                this.page = 'home';
+            }
 
         });
     </script>

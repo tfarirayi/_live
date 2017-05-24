@@ -2,32 +2,32 @@
     {
         "ref": "https://www.braintreepayments.com/en-gb/faq",
         "name": "Braintree Payments",
-        "desc": "MERCHANT PROCESSING SERVICE"
+        "desc": "Merchant processing service"
     },
     {
         "ref": "https://aws.amazon.com/dynamodb/",
         "name": "AWS DynamoDB",
-        "desc": "CUSTOMER & ORDER RECORDS"
+        "desc": "Database for customer & order records"
     },
     {
         "ref": "https://aws.amazon.com/lambda/",
         "name": "AWS Lambda",
-        "desc": "PURCHASE LOGIC"
+        "desc": "Purchase cycle logic"
     },
     {
         "ref": "https://aws.amazon.com/api-gateway/",
         "name": "AWS API Gateway",
-        "desc": "PURCHASE LOGIC"
+        "desc": "Purchase cycle logic"
     },
     {
         "ref": "https://www.mailgun.com/pricing",
         "name": "Mailgun API",
-        "desc": "CONTACT FORM & SERVICE EMAILS"
+        "desc": "Contact form & service emails"
     },
     {
         "ref": "https://aws.amazon.com/s3/",
         "name": "AWS S3 Storage",
-        "desc": "WEBSITE HOSTING"
+        "desc": "Website hosting"
     },
     {
         "ref": "https://aws.amazon.com/cognito/",
@@ -37,7 +37,7 @@
     {
         "ref": "https://www.1and1.co.uk/domain-names",
         "name": "1&1 Internet",
-        "desc": "DOMAIN HOSTING"
+        "desc": "Domain hosting"
     },
     {
         "ref": "https://gsuite.google.co.uk/intl/en_uk/solutions/new-business/",

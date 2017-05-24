@@ -2,22 +2,22 @@
     {
         "ref": "https://aws.amazon.com/lambda/",
         "name": "AWS Lambda",
-        "desc": "CONTACT FORM LOGIC"
+        "desc": "Contact Form Logic"
     },
     {
         "ref": "https://www.mailgun.com/pricing",
         "name": "Mailgun API",
-        "desc": "CONTACT FORM EMAIL"
+        "desc": "Contact form emails"
     },
     {
         "ref": "https://aws.amazon.com/s3/",
         "name": "AWS S3 Storage",
-        "desc": "WEBSITE HOSTING"
+        "desc": "Website hosting"
     },
     {
         "ref": "https://www.1and1.co.uk/domain-names",
         "name": "1&1 Internet",
-        "desc": "DOMAIN HOSTING"
+        "desc": "Domain hosting"
     },
     {
         "ref": "https://gsuite.google.co.uk/intl/en_uk/solutions/new-business/",

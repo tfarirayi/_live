@@ -60,11 +60,16 @@ Homepage element
         }
 
         .dot {
-            text-align: center;
-            font-size: 16px;
-            margin-top: 8px;
-            margin-bottom: 8px;
-            color: #607D8B;
+            border-bottom: 1px solid #607D8B;
+            margin: auto;
+            margin-top: 13px;
+            margin-bottom: 13px;
+            width: 1px;
+        }
+
+        u.title {
+            text-decoration: none;
+            border-bottom: 1px dotted #90A4AE;
         }
 
         .row--one {
@@ -74,39 +79,40 @@ Homepage element
             text-align: center;
         }
 
+        .p {
+          padding-left: 3px;
+          padding-right: 3px;
+          margin: 8px auto;
+        }
+
         .row--two {
-            @apply(--layout-vertical);
-            max-width: 260px;
-            margin: auto;
             color: #B0BEC5;
+            margin: auto;
+            max-width: 260px;
             text-align: left;
+            @apply(--layout-vertical);
         }
 
         .row--three {
-            @apply(--layout-vertical);
-            max-width: 260px;
             margin: auto;
+            max-width: 260px;
             text-align: center;
+            @apply(--layout-vertical);
         }
 
         .row--four {
+            max-width: 300px;
+            text-align: center;
             @apply(--layout-horizontal);
             @apply(--layout-wrap);
             @apply(--layout-center-justified);
-            max-width: 300px;
-            text-align: center;
         }
 
         .row--five {
-            @apply(--layout-vertical);
-            @apply(--layout-center);
-            max-width: 260px;
             margin: auto;
-        }
-
-        .r-three {
-            max-width: 300px;
-            padding: 1px 10px;
+            max-width: 260px;
+            @apply(--layout-center);
+            @apply(--layout-vertical);
         }
 
         .aim--one {
@@ -124,93 +130,46 @@ Homepage element
         download-login {
           max-width: 280px;
         }
+
         paper-button.route {
-            font-family: 'Arvo', serif;
-            margin: 10px 5px;
             background-color: #37474F;
             color: #FF8A65;
+            font-weight: normal;
+            font-size: 15px;
+            font-family: 'Arvo', serif;
+            margin: 10px 5px;
+            padding: 12px auto;
             text-transform: none;
             width: 135.25px;
-            font-size: 15px;
-            font-weight: normal;
-            padding: 12px auto;
         }
 
+        a {
+            text-decoration: none;
+        }
+        
         paper-button.route:focus {
             font-weight: normal;
         }
 
         paper-button.download {
             background-color: #006064;
-            margin-bottom: 10em;
-            margin-top: 10px;
             color: #bdbdbd;
             font-weight: bold;
+            margin-bottom: 10em;
+            margin-top: 10px;
             text-align: center;
             width: fit-content;
-
         }
 
         paper-button.download {
-              --paper-button-disabled: {
+            --paper-button-disabled: {
                 background-color: rgba(0,96,100 ,0.5) !important;
             }
-        }
-
-        a {
-            text-decoration: none;
         }
 
         .build-icon {
             --iron-icon-height: 20px;
             --iron-icon-width: 20px;
-        }
-
-        paper-tooltip.smartdef {
-            --paper-tooltip-background: #FF8A65;
-            --paper-tooltip: {
-                max-width: 200px;
-                font-size: 13px;
-                color: #212121;
-            }
-            --paper-tooltip-opacity: 1;
-        }
-        
-        u {
-            text-decoration: none;
-            border-bottom: 1px dotted #FF8A65;
-        }
-
-        u.title {
-          text-decoration: none;
-          border-bottom: 1px dotted #90A4AE;
-        }
-
-        .define {
-            cursor: pointer;
-        }
-
-        .show {
-            display: block;
-        }
-
-        .def {
-            font-size: 13px;
-            width: 90%;
-            text-align: right;
-            font-style: italic;
-            margin: auto;
-            color: #90A4AE;
-        }
-
-        .p {
-          padding-left: 3px;
-          padding-right: 3px;
-          margin: 8px auto;
-        }
-
-        .intro {
-
         }
     </style>
 
@@ -219,7 +178,8 @@ Homepage element
   <div class="sub">
 
     <div class="sep-title">
-        <p>Welcome to Kiosk
+        <p>
+            Welcome to<br><u class="title">OHWD&trade;</u>
         </p>
     </div>
 
@@ -244,14 +204,12 @@ Homepage element
     </div>
 
     <div class="row--three">
-        <span class="aim--one p">Provide an easily accessible IT System implementation service at a consumer level
+        <span class="aim--one p">Provide an easily accessible IT System implementation service in a consumer-style fashion
         </span>
 
-        <div class="dot">
-            .
-        </div>
+        <div class="dot"></div>
 
-        <span class="aim--two">Create visually appealing and utilitarian website interfaces to increase the probability of customer conversion 
+        <span class="aim--two p">Create visually appealing and utilitarian website interfaces to increase the probability of customer conversion 
         </span>
     </div>
   </div>

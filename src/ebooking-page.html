@@ -53,6 +53,17 @@ E-Booking page element
             box-sizing: border-box;
         }
 
+        .dot {
+            text-align: center;
+            font-size: 16px;
+            border-bottom: 1px solid #607D8B;
+            color: #607D8B;
+            width: 1px;
+            margin: auto;
+            margin-top: 21px;
+            margin-bottom: 21px;
+        }
+
         .intro {
             text-align: left;
             padding: 5px 13px;
@@ -63,8 +74,7 @@ E-Booking page element
         .notes {
             color: #90a4ae;
             font-size: 14px;
-            font-style: italic;
-            text-align: center;
+            text-align: right;
         }
 
         paper-material {
@@ -163,7 +173,6 @@ E-Booking page element
         }
 
         collapse-button {
-            /*height: 36px !important;*/
             margin-bottom: 13px;
         }
 
@@ -187,7 +196,7 @@ E-Booking page element
             <paper-material elevation="[[raise]]">
                 <div class="sep-title cost">
                     <p>
-                        <u class="title">Charge:</u> 610 GBP
+                        <u class="title">Charge:</u> 521 GBP
                     </p>
                 </div>
                 <p class="intro">
@@ -196,6 +205,8 @@ E-Booking page element
                     <br>&bull; Responsive Design
                     <br>&bull; Booking System
                     <br>&bull; Service Catalogue
+                    <br>&bull; Management Features
+                    <br>&bull; SEO
                 </p>
                 <p class="intro">
                     <u class="title">Suitable for:</u><br>Service Businesses
@@ -207,22 +218,14 @@ E-Booking page element
                     The relevant service accounts for individual implementations differ and will be determined at the design stage. Visit the reference links for official provider pricing &amp; documentation.
                 </p>
                 <collapse-button title="After Sales">
-                <p>&bull; Monitor your website and resolve technical issues.</p>
+                <p>&bull; Monitor your website and resolve technical issues, including your cloud infrastructure accounts.</p>
                 </collapse-button>
-                   <!--<div class="inner-title">.-->
-                    <!--</div>-->
                     <paper-button on-click="contact" noink class="git">
                         <iron-icon class="mail" icon="my-icons:mail"></iron-icon>
                         <span class=""><u>Enquire or Proceed</u></span>
-                        <!--<span class="spacer"></span>-->
                     </paper-button>
-                    <paper-button noink class="git" on-click="log">
-                        <iron-icon class="link" icon="my-icons:link"></iron-icon>
-                        <span class=""><u>Demo</u></span>
-                        <!--<span class="spacer"></span>-->
-                    </paper-button>
-                    <div class="sep-title">.
-                    </div>
+
+                    <div class="dot"></div>
             </paper-material>
         </div>
 
@@ -244,9 +247,7 @@ E-Booking page element
                     </service-button>
                 </template>
                 <!-- Separation -->
-                <div class="sep-title">
-                    &period;
-                </div>
+                <div class="dot"></div>
             </paper-material>
         </div>
 
@@ -277,9 +278,7 @@ E-Booking page element
                     </paper-item>
                 </template>
                 <!-- Separation -->
-                <div class="sep-title">
-                    .
-                </div>
+                <div class="dot"></div>
             </paper-material>
         </div>
 
@@ -304,9 +303,7 @@ E-Booking page element
                     </paper-item>
                 </template>
                 <!-- Separation -->
-                <div class="sep-title">
-                    .
-                </div>
+                <div class="dot"></div>
             </paper-material>
         </div>
 

@@ -1,6 +1,6 @@
 <!--
-E-Shop page element
-@tfarirayi1
+E-Booking page element
+@tfarirayi
 -->
 
 <!-- Polymer dependency -->
@@ -8,16 +8,19 @@ E-Shop page element
 <!-- Iron elements -->
 <link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../bower_components/iron-icon/iron-icon.html">
 <!-- Paper elements -->
 <link rel="import" href="../bower_components/paper-material/paper-material.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../bower_components/paper-item/paper-item.html">
 <!-- Custom elements -->
 <link rel="import" href="collapse-button.html">
 <link rel="import" href="service-button.html">
 
+
 <dom-module id="eshop-page">
 <template>
-    <style>
+     <style>
         :host {
             display: flex;
             flex-flow: row wrap;
@@ -42,8 +45,9 @@ E-Shop page element
         .sub {
             max-width: 300px;
             border-radius: 8px;
+            padding: 3px;
+            margin-top: 8px;
             margin: auto;
-            padding: 4px 0px;
             text-align: center;
             height: fit-content;
             box-sizing: border-box;
@@ -56,11 +60,23 @@ E-Shop page element
             color: #B0BEC5;
         }
 
+        .dot {
+            text-align: center;
+            font-size: 16px;
+            border-bottom: 1px solid #607D8B;
+            color: #607D8B;
+            width: 1px;
+            margin: auto;
+            margin-top: 21px;
+            margin-bottom: 21px;
+        }
+
+
         .notes {
             color: #90a4ae;
             font-size: 14px;
-            font-style: italic;
-            text-align: center;
+            /*font-style: italic;*/
+            text-align: right;
         }
 
         paper-material {
@@ -74,26 +90,11 @@ E-Shop page element
             height: fit-content;
         }
 
-        paper-button {
-            text-transform: none;
-            display: block;
-            text-align: center;
-            max-width: 280px;
-            margin: auto;
-            border-radius: 0px;
-            background-color: #263238;
-            font-family: 'Space Mono', monospace;
-        }
-
-        paper-button:focus {
-            font-weight: normal;
-        }
-        
         a {
             text-decoration: none;
             color: #FF8A65;
         }
-        
+
         .sep-title {
             text-transform: uppercase;
             text-align: center;
@@ -102,6 +103,18 @@ E-Shop page element
             color: #607D8B;
             margin-top: 2em;
             margin-bottom: 2em;
+            font-family: 'Space Mono', monospace;
+        }
+
+        .inner-title {
+            text-transform: uppercase;
+            text-align: center;
+            letter-spacing: 1px;
+            font-size: 16px;
+            color: #607D8B;
+            margin-top: 1em;
+            margin-bottom: 1em;
+            font-family: 'Space Mono', monospace;
         }
 
         paper-item {
@@ -110,7 +123,7 @@ E-Shop page element
             padding-left: 10px;
             font-family: 'Arvo', serif;
         }
-    
+
         .secondary {
             padding-left: 2px;
             text-align: left;
@@ -118,17 +131,17 @@ E-Shop page element
             font-size: 13px;
             line-height: 130%;
         }
-            
+
         .primary {
-            text-align: left;
+                text-align: left;
         }
-        
+
         .cost {
             color: #B0BEC5;
             font-size: 15px;
             font-family: 'Space Mono', monospace;
-            padding: 0px 10px;
             text-align: right;
+            padding: 0px 10px;
         }
 
         u {
@@ -137,9 +150,9 @@ E-Shop page element
         }
 
         u.title {
-            text-decoration: none;
-            border-bottom: 1px dotted #90A4AE;
-            line-height: 180%;
+          text-decoration: none;
+          border-bottom: 1px dotted #90A4AE;
+          line-height: 180%;
         }
         
         .highlight {
@@ -150,72 +163,102 @@ E-Shop page element
             color: #90a4ae;
         }
 
-        collapse-button {
-            text-align: left;
+        .git {
+            @apply(--layout-horizontal);
+            @apply(--layout-center-justified);
+            @apply(--layout-center);
+            /*padding: 8px;*/
+            font-size: 13px;
+            text-transform: uppercase;
+            font-family: 'Space Mono', monospace;
+            
         }
-    </style>
 
-<!-- Local dom here -->
+        collapse-button {
+            /*height: 36px !important;*/
+            margin-bottom: 13px;
+        }
+
+        .spacer {
+            @apply(--layout-flex);
+        }
+
+        iron-icon {
+            --iron-icon-height: 21px;
+            --iron-icon-width: 21px;
+        }
+   
+     </style>
+
+<!-- Local dom here  -->
     <!-- Column 1 -->
     <div class="sec">
 
         <div class="sub">
             <!-- Inner Content -->
-            <paper-material elevation="0">
+            <paper-material elevation="[[raise]]">
                 <div class="sep-title cost">
                     <p>
-                        <u class="title">Charge:</u> 843 GBP
+                        <u class="title">Charge:</u> 613 GBP
                     </p>
                 </div>
                 <p class="intro">
                     <u class="title">Website features:</u>
-                    <br>&bull; Contact form
+                    <br>&bull; Contact Form
                     <br>&bull; Responsive Design
                     <br>&bull; Shopping Basket
                     <br>&bull; Product Catalogue
+                    <br>&bull; Management Features
+                    <br>&bull; SEO
                 </p>
                 <p class="intro">
                     <u class="title">Suitable for:</u><br>Product based Businesses
                 </p>
                 <p class="intro">
                     Your organisation will be registered on the <em>relevant</em> set of cloud services detailed in the INFRASTRUCTURE &amp; COSTS section below, which outlines the maximum service accounts required for the available features.
-
                 </p>
                 <p class="intro notes">
                     The relevant service accounts for individual implementations differ and will be determined at the design stage. Visit the reference links for official provider pricing &amp; documentation.
                 </p>
-                <a href="/aftersales" tabindex="-1">
-                    <paper-button>After Sales</paper-button>
-                </a>
-                <!-- Separation -->
-                <div class="sep-title">
-                    &period;
-                </div>
+                <collapse-button title="After Sales">
+                <p>&bull; Monitor your website and resolve technical issues, including your cloud infrastructure accounts.</p>
+                </collapse-button>
+                    <a href="/contact">
+                    <paper-button on-click="contact" noink class="git">
+                        <iron-icon class="mail" icon="my-icons:mail"></iron-icon>
+                        <span class=""><u>Enquire or Proceed</u></span>
+                    </paper-button>
+                    </a>
+
+                    <a href="https://eshop.kioskwebdev.co.uk" target="_blank">
+                        <paper-button noink class="git" on-click="log">
+                            <iron-icon class="link" icon="my-icons:link"></iron-icon>
+                            <span class=""><u>Demo</u></span>
+                        </paper-button>
+                    </a>
+                    <div class="dot"></div>
             </paper-material>
         </div>
 
         <div class="sub">
             <!-- Inner Content -->
-            <paper-material elevation="0">
+            <paper-material elevation="[[raise]]">
                 <div class="sep-title cost">
-                    <p>Infrastructure &amp;<br>running costs</p>
+                    <p>Infrastructure &amp;<br>Running costs</p>
                 </div>
-                <!-- Data for iaas -->
+                <!-- Data for iaas -->                
                 <iron-ajax auto url="data/eshop-services.json" handle-as="json" last-response="{{iaas}}"></iron-ajax>
                 <!-- Repeat collapse-button -->
                 <template is="dom-repeat" items="[[iaas]]">
-                    <service-button 
-                        title=[[item.name]] 
-                        content=[[item.content]]
-                        note=[[item.note]]
-                        desc=[[item.desc]] 
-                        ref=[[item.ref]]
-                        why=[[item.why]]></service-button>
+                    <service-button
+                        title=[[item.name]]
+
+                        desc=[[item.desc]]
+                        ref=[[item.ref]]>
+                    </service-button>
                 </template>
                 <!-- Separation -->
-                <div class="sep-title">
-                    &period;
-                </div>
+                <div class="dot"></div>
             </paper-material>
         </div>
 
@@ -225,15 +268,15 @@ E-Shop page element
     <div class="sec">
 
         <div class="sub">
-            <!-- Inner Content -->
-            <paper-material elevation="0">
-                <div class="sep-title cost">
-                    <p>Customer Features</p>
-                </div>
-                <!-- Data for customer feaatures -->
-                <iron-ajax auto url="data/eshop-functions.json" handle-as="json" last-response="{{eshop}}"></iron-ajax>
+        <!-- Inner Content -->
+         <paper-material elevation="[[raise]]">
+             <div class="sep-title cost">
+                 <p>Customer features</p>
+             </div>
+             <!-- Data for customer features -->
+             <iron-ajax auto url="data/eshop-functions.json" handle-as="json" last-response="{{eres}}"></iron-ajax>
                 <!-- Repeat paper-item -->
-                <template is="dom-repeat" items="[[eshop]]">
+                <template is="dom-repeat" items="[[eres]]">
                     <paper-item two-line class="function" id$="button[[item.id]]">
                         <paper-item-body>
                             <div class="primary">
@@ -246,9 +289,7 @@ E-Shop page element
                     </paper-item>
                 </template>
                 <!-- Separation -->
-                <div class="sep-title">
-                    &period;
-                </div>
+                <div class="dot"></div>
             </paper-material>
         </div>
 
@@ -256,17 +297,16 @@ E-Shop page element
             <!-- Inner Content -->
             <paper-material elevation="[[raise]]">
                 <div class="sep-title cost">
-                    <p>Management Features</p>
+                    <p>Management features</p>
                 </div>
-                <!-- Data for business features -->
+                <!-- Data for management features -->
                 <iron-ajax auto url="data/eshop-portal.json" handle-as="json" last-response="{{portal}}"></iron-ajax>
-                <!-- Repeat paper-item -->
                 <template is="dom-repeat" items="[[portal]]">
                     <paper-item class="function" two-line>
                         <paper-item-body>
                             <div class="primary">
                                 [[item.name]]
-                            </div>  
+                            </div>
                             <div class="secondary" secondary>
                                 [[item.desc]]
                             </div>
@@ -274,9 +314,7 @@ E-Shop page element
                     </paper-item>
                 </template>
                 <!-- Separation -->
-                <div class="sep-title">
-                    &period;
-                </div>
+                <div class="dot"></div>
             </paper-material>
         </div>
 
@@ -286,8 +324,9 @@ E-Shop page element
 <script>
     Polymer ({
         is: 'eshop-page',
-        
+
         properties: {
+
             raise: {
                 type: Number,
                 value: 1
@@ -297,7 +336,16 @@ E-Shop page element
 
         created: function() {
             this.removeAttribute('unresolved');
+        },
+
+        contact: function() {
+            this.fire('contact', {})
+        },
+
+        log: function(event) {
+            console.log(event);
         }
+
     });
 </script>
 </dom-module>
