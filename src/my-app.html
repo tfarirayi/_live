@@ -40,12 +40,14 @@ Main application container element
         app-header {
             @apply(--shadow-elevation-4dp);
             height: 112px;
-            color: #212121;
-            border-radius: 0px 0px 16px 16px;
+            color: rgba(55,71,79 ,1);
+            border-radius: 0px 0px 56px 56px;
+            background-color: #ECEFF1;
             background-color: #CFD8DC;
+            background-color: rgba(207,216,220 ,0.9);
             --app-header-background-rear-layer: {
                 /* The header is blue when condensed */
-                background-color: blue;
+                color: red;
             };
         }
 
@@ -63,21 +65,32 @@ Main application container element
             text-transform: none;
         }
 
+        paper-button {
+            @apply(--layout-vertical);
+        }
+        
         paper-button:focus, a:focus {
             font-weight: normal;
             text-decoration: none;
         }
 
+        span.logo {
+            @apply(--layout-vertical);
+        }
+
         app-toolbar.top-bar {
-            height: 50px;
+            color: rgba(38,50,56 ,1);
+             text-shadow: 1px 1px rgba(255,138,101 ,1);
+            height: 60px;
             @apply(--layout-horizontal);
+            @apply(--layout-end);
             @apply(--layout-center-justified);
         }
 
         app-toolbar.bottom-bar {
             height: 52px;
             @apply(--layout-horizontal);
-            @apply(--layout-start);
+            @apply(--layout-center);
             @apply(--layout-center-justified);
         }
     </style>
@@ -94,21 +107,21 @@ Main application container element
     <!-- Header -->
     <!--<paper-scroll-header-panel id="header" no-reveal scroll-away-topbar keep-condensed-header condensed-header-height="51">-->
 
-            <app-header-layout id="header" fullbleed>
-                <app-header condenses fixed>
+            <app-header-layout effects="blend-background" fullbleed>
+                <app-header id="header" condenses fixed>
                 <!-- Toolbar -->
                 <!--<paper-toolbar bottom-justify="center" justify="center">-->
                 <app-toolbar class="top-bar" >
-                    <paper-icon-button icon="my-icons:phone-iphone"></paper-icon-button>
-                    <paper-icon-button icon="my-icons:mail"></paper-icon-button>
-                    <paper-icon-button icon="my-icons:info-outline"></paper-icon-button>
-                </app-toolbar>
-                <app-toolbar class="bottom-bar" sticky>
                     <div class="bottom main-title">
                         <a href="/home" tabindex="-1">
-                            <paper-button noink>Orange House<br>WEB-DEV</paper-button>
+                            <paper-button noink><span class="logo">Orange House</span><span class="logo">WEB-DEV&trade;</span></paper-button>
                         </a>
                     </div>
+                </app-toolbar>
+                <app-toolbar class="bottom-bar" sticky>
+                    <paper-icon-button icon="my-icons:info-outline"></paper-icon-button>
+                    <paper-icon-button icon="my-icons:phone-iphone"></paper-icon-button>
+                    <paper-icon-button icon="my-icons:mail"></paper-icon-button>
                 </app-toolbar>
                 <!--</paper-toolbar>-->
                 </app-header>
@@ -159,7 +172,7 @@ Main application container element
                 var resolvedPageUrl = this.resolveUrl(page + '-page.html');
                 this.importHref(resolvedPageUrl, null, this._show404, true);
                 // Scroll to top on page change
-                this.$.header.scroll(0, true);
+                this.$.header.scroll({top: 0});
             },
 
             _routePageChanged: function(page) {
