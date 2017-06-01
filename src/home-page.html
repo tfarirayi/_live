@@ -10,13 +10,19 @@ Homepage element
 <link rel="import" href="../bower_components/iron-icon/iron-icon.html">
 <!-- Paper elements -->
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
-<link rel="import" href="../bower_components/paper-tooltip/paper-tooltip.html"><!-- Custom Element -->
+<link rel="import" href="../bower_components/paper-tooltip/paper-tooltip.html">
+<!-- Neon elements -->
+<link rel="import" href="../bower_components/neon-animation/animations/cascaded-animation.html">
+<link rel="import" href="../bower_components/neon-animation/animations/fade-in-animation.html">
+<link rel="import" href="../bower_components/neon-animation/neon-animatable-behavior.html">
+<link rel="import" href="../bower_components/neon-animation/animations/slide-right-animation.html">
+<!-- Custom Elements -->
 <link rel="import" href="download-login.html">
 <link rel="import" href="my-icons.html">
 
 <dom-module id="home-page">
 <template>
-    <style>
+    <style include="my-styles">
         :host {
             display: flex;
             flex-flow: row wrap;
@@ -26,37 +32,12 @@ Homepage element
             margin: auto;
         }
 
-        .sec {
-            align-self: flex-start;
-            flex: 1;
-            flex-basis: 300px;
-            min-width: 256px;
-            max-width: 300px;
-            box-sizing: border-box;
-            height: fit-content;
+        .section {
             margin: 0px 4px;
         }
 
-        .sub {
-            max-width: 300px;
-            border-radius: 8px;
-            padding: 3px;
-            margin-top: 8px;
-            margin: auto;
-            text-align: center;
-            height: fit-content;
-            box-sizing: border-box;
-        }
-
         .sep-title {
-            text-transform: uppercase;
-            text-align: center;
-            letter-spacing: 1px;
-            font-size: 16px;
-            color: #607D8B;
             margin-top: 2em;
-            margin-bottom: 2em;
-            font-family: 'Space Mono', monospace;
         }
 
         .dot {
@@ -65,11 +46,6 @@ Homepage element
             margin-top: 13px;
             margin-bottom: 13px;
             width: 1px;
-        }
-
-        u.title {
-            text-decoration: none;
-            border-bottom: 1px dotted #90A4AE;
         }
 
         .row--one {
@@ -174,8 +150,8 @@ Homepage element
     </style>
 
 <!-- Local dom here -->
-<div class="sec">
-  <div class="sub">
+<div class="section">
+  <div id="animate_one" class="sub-section">
 
     <div class="sep-title">
         <p>
@@ -196,7 +172,8 @@ Homepage element
     </div>
 
   </div>
-  <div class="sub">
+
+  <div id="animate_two" class="sub-section">
     <div class="sep-title">
       <p>
         <u class="title">Business</u>&nbsp;<u class="title">intents</u>
@@ -215,8 +192,9 @@ Homepage element
   </div>
 </div>
 
-<div class="sec">
-  <div class="sub">
+<div class="section">
+
+  <div id="animate_three" class="sub-section">
     <!-- Inner Content -->
     <div class="sep-title">
         <p>
@@ -274,6 +252,13 @@ Homepage element
                 value: false,
             }
 
+
+        },
+
+        created: function() {
+                this.removeAttribute('unresolved');
+            Polymer.RenderStatus.afterNextRender(this, function() {
+            });
         },
 
         define: function() {

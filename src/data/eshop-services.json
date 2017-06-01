@@ -1,8 +1,8 @@
 [
     {
-        "ref": "https://www.braintreepayments.com/en-gb/faq",
-        "name": "Braintree Payments",
-        "desc": "Merchant processing service"
+        "ref": "https://stripe.com/about",
+        "name": "Stripe Payments",
+        "desc": "Payment processing service"
     },
     {
         "ref": "https://aws.amazon.com/dynamodb/",
@@ -35,13 +35,8 @@
         "desc": "User accounts"
     },
     {
-        "ref": "https://www.1and1.co.uk/domain-names",
-        "name": "1&1 Internet",
+        "ref": "https://uk.godaddy.com/help/get-started-with-domains-19331",
+        "name": "Go Daddy",
         "desc": "Domain hosting"
-    },
-    {
-        "ref": "https://gsuite.google.co.uk/intl/en_uk/solutions/new-business/",
-        "name": "G Suite",
-        "desc": "Business email (12 months complementary)"
     }
 ]

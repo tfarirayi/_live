@@ -15,47 +15,37 @@ Main application container element
 <!-- Iron elements -->
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
+<!-- Neon Animation -->
+<link rel="import" href="../bower_components/neon-animation/neon-animated-pages.html">
 <!-- Paper elements -->
 <link rel="import" href="../bower_components/paper-scroll-header-panel/paper-scroll-header-panel.html">
 <link rel="import" href="../bower_components/paper-toolbar/paper-toolbar.html">
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/paper-badge/paper-badge.html">
 <link rel="import" href="../bower_components/paper-styles/shadow.html">
 <!-- Google fonts -->
-<link href='//fonts.googleapis.com/css?family=Arvo|Space+Mono|Roboto|Source+Code+Pro' rel='stylesheet'>
+<link href='//fonts.googleapis.com/css?family=Arvo|Space+Mono|Raleway|Roboto|Source+Code+Pro' rel='stylesheet'>
 <!-- Custom elements -->
 <link rel="import" href="my-icons.html">
+<link rel="import" href="my-styles.html">
 
 <dom-module id="my-app">
 <template>
-    <style>
+    <style include="my-styles">
         :host {
             @apply(--layout-fullbleed);
             @apply(--layout-vertical);
         }
 
-        app-header-layout {
-    
-        }
-
         app-header {
-            @apply(--shadow-elevation-4dp);
             height: 112px;
             color: rgba(55,71,79 ,1);
             border-radius: 0px 0px 56px 56px;
-            background-color: #ECEFF1;
-            background-color: #CFD8DC;
             background-color: rgba(207,216,220 ,0.9);
-            --app-header-background-rear-layer: {
-                /* The header is blue when condensed */
-                color: red;
-            };
+            @apply(--shadow-elevation-4dp);
         }
-
-        .main-title {
-            line-height: 120%;
-        }
-        
-        paper-button, a {
+       
+        paper-button.home-button, a {
             color: inherit;
             font-family: 'Space Mono', monospace;
             font-size: 18px;
@@ -65,26 +55,26 @@ Main application container element
             text-transform: none;
         }
 
-        paper-button {
-            @apply(--layout-vertical);
+        paper-button.home-button {
+            @apply(--layout-vertical);  
         }
         
-        paper-button:focus, a:focus {
+        paper-button.home-button:focus, a:focus {
             font-weight: normal;
             text-decoration: none;
         }
 
-        span.logo {
-            @apply(--layout-vertical);
-        }
-
         app-toolbar.top-bar {
             color: rgba(38,50,56 ,1);
-             text-shadow: 1px 1px rgba(255,138,101 ,1);
             height: 60px;
+            text-shadow: 1px 1px rgba(255,138,101 ,1);
             @apply(--layout-horizontal);
             @apply(--layout-end);
             @apply(--layout-center-justified);
+        }
+
+        .main-title {
+            line-height: 120%;
         }
 
         app-toolbar.bottom-bar {
@@ -94,56 +84,54 @@ Main application container element
             @apply(--layout-center-justified);
         }
     </style>
-<!-- Local dom here -->
-    <!-- Routing -->
-    <app-location route="{{route}}"></app-location>
-    <app-route
-        route="{{route}}"
-        pattern="/:page"
-        data="{{routeData}}"
-        tail="{{tail}}">
-    </app-route>
+    <!-- Local dom here -->
+        <!-- Routing -->
+        <app-location route="{{route}}"></app-location>
+        <app-route
+            route="{{route}}"
+            pattern="/:page"
+            data="{{routeData}}"
+            tail="{{tail}}">
+        </app-route>
 
-    <!-- Header -->
-    <!--<paper-scroll-header-panel id="header" no-reveal scroll-away-topbar keep-condensed-header condensed-header-height="51">-->
-
+            <!-- Header Layout Container -->
             <app-header-layout effects="blend-background" fullbleed>
                 <app-header id="header" condenses fixed>
-                <!-- Toolbar -->
-                <!--<paper-toolbar bottom-justify="center" justify="center">-->
+                <!-- Toolbar Top -->
                 <app-toolbar class="top-bar" >
                     <div class="bottom main-title">
                         <a href="/home" tabindex="-1">
-                            <paper-button noink><span class="logo">Orange House</span><span class="logo">WEB-DEV&trade;</span></paper-button>
+                            <paper-button class="home-button" noink><span class="logo">Orange House</span><span class="logo">WEB-DEV </span></paper-button>
                         </a>
                     </div>
                 </app-toolbar>
+                <!-- Toolbar Bottom -->
                 <app-toolbar class="bottom-bar" sticky>
                     <paper-icon-button icon="my-icons:info-outline"></paper-icon-button>
                     <paper-icon-button icon="my-icons:phone-iphone"></paper-icon-button>
                     <paper-icon-button icon="my-icons:mail"></paper-icon-button>
                 </app-toolbar>
-                <!--</paper-toolbar>-->
                 </app-header>
 
+                    <!-- Routing Display -->
                     <iron-pages id="content"
                         attr-for-selected="id" 
                         fallback-selection="home" 
                         selected="[[page]]">
 
-                        <home-page id="home" unresolved></home-page>
-                        <ebooking-page id="ebooking" unresolved></ebooking-page>
-                        <eshop-page id="eshop" unresolved></eshop-page>
-                        <regular-web id="regular" unresolved></regular-web>
+                        <home-page id="home"></home-page>
+                        <ebooking-page id="ebooking"></ebooking-page>
+                        <eshop-page id="eshop"></eshop-page>
+                        <regular-web id="regular"></regular-web>
                         
                     </iron-pages>
-
-                    <div>
-                        <br><br><br><br><br><br><br><br><br><br>
+                    <!-- Push footer to bottom --> 
+                    <span class="spacer"></span>
+                    <div class="my-footer">
+                        &copy; [[year]] Orange House Web Development&trade;
+                         
                     </div>
             </app-header-layout>
-
-    <!--</paper-scroll-header-panel>-->
 
 </template>
     <script>
@@ -156,8 +144,15 @@ Main application container element
                     type: String,
                     reflectToAttribute: true,
                     observer: '_pageChanged'
-                }
+                },
 
+                year: {
+                    type: String,
+                    value: function() {
+                        var date = new Date();
+                        return date.getFullYear();
+                    }
+                }
             },
 
             observers: [
@@ -165,7 +160,9 @@ Main application container element
             ],
 
             created: function() {
-                this.removeAttribute('unresolved');
+                Polymer.RenderStatus.afterNextRender(this, function() {
+                    this.importHref(this.resolveUrl('lazy-resources.html'), null, null, true);
+                });
             },
 
             _pageChanged: function(page) {

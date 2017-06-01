@@ -9,10 +9,10 @@
     },
     {
         "name": "View Submitted Bookings",
-        "options": "Account holders can access their booking records on your website."
+        "options": "Account holders can access their booking records through your website."
     },
     {
         "name": "Save & Edit Booking Details",
-        "options": "Customers can ease the booking process by pre-filling booking details. Users can save their Name, Address, Contact Phone, Contact email."
+        "options": "Customers can ease the booking process by pre-filling booking details. Users can save their Name, Address, Contact Phone, Contact email etc."
     }
 ]

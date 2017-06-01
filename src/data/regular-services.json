@@ -2,7 +2,7 @@
     {
         "ref": "https://aws.amazon.com/lambda/",
         "name": "AWS Lambda",
-        "desc": "Contact Form Logic"
+        "desc": "Contact form logic"
     },
     {
         "ref": "https://www.mailgun.com/pricing",
@@ -15,13 +15,8 @@
         "desc": "Website hosting"
     },
     {
-        "ref": "https://www.1and1.co.uk/domain-names",
-        "name": "1&1 Internet",
+        "ref": "https://uk.godaddy.com/help/get-started-with-domains-19331",
+        "name": "Go Daddy",
         "desc": "Domain hosting"
-    },
-    {
-        "ref": "https://gsuite.google.co.uk/intl/en_uk/solutions/new-business/",
-        "name": "G Suite",
-        "desc": "Business email (3 months complementary)"
     }
 ]

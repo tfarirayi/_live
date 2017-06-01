@@ -20,7 +20,7 @@ Regular impl page element
 
 <dom-module id="regular-web">
 <template>
-     <style>
+     <style include="my-styles">
         :host {
             display: flex;
             flex-flow: row wrap;
@@ -30,232 +30,74 @@ Regular impl page element
             line-height: 120%;
             font-family: 'Arvo', serif;
         }
-
-        .sec {
-            align-self: flex-start;
-            flex: 1;
-            flex-basis: 300px;
-            min-width: 256px;
-            max-width: 300px;
-            box-sizing: border-box;
-            height: fit-content;
-            /*margin: 0px 4px;*/
-        }
-
-        .sub {
-            max-width: 300px;
-            border-radius: 8px;
-            padding: 3px;
-            margin-top: 8px;
-            margin: auto;
-            text-align: center;
-            height: fit-content;
-            box-sizing: border-box;
-        }
-
-        .intro {
-            text-align: left;
-            padding: 5px 13px;
-            font-size: 15px;
-            color: #B0BEC5;
-        }
-
-        .notes {
-            color: #90a4ae;
-            font-size: 14px;
-            text-align: right;
-        }
-
-        paper-material {
-            color: #FF8A65;
-            background-color: #37474F;
-            border-radius: 10px;
-            width: 100%;
-            margin: auto;
-            padding-top: 10px;
-            padding-bottom: 10px;
-            height: fit-content;
-        }
-
-        a {
-            text-decoration: none;
-            color: #FF8A65;
-        }
-
-        .sep-title {
-            text-transform: uppercase;
-            text-align: center;
-            letter-spacing: 1px;
-            font-size: 16px;
-            color: #607D8B;
-            margin-top: 0.5em;
-            margin-bottom: 2em;
-            font-family: 'Space Mono', monospace;
-        }
-
-        
-        .dot {
-            text-align: center;
-            font-size: 16px;
-            border-bottom: 1px solid #607D8B;
-            color: #607D8B;
-            width: 1px;
-            margin: auto;
-            margin-top: 21px;
-            margin-bottom: 21px;
-        }
-
-        .inner-title {
-            text-transform: uppercase;
-            text-align: center;
-            letter-spacing: 1px;
-            font-size: 16px;
-            color: #607D8B;
-            margin-top: 1em;
-            margin-bottom: 1em;
-            font-family: 'Space Mono', monospace;
-        }
-
-        paper-item {
-            padding-top: 5px;
-            padding-bottom: 5px;
-            padding-left: 10px;
-            font-family: 'Arvo', serif;
-        }
-
-        .secondary {
-            padding-left: 2px;
-            text-align: left;
-            color: #78909C;
-            font-size: 13px;
-            line-height: 130%;
-        }
-
-        .primary {
-                text-align: left;
-        }
-
-        .cost {
-            color: #B0BEC5;
-            font-size: 15px;
-            font-family: 'Space Mono', monospace;
-            text-align: right;
-            padding: 0px 10px;
-        }
-
-        u {
-            text-decoration: none;
-            border-bottom: 1px dotted #FF8A65;
-        }
-
-        u.title {
-          text-decoration: none;
-          border-bottom: 1px dotted #90A4AE;
-          line-height: 180%;
-        }
-        
-        .highlight {
-            color: #B0BEC5;
-        }
-
-        .title {
-            /*color: #90a4ae;*/
-        }
-
-        .git {
-            font-family: 'Space Mono', monospace;
-            font-size: 13px;
-            text-transform: uppercase;
-            @apply(--layout-center);
-            @apply(--layout-center-justified);
-            @apply(--layout-horizontal);
-        }
-
-        collapse-button {
-            margin-bottom: 13px;
-        }
-
-        iron-icon {
-            --iron-icon-height: 21px;
-            --iron-icon-width: 21px;
-        }
-   
-        .spacer {
-            @apply(--layout-flex);
-        }
-     </style>
-
-<!-- Local dom here  -->
-    <!-- Column 1 -->
-    <div class="sec">
-
-        <div class="sub">
-            <!-- Inner Content -->
-            <paper-material elevation="[[raise]]">
-                <div class="sep-title cost">
-                    <p>
-                        <u class="title">Charge:</u> 390 GBP
+    </style>
+    <!-- Local dom here  -->
+        <!-- Single column -->
+        <div class="section">
+            
+            <div class="sub-section">
+                <paper-material class="content" elevation="[[raise]]">
+                    <div class="sep-title charge">
+                        <p>
+                            <u class="title dim-title">Charge:</u> 390 GBP
+                        </p>
+                    </div>
+                    <p class="text">
+                        <u class="title dim-title">Website features:</u>
+                        <br>&bull; Contact Form
+                        <br>&bull; Responsive Design
+                        <br>&bull; Product or Service Catalogue
+                        <br>&bull; Visitor Analytics
+                        <br>&bull; SEO
                     </p>
-                </div>
-                <p class="intro">
-                    <u class="title">Website features:</u>
-                    <br>&bull; Contact Form
-                    <br>&bull; Responsive Design
-                    <br>&bull; Product or Service Catalogue
-                    <br>&bull; Visitor Analytics
-                    <br>&bull; SEO
-                </p>
-                <p class="intro">
-                    <u class="title">Suitable for:</u><br>All
-                </p>
-                <p class="intro">
-                    Your organisation will be registered on the relevant set of cloud services detailed in the INFRASTRUCTURE &amp; COSTS section, which outlines the maximum service accounts required for the available features.
-                </p>
-                <collapse-button title="After Sales">
-                <p>&bull; Monitor your website and resolve technical issues, including your cloud infrastructure accounts.</p>
-                </collapse-button>
-                   <!--<div class="inner-title">.-->
-                    <!--</div>-->
-                    <paper-button on-click="contact" noink class="git">
-                        <iron-icon class="mail" icon="my-icons:mail"></iron-icon>
-                        <span class=""><u>Enquire or Proceed</u></span>
-                        <!--<span class="spacer"></span>-->
-                    </paper-button>
+                    <p class="text">
+                        <u class="title dim-title">Suitable for:</u><br>All
+                    </p>
+                    <p class="text">
+                        Your organisation will be registered on the relevant set of cloud services detailed in the INFRASTRUCTURE &amp; COSTS section, which outlines the maximum service accounts required for the available features.
+                    </p>
+
+                    <collapse-button class="after-sales" title="After Sales">
+                        <p>&bull; Monitor your website and resolve technical issues, including your cloud infrastructure accounts.</p>
+                        <p>&bull; Provide web related tips and advice regarding your implementation.</p>
+                    </collapse-button>
+
+                    <a href="">
+                        <paper-button class="get-in-touch" noink >
+                            <iron-icon class="mail" icon="my-icons:mail"></iron-icon>
+                            <span class=""><u>Enquire or Proceed</u></span>
+                        </paper-button>
+                    </a>
+
                     <div class="dot"></div>
-            </paper-material>
+
+                </paper-material>
+            </div>
+
+            <div class="sub-section">
+                <!-- Inner Content -->
+                <paper-material class="content" elevation="[[raise]]">
+                    <div class="sep-title charge">
+                        <p>Infrastructure &amp;<br>Running costs</p>
+                    </div>
+                    <!-- Data for iaas -->                
+                    <iron-ajax auto url="data/regular-services.json" handle-as="json" last-response="{{iaas}}"></iron-ajax>
+                    <!-- Repeat collapse-button -->
+                    <template is="dom-repeat" items="[[iaas]]">
+                        <service-button
+                            title=[[item.name]]
+
+                            desc=[[item.desc]]
+                            ref=[[item.ref]]>
+                        </service-button>
+                    </template>
+                    <!-- Separation -->
+                    <div class="dot"></div>
+
+                </paper-material>
+            </div>
+
         </div>
-
-        
-
-    </div>
-
-    <!-- Column 2 -->
-    <div class="sec">
-
-        <div class="sub">
-            <!-- Inner Content -->
-            <paper-material elevation="[[raise]]">
-                <div class="sep-title cost">
-                    <p>Infrastructure &amp;<br>Running costs</p>
-                </div>
-                <!-- Data for iaas -->                
-                <iron-ajax auto url="data/regular-services.json" handle-as="json" last-response="{{iaas}}"></iron-ajax>
-                <!-- Repeat collapse-button -->
-                <template is="dom-repeat" items="[[iaas]]">
-                    <service-button
-                        title=[[item.name]]
-
-                        desc=[[item.desc]]
-                        ref=[[item.ref]]>
-                    </service-button>
-                </template>
-                <!-- Separation -->
-                <div class="dot"></div>
-
-            </paper-material>
-        </div>
-
-    </div>
 
 </template>
 <script>
@@ -269,18 +111,6 @@ Regular impl page element
                 value: 1
             }
 
-        },
-
-        created: function() {
-            this.removeAttribute('unresolved');
-        },
-
-        contact: function() {
-            this.fire('contact', {})
-        },
-
-        log: function(event) {
-            console.log(event);
         }
 
     });

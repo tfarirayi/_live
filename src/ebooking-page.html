@@ -20,7 +20,7 @@ E-Booking page element
 
 <dom-module id="ebooking-page">
 <template>
-     <style>
+     <style include="my-styles">
         :host {
             display: flex;
             flex-flow: row wrap;
@@ -30,177 +30,22 @@ E-Booking page element
             line-height: 120%;
             font-family: 'Arvo', serif;
         }
-
-        .sec {
-            align-self: flex-start;
-            flex: 1;
-            flex-basis: 300px;
-            min-width: 256px;
-            max-width: 300px;
-            box-sizing: border-box;
-            height: fit-content;
-            /*margin: 0px 4px;*/
-        }
-
-        .sub {
-            max-width: 300px;
-            border-radius: 8px;
-            padding: 3px;
-            margin-top: 8px;
-            margin: auto;
-            text-align: center;
-            height: fit-content;
-            box-sizing: border-box;
-        }
-
-        .dot {
-            text-align: center;
-            font-size: 16px;
-            border-bottom: 1px solid #607D8B;
-            color: #607D8B;
-            width: 1px;
-            margin: auto;
-            margin-top: 21px;
-            margin-bottom: 21px;
-        }
-
-        .intro {
-            text-align: left;
-            padding: 5px 13px;
-            font-size: 15px;
-            color: #B0BEC5;
-        }
-
-        .notes {
-            color: #90a4ae;
-            font-size: 14px;
-            text-align: right;
-        }
-
-        paper-material {
-            color: #FF8A65;
-            background-color: #37474F;
-            border-radius: 10px;
-            width: 100%;
-            margin: auto;
-            padding-top: 10px;
-            padding-bottom: 10px;
-            height: fit-content;
-        }
-
-        a {
-            text-decoration: none;
-            color: #FF8A65;
-        }
-
-        .sep-title {
-            text-transform: uppercase;
-            text-align: center;
-            letter-spacing: 1px;
-            font-size: 16px;
-            color: #607D8B;
-            margin-top: 0.5em;
-            margin-bottom: 2em;
-            font-family: 'Space Mono', monospace;
-        }
-
-        .inner-title {
-            text-transform: uppercase;
-            text-align: center;
-            letter-spacing: 1px;
-            font-size: 16px;
-            color: #607D8B;
-            margin-top: 1em;
-            margin-bottom: 1em;
-            font-family: 'Space Mono', monospace;
-        }
-
-        paper-item {
-            padding-top: 5px;
-            padding-bottom: 5px;
-            padding-left: 10px;
-            font-family: 'Arvo', serif;
-        }
-
-        .secondary {
-            padding-left: 2px;
-            text-align: left;
-            color: #78909C;
-            font-size: 13px;
-            line-height: 130%;
-        }
-
-        .primary {
-                text-align: left;
-        }
-
-        .cost {
-            color: #B0BEC5;
-            font-size: 15px;
-            font-family: 'Space Mono', monospace;
-            text-align: right;
-            padding: 0px 10px;
-        }
-
-        u {
-            text-decoration: none;
-            border-bottom: 1px dotted #FF8A65;
-        }
-
-        u.title {
-          text-decoration: none;
-          border-bottom: 1px dotted #90A4AE;
-          line-height: 180%;
-        }
-        
-        .highlight {
-            color: #B0BEC5;
-        }
-
-        .title {
-            color: #90a4ae;
-        }
-
-        .git {
-            @apply(--layout-horizontal);
-            @apply(--layout-center-justified);
-            @apply(--layout-center);
-            /*padding: 8px;*/
-            font-size: 13px;
-            text-transform: uppercase;
-            font-family: 'Space Mono', monospace;
-            
-        }
-
-        collapse-button {
-            margin-bottom: 13px;
-        }
-
-        .spacer {
-            @apply(--layout-flex);
-        }
-
-        iron-icon {
-            --iron-icon-height: 21px;
-            --iron-icon-width: 21px;
-        }
-   
      </style>
 
 <!-- Local dom here  -->
     <!-- Column 1 -->
-    <div class="sec">
+    <div class="section">
 
-        <div class="sub">
+        <div class="sub-section">
             <!-- Inner Content -->
-            <paper-material elevation="[[raise]]">
-                <div class="sep-title cost">
+            <paper-material class="content" elevation="[[raise]]">
+                <div class="sep-title charge">
                     <p>
-                        <u class="title">Charge:</u> 521 GBP
+                        <u class="title dim-title">Charge:</u> 521 GBP
                     </p>
                 </div>
-                <p class="intro">
-                    <u class="title">Website features:</u>
+                <p class="text">
+                    <u class="title dim-title">Website features:</u>
                     <br>&bull; Contact form
                     <br>&bull; Responsive Design
                     <br>&bull; Booking System
@@ -208,31 +53,34 @@ E-Booking page element
                     <br>&bull; Management Features
                     <br>&bull; SEO
                 </p>
-                <p class="intro">
-                    <u class="title">Suitable for:</u><br>Service Businesses
+                <p class="text">
+                    <u class="title dim-title">Suitable for:</u><br>Service Businesses
                 </p>
-                <p class="intro">
+                <p class="text">
                     Your organisation will be registered on the <em>relevant</em> set of cloud services detailed in the INFRASTRUCTURE &amp; COSTS section below, which outlines the maximum service accounts required for the available features.
                 </p>
-                <p class="intro notes">
+                <p class="text notes">
                     The relevant service accounts for individual implementations differ and will be determined at the design stage. Visit the reference links for official provider pricing &amp; documentation.
                 </p>
-                <collapse-button title="After Sales">
-                <p>&bull; Monitor your website and resolve technical issues, including your cloud infrastructure accounts.</p>
+                <collapse-button class="after-sales" title="After Sales">
+                    <p>&bull; Monitor your website and resolve technical issues, including your cloud infrastructure accounts.</p>
+                    <p>&bull; Provide web related tips and advice regarding your implementation.</p>
                 </collapse-button>
-                    <paper-button on-click="contact" noink class="git">
+
+                <a href="">
+                    <paper-button on-click="contact" noink class="get-in-touch">
                         <iron-icon class="mail" icon="my-icons:mail"></iron-icon>
                         <span class=""><u>Enquire or Proceed</u></span>
                     </paper-button>
-
-                    <div class="dot"></div>
+                </a>
+                <div class="dot"></div>
             </paper-material>
         </div>
 
-        <div class="sub">
+        <div class="sub-section">
             <!-- Inner Content -->
-            <paper-material elevation="[[raise]]">
-                <div class="sep-title cost">
+            <paper-material class="content" elevation="[[raise]]">
+                <div class="sep-title charge">
                     <p>Infrastructure &amp;<br>Running costs</p>
                 </div>
                 <!-- Data for iaas -->                
@@ -254,19 +102,19 @@ E-Booking page element
     </div>
 
     <!-- Column 2 -->
-    <div class="sec">
+    <div class="section">
 
-        <div class="sub">
+        <div class="sub-section">
         <!-- Inner Content -->
-         <paper-material elevation="[[raise]]">
-             <div class="sep-title cost">
+         <paper-material class="content" elevation="[[raise]]">
+             <div class="sep-title charge">
                  <p>Customer features</p>
              </div>
              <!-- Data for customer features -->
              <iron-ajax auto url="data/ebooking-functions.json" handle-as="json" last-response="{{eres}}"></iron-ajax>
                 <!-- Repeat paper-item -->
                 <template is="dom-repeat" items="[[eres]]">
-                    <paper-item two-line class="function" id$="button[[item.id]]">
+                    <paper-item two-line class="features" id$="button[[item.id]]">
                         <paper-item-body>
                             <div class="primary">
                                 [[item.name]]
@@ -282,16 +130,16 @@ E-Booking page element
             </paper-material>
         </div>
 
-        <div class="sub">
+        <div class="sub-section">
             <!-- Inner Content -->
-            <paper-material elevation="[[raise]]">
-                <div class="sep-title cost">
+            <paper-material class="content" elevation="[[raise]]">
+                <div class="sep-title charge">
                     <p>Management features</p>
                 </div>
                 <!-- Data for management features -->
                 <iron-ajax auto url="data/ebooking-portal.json" handle-as="json" last-response="{{portal}}"></iron-ajax>
                 <template is="dom-repeat" items="[[portal]]">
-                    <paper-item class="function" two-line>
+                    <paper-item class="features" two-line>
                         <paper-item-body>
                             <div class="primary">
                                 [[item.name]]
@@ -321,18 +169,6 @@ E-Booking page element
                 value: 1
             }
 
-        },
-
-        created: function() {
-            this.removeAttribute('unresolved');
-        },
-
-        contact: function() {
-            this.fire('contact', {})
-        },
-
-        log: function(event) {
-            console.log(event);
         }
 
     });
