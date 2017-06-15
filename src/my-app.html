@@ -14,9 +14,12 @@ Main application container element
 <link rel="import" href="../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
 <!-- Iron elements -->
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../bower_components/iron-icon/iron-icon.html">
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
-<!-- Neon Animation -->
-<link rel="import" href="../bower_components/neon-animation/neon-animated-pages.html">
+<!-- Neon elements -->
+<link rel="import" href="../bower_components/neon-animation/neon-animation-runner-behavior.html">
+<link rel="import" href="../bower_components/neon-animation/animations/fade-in-animation.html">
+<link rel="import" href="../bower_components/neon-animation/animations/fade-out-animation.html">
 <!-- Paper elements -->
 <link rel="import" href="../bower_components/paper-scroll-header-panel/paper-scroll-header-panel.html">
 <link rel="import" href="../bower_components/paper-toolbar/paper-toolbar.html">
@@ -38,17 +41,35 @@ Main application container element
         }
 
         app-header {
-            height: 112px;
-            color: rgba(55,71,79 ,1);
-            border-radius: 0px 0px 56px 56px;
             background-color: rgba(207,216,220 ,0.9);
+            border-radius: 0px 0px 8px 8px;
+            border: 1px solid rgba(255,138,101 ,0.7);   
+            border-top: none;                      
+            color: rgba(55,71,79 ,1);
+            height: 124px;
             @apply(--shadow-elevation-4dp);
         }
        
+        app-toolbar.top-bar {
+            color: rgba(38,50,56 ,1);
+            height: 64px;
+            text-shadow: 1px 1px rgba(255,138,101 ,0.8);
+            @apply(--layout-horizontal);
+            @apply(--layout-end);
+            @apply(--layout-center-justified);
+        }
+
+        app-toolbar.bottom-bar {
+            height: 58px;
+            @apply(--layout-horizontal);
+            @apply(--layout-center);
+            @apply(--layout-center-justified);
+        }
+
         paper-button.home-button, a {
             color: inherit;
             font-family: 'Space Mono', monospace;
-            font-size: 18px;
+            font-size: 19px;
             padding: 0px;
             text-align: center;
             text-decoration: none;
@@ -64,24 +85,8 @@ Main application container element
             text-decoration: none;
         }
 
-        app-toolbar.top-bar {
-            color: rgba(38,50,56 ,1);
-            height: 60px;
-            text-shadow: 1px 1px rgba(255,138,101 ,1);
-            @apply(--layout-horizontal);
-            @apply(--layout-end);
-            @apply(--layout-center-justified);
-        }
-
         .main-title {
             line-height: 120%;
-        }
-
-        app-toolbar.bottom-bar {
-            height: 52px;
-            @apply(--layout-horizontal);
-            @apply(--layout-center);
-            @apply(--layout-center-justified);
         }
     </style>
     <!-- Local dom here -->
@@ -98,18 +103,24 @@ Main application container element
             <app-header-layout effects="blend-background" fullbleed>
                 <app-header id="header" condenses fixed>
                 <!-- Toolbar Top -->
-                <app-toolbar class="top-bar" >
+                <app-toolbar class="top-bar">
                     <div class="bottom main-title">
                         <a href="/home" tabindex="-1">
-                            <paper-button class="home-button" noink><span class="logo">Orange House</span><span class="logo">WEB-DEV </span></paper-button>
+                            <paper-button class="home-button" noink><span class="logo">Orange House</span><span class="logo">Academy&trade; </span></paper-button>
                         </a>
                     </div>
                 </app-toolbar>
                 <!-- Toolbar Bottom -->
                 <app-toolbar class="bottom-bar" sticky>
-                    <paper-icon-button icon="my-icons:info-outline"></paper-icon-button>
-                    <paper-icon-button icon="my-icons:phone-iphone"></paper-icon-button>
-                    <paper-icon-button icon="my-icons:mail"></paper-icon-button>
+                    <a href="/info" class="top-icon">
+                        <iron-icon icon="my-icons:info-outline"></iron-icon>
+                    </a>
+                    <a href="/phone" class="top-icon">
+                        <iron-icon icon="my-icons:phone-iphone"></iron-icon>
+                    </a>
+                    <a href="/message" class="top-icon">
+                        <iron-icon icon="my-icons:mail"></iron-icon>
+                    </a>
                 </app-toolbar>
                 </app-header>
 
@@ -119,17 +130,18 @@ Main application container element
                         fallback-selection="home" 
                         selected="[[page]]">
 
-                        <home-page id="home"></home-page>
-                        <ebooking-page id="ebooking"></ebooking-page>
-                        <eshop-page id="eshop"></eshop-page>
-                        <regular-web id="regular"></regular-web>
+                        <home-page id="home" loading></home-page>
+                        <ebooking-page id="ebooking" loading></ebooking-page>
+                        <eshop-page id="eshop" loading></eshop-page>
+                        <regular-page id="regular" loading></regular-page>
+                        <message-page id="message" loading></message-page>
                         
                     </iron-pages>
                     <!-- Push footer to bottom --> 
                     <span class="spacer"></span>
-                    <div class="my-footer">
-                        &copy; [[year]] Orange House Web Development&trade;
-                         
+                    <div id="footer" class="my-footer" loading>
+                        <span class="footer-date">&copy; [[year]]</span> 
+                        <span class="footer-text">Orange House<br>Web Academy&trade;</span>
                     </div>
             </app-header-layout>
 
@@ -138,7 +150,25 @@ Main application container element
         Polymer ({
             is: 'my-app',
 
+            behaviors: [
+                Polymer.NeonAnimationRunnerBehavior
+            ],
+
             properties: {
+
+                animationConfig: {
+                    value: function() {
+                        return {
+                            'entry': {
+                                name: 'fade-in-animation',
+                                node: this.$.home,
+                                timing: {
+                                    duration: 2000
+                                }
+                            }
+                        }
+                    }
+                },
 
                 page: {
                     type: String,
@@ -159,15 +189,33 @@ Main application container element
                 '_routePageChanged(routeData.page)'
             ],
 
+            listeners: {
+                'neon-animation-finish': '_animationFinish'
+            },
+
+
             created: function() {
                 Polymer.RenderStatus.afterNextRender(this, function() {
                     this.importHref(this.resolveUrl('lazy-resources.html'), null, null, true);
                 });
             },
 
+            ready: function() {
+                this.playAnimation('entry');
+            },
+
+            _animationFinish: function() {
+                this.removeAttribute('loading');
+                
+            },
+
             _pageChanged: function(page) {
                 var resolvedPageUrl = this.resolveUrl(page + '-page.html');
-                this.importHref(resolvedPageUrl, null, this._show404, true);
+                var main = this;
+                main.$.footer.setAttribute('loading', '');
+                this.importHref(resolvedPageUrl, function() {
+                    main.$.footer.removeAttribute('loading');
+                }, this._show404, true);
                 // Scroll to top on page change
                 this.$.header.scroll({top: 0});
             },

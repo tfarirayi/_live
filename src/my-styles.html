@@ -53,8 +53,12 @@ Universal styles
 
         u.title {
             text-decoration: none;
-            border-bottom: 1px dotted #90A4AE;
+            border-bottom: 1px dotted rgba(144,164,174 ,0.5);
             line-height: 180%;
+        }
+
+        a.top-icon {
+            padding: 0px 8px;
         }
 
         .dim-title {
@@ -94,12 +98,30 @@ Universal styles
 
 
         .my-footer {
-            color: rgba(144,164,174 ,1);
+            color: rgba(96,125,139 ,1);
             font-family: 'Raleway', sans-serif;
             font-size: 14px;
             line-height: 150%;
             padding: 56px 0px;
-            text-align: center;
+            @apply(--layout-center);
+            @apply(--layout-center-justified);
+            @apply(--layout-horizontal);
+        }
+
+        .my-footer[loading] {
+            display: none;
+        }
+
+        .footer-date {
+            padding: 0 13px;
+            text-align: right;
+        }
+
+        .footer-text {
+            padding: 0 5px;
+            text-align: left;
+            line-height: 130%;
+
         }
 
         paper-material.content {
@@ -111,6 +133,7 @@ Universal styles
             padding-top: 10px;
             padding-bottom: 10px;
             height: fit-content;
+            border: 1px solid rgba(207,216,220 ,0.3);                         
         }
 
         paper-item.features {

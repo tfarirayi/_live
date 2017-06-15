@@ -2,13 +2,13 @@
 Message form element with lambda function
 @tfarirayi1
 -->
-
 <!-- Polymer dependency -->
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <!-- Paper elements -->
 <link rel="import" href="../bower_components/paper-material/paper-material.html">
 <link rel="import" href="../bower_components/paper-input/paper-input-container.html">
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/paper-styles/shadow.html">
 <!-- Iron elements -->
 <link rel="import" href="../bower_components/iron-autogrow-textarea/iron-autogrow-textarea.html">
 <link rel="import" href="../bower_components/iron-input/iron-input.html">
@@ -18,46 +18,61 @@ Message form element with lambda function
 
 <dom-module id="message-form">
     <template>
-        <style>
+        <style include="my-styles">
             :host {
-                display: none;
-                width: auto;
-                margin: 8px;
-            }
-
-            paper-material {
-                margin: auto;
-                margin-top: 8px;
-                max-width: 300px;
-                background-color: #CFD8DC;
-                border-radius: 10px;
-                padding: 8px;
-                height: fit-content;
+                display: block;
+                background-color: #ECEFF1;
+                background-color: #37474F;
+                border: 1px solid rgba(255,138,101 ,0.7);
+                border-radius: 8px;
                 box-sizing: border-box;
-                font-family: 'Arvo', monospace;
+                padding: 13px;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: -13px;
+                max-width: 300px;
+                @apply(--shadow-elevation-2dp);
             }
 
             paper-input-container {
-                --paper-input-container-color: #546E7A;
-                --paper-input-container-focus-color: #607D8B;
+                text-align: left;
+                font-size: 15px;
+                --paper-input-container-input-color: rgba(207,216,220 ,1);
+                --paper-input-container-invalid-color: rgba(207,216,220 ,0.8);
+                --paper-input-container-color: #455A64;
+                --paper-input-container-focus-color: rgba(207,216,220 ,0.8);
+                --paper-input-container-label-focus: {
+                    color: rgba(207,216,220 ,0.8);
+                }
+                --paper-input-container-input-invalid: {
+                    color:rgba(255,138,101 ,0.9);
+                }
                 --paper-input-container-underline: {
-                        background-color: transparent;
+                    background-color: transparent;
                 }
                 --paper-input-container-label: {
-                    font-size: 19px;
-                    color: #546E7A;
-                    font-family: 'Arvo', monospace;
+                    font-size: 18px;
+                    letter-spacing: 1px;
+                    color: rgba(144,164,174 ,1);
+                    font-family: 'Roboto', monospace;
                 }
             }
 
-            paper-button {
-                margin: auto;
-                font-size: 14px;
-                text-align: center;
-                margin: 10px 5px;
-                background-color: #37474F;
+            paper-button.send {
+                background-color: #263238;
+                border: 1px solid rgba(176,190,197 ,0.5);
+                border-radius: 8px;
                 color: #FF8A65;
-                border-radius: 2px;
+                font-size: 14px;
+                margin: 10px 5px;
+                max-height: 36px;
+                text-align: center;
+            }
+
+            paper-button.send:focus, paper-button.send:hover  {
+                font-weight: normal;
+                border: 1px solid rgba(176,190,197 ,0.8);
+                
             }
 
             .sep-title {
@@ -65,74 +80,80 @@ Message form element with lambda function
                 text-align: center;
                 letter-spacing: 1px;
                 font-size: 13px;
-                color: #37474F;
+                color: rgba(176,190,197 ,1);
                 margin-top: 15px;
                 margin-bottom: 15px;
+                font-family: 'Arvo', monospace;
             }
+            
             .submit {
                 @apply(--layout-horizontal);
                 @apply(--layout-center);
-                width: 100%;
+                margin-top: 13px;
             }
+
             .alert {
-                @apply(--layout-flex);
-                padding: 0px 8px;
-                font-size: 13px;
+                color: rgba(255,138,101 ,1);
                 font-family: 'Roboto', monospace;
+                font-size: 13px;
+                padding: 0px 8px;
+                @apply(--layout-flex);
             }
 
             .email {
-                text-align: center;
+                text-align: right;
             }
-            .email a {
+            
+            a.address {
                 text-decoration: none;
-                color: inherit;
-                color: #37474F;
-                color: #D84315;
-                /*font-family: 'Roboto', monospace;*/
-                font-size: 15px;
+                color: rgba(176,190,197 ,1);
+                font-family: 'Raleway', monospace;
+                font-size: 16px;
             }
-            .email a:hover {
-                text-decoration: underline;
+
+            a.address:hover {
+                opacity: 0.8;
+            }
+
+            u.title {
+                text-decoration: none;
+                border-bottom: 1px dotted #FF8A65;
+                line-height: 180%;
             }
         </style>
+        <!-- Dom here -->
 
-<!-- Local dom here -->
-    <paper-material>
-        <div class="sep-title">
-            <p>email us</p>
-            .
-        </div>
-        <div class="email">
-            <p>
-                <a href="mailto:tich.farirayi@kioskwebdev.co.uk">tich.farirayi@kioskwebdev.co.uk</a>
-            </p>
-        </div>
-    </paper-material>
-
-    <paper-material class="animated fadeIn">
         <div class="sep-title">
             <p>MESSAGE US</p>
-            .
         </div>
+        <div class="dot"></div>
+        
+        <!-- Email field -->
         <paper-input-container  always-float-label>
             <label>Email</label>
             <input is="iron-input" type="email" prevent-invalid-input on-input="revalidate" spellcheck="false" label="Email" bind-value="{{email}}">
         </paper-input-container>
+
+        <!-- Message field -->
         <paper-input-container always-float-label>
             <label>Message</label>
             <iron-autogrow-textarea id="text" rows="2" minlength="10" value="{{message}}" spellcheck="false" class="paper-input-input"></iron-autogrow-textarea>
         </paper-input-container>
+
+        <!-- Submit button -->
         <div class="submit">
-            <paper-button on-click="send" raised>Send</paper-button>
+            <paper-button class="send" on-click="send">Send</paper-button>
             <span class="alert">[[response]]</span>
         </div>
+
+        <div class="email">
+            <p>
+                <a class="address" href="mailto:tich.farirayi@kioskwebdev.co.uk"><u class="title">tich.farirayi@ohwa.co.uk</u></a>
+            </p>
+        </div>
         
-    </paper-material>
-
-
-
 </template>
+
 <script>
     Polymer({
         is: 'message-form',
@@ -204,13 +225,13 @@ Message form element with lambda function
             var main = this;
             var result = function(data, err) {
                 if (data == '200') {
-                    main.response = "Sent!";
+                    main.response = "Message sent.";
                     main.message = "";
-                }
-                else main.response = "Failed"
-            };
 
-            
+                } else {
+                    main.response = "Message failed.";
+                }
+            };
 
             if (this.message && !this.invalid && this.email) {
                 this.response = 'Sending...';
@@ -220,9 +241,9 @@ Message form element with lambda function
                 });
 
             } else {
-                if (!this.message) this.response = 'Empty message';
-                if (!this.email) this.response = 'Empty email';
-                if (this.invalid) this.response = 'Check your email';
+                if (!this.message) this.response = 'Empty message.';
+                if (!this.email) this.response = 'Empty email.';
+                if (this.invalid) this.response = 'Check your email.';
             }
         },
 

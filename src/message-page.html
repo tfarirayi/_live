@@ -1,0 +1,32 @@
+<!--
+Contact form page
+@tfarirayi1
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="message-form.html">
+
+<dom-module id="message-page">
+  <template>
+    <style>
+      :host {
+        display: block;
+        padding-top: 21px;
+      }
+    </style>
+    <!-- Dom here -->
+        <message-form></message-form>
+
+  </template>
+
+  <script>
+    Polymer({
+      is: 'message-page',
+
+      created: function() {
+        this.removeAttribute('unresolved');
+      },
+
+    });
+  </script>
+</dom-module>

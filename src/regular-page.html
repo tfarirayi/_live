@@ -18,7 +18,7 @@ Regular impl page element
 <link rel="import" href="service-button.html">
 
 
-<dom-module id="regular-web">
+<dom-module id="regular-page">
 <template>
      <style include="my-styles">
         :host {
@@ -39,27 +39,27 @@ Regular impl page element
                 <paper-material class="content" elevation="[[raise]]">
                     <div class="sep-title charge">
                         <p>
-                            <u class="title dim-title">Charge:</u> 390 GBP
+                            <u class="title dim-title">Charge:</u> 332 GBP
                         </p>
                     </div>
+                    
                     <p class="text">
                         <u class="title dim-title">Website features:</u>
                         <br>&bull; Contact Form
-                        <br>&bull; Responsive Design
-                        <br>&bull; Product or Service Catalogue
-                        <br>&bull; Visitor Analytics
+                        <br>&bull; Custom Portfolio interface
                         <br>&bull; SEO
+                        <br>&bull; Multi-device Design
+                        <br>&bull; Traffic Analytics
                     </p>
+
                     <p class="text">
-                        <u class="title dim-title">Suitable for:</u><br>All
-                    </p>
-                    <p class="text">
-                        Your organisation will be registered on the relevant set of cloud services detailed in the INFRASTRUCTURE &amp; COSTS section, which outlines the maximum service accounts required for the available features.
+                        The E-folio is suitable for any business that wants to provide a creatively useful presentation of business information to users.
                     </p>
 
                     <collapse-button class="after-sales" title="After Sales">
                         <p>&bull; Monitor your website and resolve technical issues, including your cloud infrastructure accounts.</p>
                         <p>&bull; Provide web related tips and advice regarding your implementation.</p>
+                        <div class="dot"></div>
                     </collapse-button>
 
                     <a href="">
@@ -73,7 +73,8 @@ Regular impl page element
 
                 </paper-material>
             </div>
-
+        </div>
+        <div class="section">
             <div class="sub-section">
                 <!-- Inner Content -->
                 <paper-material class="content" elevation="[[raise]]">
@@ -102,7 +103,7 @@ Regular impl page element
 </template>
 <script>
     Polymer ({
-        is: 'regular-web',
+        is: 'regular-page',
 
         properties: {
 
@@ -111,7 +112,11 @@ Regular impl page element
                 value: 1
             }
 
-        }
+        },
+
+        ready:  function() {
+            this.removeAttribute('loading');
+        },
 
     });
 </script>
