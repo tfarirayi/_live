@@ -2,52 +2,58 @@
 Phone number element
 @tfarirayi1
 -->
-
 <!-- Polymer dependency -->
 <link rel="import" href="../bower_components/polymer/polymer.html">
-<!-- Paper elements -->
-<link rel="import" href="../bower_components/paper-material/paper-material.html">
 
 <dom-module id="phone-number">
-<template>
-    <style>
+  <template>
+    <style include="my-styles">
         :host {
-            display: none;
-            width: auto;
-            margin: 8px;
-            color: #37474F;
-            font-family: 'Arvo', serif;
-        }
-
-        paper-material {
-            margin: auto;
-            max-width: 300px;
-            background-color: #CFD8DC; 
-            border-radius: 10px;
-            padding: 8px;
-            height: fit-content;
+            display: block;
+            background-color: #37474F;
+            border: 1px ridge rgba(255,138,101 ,0.7);
+            border-radius: 8px;
             box-sizing: border-box;
+            font-family: 'Arvo', monospace;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: -13px;
+            max-width: 300px;
+            padding: 13px;
+            @apply(--shadow-elevation-2dp);
         }
-
-        span {
+          
+        span.desc {
             display: block;
         }
         
-        a, desc {
-            font-family: 'Roboto', sans-serif;
-        }
-        
         .desc {
-                text-align: left;
-                font-size: 12px;
-                padding-left: 4px;
-                color: #455A64;
+            color: #455A64;
+            font-size: 13px;
+            padding-left: 4px;
+            text-align: left;
+            color: rgba(176,190,197 ,0.8);
         }
-        
+
         a {
-            color: #37474F;
+            color: rgba(207,216,220 ,0.9);
+            font-family: 'Oswald', sans-serif;                        
+            font-size: 20px;            
             font-weight: bold;
             text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        a:hover {
+            color: rgba(207,216,220 ,0.5);
+        }
+
+        /* Utils */
+
+        u.title {
+            text-decoration: none;
+            border-bottom: 1px dotted #FF8A65;
+            line-height: 180%;
         }
 
         .sep-title {
@@ -55,30 +61,34 @@ Phone number element
             text-align: center;
             letter-spacing: 1px;
             font-size: 13px;
-            color: #37474F;
+            color: rgba(176,190,197 ,1);
             margin-top: 15px;
             margin-bottom: 15px;
+            font-family: 'Arvo', monospace;
+
         }
-        
+
     </style>
+    <!-- Dom here -->
 
-<!-- Local dom here -->
-    <paper-material class="animated fadeIn">
-        <div class="sep-title">
-            <p>PHONE US</p>.
-        </div>
-        <div class="sec">
-            <a href="tel:+447449940700">07449 940 700</a>
-            <span class="desc">
-                1800HRS - 0000HRS <em>Text anytime</em>.
-            </span>
-        </div>
-    </paper-material>
+    <div class="sep-title">
+        <p>PHONE US</p>
+    </div>
+    <div class="dot"></div>
+  
+    <div class="sec">
+      <a href="tel:+447449940700">074 499 407 00</a>
+        <span class="desc">
+            Calls taken all day on weekends and between 1800HRS - 0000HRS on weekdays. <br> SMS anytime</em>.
+        </span>
+    </div>
 
-</template>
-<script>
+  </template>
+
+  <script>
     Polymer({
-        is: 'phone-number'
+      is: 'phone-number',
+
     });
-</script>
+  </script>
 </dom-module>

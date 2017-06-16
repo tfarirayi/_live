@@ -1,5 +1,5 @@
 <!--
-Contact form page
+Phone number page
 @tfarirayi1
 -->
 <!-- Polymer dependency -->
@@ -10,9 +10,9 @@ Contact form page
 <link rel="import" href="../bower_components/neon-animation/neon-animation-runner-behavior.html">
 <link rel="import" href="../bower_components/neon-animation/animations/slide-from-bottom-animation.html">
 <!-- Custom elements -->
-<link rel="import" href="message-form.html">
+<link rel="import" href="phone-number.html">
 
-<dom-module id="message-page">
+<dom-module id="phone-page">
   <template>
     <style>
       :host {
@@ -21,13 +21,13 @@ Contact form page
       }
     </style>
     <!-- Dom here -->
-    <message-form id="form"></message-form>
+        <phone-number id="form"></phone-number>
 
   </template>
 
   <script>
     Polymer({
-      is: 'message-page',
+      is: 'phone-page',
 
       behaviors: [
           Polymer.NeonAnimationRunnerBehavior
@@ -51,7 +51,7 @@ Contact form page
 
       ready: function() {
         this.playAnimation('entry');
-      },
+      }
 
     });
   </script>

@@ -147,6 +147,10 @@ Homepage element
                 background-color: rgba(0,96,100 ,0.5) !important;
             }
         }
+        
+        .sep-title {
+            margin-bottom: 0em;
+        }
 
         .build-icon {
             --iron-icon-height: 20px;
@@ -160,7 +164,8 @@ Homepage element
 
     <div class="sep-title">
         <p>
-            Welcome to<br><u class="title">OHWD&trade;</u>
+            <!--<u class="title">Orange House<br>Web Academy</u>-->
+            Welcome to<br><u class="title">OHWA&trade;</u>
         </p>
     </div>
 
@@ -181,7 +186,7 @@ Homepage element
   <div id="animate_two" class="sub-section">
     <div class="sep-title">
       <p>
-        <u class="title">Business</u>&nbsp;<u class="title">intents</u>
+        Business&nbsp;<u class="title">intents</u>
       </p>
     </div>
 
@@ -203,12 +208,12 @@ Homepage element
     <!-- Inner Content -->
     <div class="sep-title">
         <p>
-           <u class="title">Our</u>&nbsp;<u class="title">implementations</u>
+           Our&nbsp;<u class="title">implementations</u>
         </p>
     </div>
 
     <div class="row--four">
-        <a href="/regular">
+        <a href="/efolio">
             <paper-button raised class="route">E-Folio</paper-button>
         </a>
         <!--<a href="/eshop">
@@ -242,6 +247,10 @@ Homepage element
     Polymer ({
         is: 'home-page',
 
+        behaviors: [
+            Polymer.NeonAnimationRunnerBehavior
+        ],
+
         properties: {
 
             verified: {
@@ -255,7 +264,21 @@ Homepage element
             open: {
                 type: Boolean,
                 value: false,
-            }
+            },
+
+            animationConfig: {
+                value: function() {
+                    return {
+                        'entry': {
+                            name: 'fade-in-animation',
+                            node: this,
+                            timing: {
+                                duration: 800
+                            }
+                        }
+                    }
+                }
+            },
 
         },
 
@@ -266,7 +289,7 @@ Homepage element
         },
 
         ready:  function() {
-            this.removeAttribute('loading');
+            this.playAnimation('entry');
         },
 
         define: function() {

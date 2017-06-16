@@ -13,12 +13,17 @@ Regular impl page element
 <link rel="import" href="../bower_components/paper-material/paper-material.html">
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../bower_components/paper-item/paper-item.html">
+<!-- Neon elements -->
+<link rel="import" href="../bower_components/neon-animation/animations/cascaded-animation.html">
+<link rel="import" href="../bower_components/neon-animation/animations/fade-in-animation.html">
+<link rel="import" href="../bower_components/neon-animation/neon-animation-runner-behavior.html">
+<link rel="import" href="../bower_components/neon-animation/animations/slide-from-bottom-animation.html">
 <!-- Custom elements -->
 <link rel="import" href="collapse-button.html">
 <link rel="import" href="service-button.html">
 
 
-<dom-module id="regular-page">
+<dom-module id="efolio-page">
 <template>
      <style include="my-styles">
         :host {
@@ -33,13 +38,14 @@ Regular impl page element
     </style>
     <!-- Local dom here  -->
         <!-- Single column -->
+        
         <div class="section">
-            
-            <div class="sub-section">
+            <div class="sub-section" id="animateTwo">
+
                 <paper-material class="content" elevation="[[raise]]">
                     <div class="sep-title charge">
                         <p>
-                            <u class="title dim-title">Charge:</u> 332 GBP
+                            <u class="title dim-title">Charge:</u> 320 GBP
                         </p>
                     </div>
                     
@@ -53,7 +59,7 @@ Regular impl page element
                     </p>
 
                     <p class="text">
-                        The E-folio is suitable for any business that wants to provide a creatively useful presentation of business information to users.
+                        The E-folio is suitable for all businesses. It's a website that provides a creatively useful presentation of business information to users.
                     </p>
 
                     <collapse-button class="after-sales" title="After Sales">
@@ -75,7 +81,7 @@ Regular impl page element
             </div>
         </div>
         <div class="section">
-            <div class="sub-section">
+            <div class="sub-section" id="animateTwo">
                 <!-- Inner Content -->
                 <paper-material class="content" elevation="[[raise]]">
                     <div class="sep-title charge">
@@ -103,19 +109,38 @@ Regular impl page element
 </template>
 <script>
     Polymer ({
-        is: 'regular-page',
+        is: 'efolio-page',
+
+        behaviors: [
+            Polymer.NeonAnimationRunnerBehavior
+        ],
 
         properties: {
 
             raise: {
                 type: Number,
                 value: 1
+            },
+
+            animationConfig: {
+                value: function() {
+                    return {
+                        'entry': {
+                            name: 'fade-in-animation',
+                            node: this,
+                            timing: {
+                                duration: 800
+                            }
+                        }
+                    }
+                }
             }
 
         },
 
-        ready:  function() {
-            this.removeAttribute('loading');
+        ready: function() {
+            this.playAnimation('entry');
+            console.log('hey');
         },
 
     });

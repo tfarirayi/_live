@@ -3,10 +3,11 @@
     "shell": "src/my-app.html",
     "fragments": [
         "src/home-page.html",
-        "src/eshop-page.html",
         "src/ebooking-page.html",
-        "src/regular-page.html",
-        "src/aftersales-page.html"
+        "src/efolio-page.html",
+        "src/message-page.html",
+        "src/phone-page.html",
+        "src/info-page.html"
     ],
     
     "sources": [
@@ -25,6 +26,13 @@
         "addServiceWorker": true,
         "insertPrefetchLinks": true,
         "html": {
+            "minify": true
+        },
+        "js": {
+            "minify": true,
+            "compile": true
+        },
+        "css": {
             "minify": true
         }
     }]

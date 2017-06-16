@@ -26,8 +26,9 @@ Main application container element
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../bower_components/paper-badge/paper-badge.html">
 <link rel="import" href="../bower_components/paper-styles/shadow.html">
+<link rel="import" href="../bower_components/paper-progress/paper-progress.html">
 <!-- Google fonts -->
-<link href='//fonts.googleapis.com/css?family=Arvo|Space+Mono|Raleway|Roboto|Source+Code+Pro' rel='stylesheet'>
+<link href='//fonts.googleapis.com/css?family=Arvo|Space+Mono|Raleway|Oswald|Roboto|Source+Code+Pro' rel='stylesheet'>
 <!-- Custom elements -->
 <link rel="import" href="my-icons.html">
 <link rel="import" href="my-styles.html">
@@ -40,10 +41,14 @@ Main application container element
             @apply(--layout-vertical);
         }
 
+        app-header-layout {
+            @apply(--layout-fullbleed);
+        }
+
         app-header {
             background-color: rgba(207,216,220 ,0.9);
             border-radius: 0px 0px 8px 8px;
-            border: 1px solid rgba(255,138,101 ,0.7);   
+            border: 1px outset rgba(255,138,101 ,0.7);   
             border-top: none;                      
             color: rgba(55,71,79 ,1);
             height: 124px;
@@ -69,7 +74,7 @@ Main application container element
         paper-button.home-button, a {
             color: inherit;
             font-family: 'Space Mono', monospace;
-            font-size: 19px;
+            font-size: 18px;
             padding: 0px;
             text-align: center;
             text-decoration: none;
@@ -88,6 +93,40 @@ Main application container element
         .main-title {
             line-height: 120%;
         }
+
+        paper-progress.slow {
+             width: 100%;
+             margin: auto;
+             position: fixed;
+             top: 0;
+             left: 0;
+             right: 0;
+             --paper-progress-indeterminate-cycle-duration: 4s;
+             --paper-progress-container-color: rgba(207,216,220 ,0.9);
+             --paper-progress-height: 1px;
+             --paper-progress-active-color: rgba(255,138,101 ,0.7);
+        }
+
+        iron-pages {
+            padding-bottom: 56px;
+        }
+
+        paper-progress.slow[loaded] {
+            display: none;
+        }
+
+        a.home-link {
+            outline: none;
+        }
+        iron-icon {
+            padding: 3px;
+        }
+        iron-icon[selected] {
+            background-color: rgba(255,138,101 ,0.4);
+            text-shadow: 1px 1px rgba(255,138,101 ,0.8);
+            padding: 3px;
+            border-radius: 50%;
+        }
     </style>
     <!-- Local dom here -->
         <!-- Routing -->
@@ -103,23 +142,24 @@ Main application container element
             <app-header-layout effects="blend-background" fullbleed>
                 <app-header id="header" condenses fixed>
                 <!-- Toolbar Top -->
+                <paper-progress id="progress" class="slow" indeterminate></paper-progress>
                 <app-toolbar class="top-bar">
                     <div class="bottom main-title">
-                        <a href="/home" tabindex="-1">
-                            <paper-button class="home-button" noink><span class="logo">Orange House</span><span class="logo">Academy&trade; </span></paper-button>
+                        <a href="/home" tabindex="-1" class="home-link">
+                            <paper-button class="home-button" noink><span class="logo">Orange House</span><span class="logo">Web Academy </span></paper-button>
                         </a>
                     </div>
                 </app-toolbar>
                 <!-- Toolbar Bottom -->
                 <app-toolbar class="bottom-bar" sticky>
                     <a href="/info" class="top-icon">
-                        <iron-icon icon="my-icons:info-outline"></iron-icon>
+                        <iron-icon id="infoIcon" icon="my-icons:info-outline"></iron-icon>
                     </a>
                     <a href="/phone" class="top-icon">
-                        <iron-icon icon="my-icons:phone-iphone"></iron-icon>
+                        <iron-icon id="phoneIcon" icon="my-icons:phone-iphone"></iron-icon>
                     </a>
                     <a href="/message" class="top-icon">
-                        <iron-icon icon="my-icons:mail"></iron-icon>
+                        <iron-icon id="messageIcon" icon="my-icons:mail"></iron-icon>
                     </a>
                 </app-toolbar>
                 </app-header>
@@ -130,19 +170,26 @@ Main application container element
                         fallback-selection="home" 
                         selected="[[page]]">
 
-                        <home-page id="home" loading></home-page>
-                        <ebooking-page id="ebooking" loading></ebooking-page>
-                        <eshop-page id="eshop" loading></eshop-page>
-                        <regular-page id="regular" loading></regular-page>
-                        <message-page id="message" loading></message-page>
+                        <home-page 
+                            id="home"></home-page>
+
+                        <ebooking-page 
+                            id="ebooking"></ebooking-page>
+
+                        <efolio-page 
+                            id="efolio"></efolio-page>
+
+                        <message-page 
+                            id="message"></message-page>
+
+                        <phone-page 
+                            id="phone"></phone-page>
+                        
+                        <info-page 
+                            id="info"></info-page>
                         
                     </iron-pages>
-                    <!-- Push footer to bottom --> 
-                    <span class="spacer"></span>
-                    <div id="footer" class="my-footer" loading>
-                        <span class="footer-date">&copy; [[year]]</span> 
-                        <span class="footer-text">Orange House<br>Web Academy&trade;</span>
-                    </div>
+
             </app-header-layout>
 
 </template>
@@ -150,25 +197,7 @@ Main application container element
         Polymer ({
             is: 'my-app',
 
-            behaviors: [
-                Polymer.NeonAnimationRunnerBehavior
-            ],
-
             properties: {
-
-                animationConfig: {
-                    value: function() {
-                        return {
-                            'entry': {
-                                name: 'fade-in-animation',
-                                node: this.$.home,
-                                timing: {
-                                    duration: 2000
-                                }
-                            }
-                        }
-                    }
-                },
 
                 page: {
                     type: String,
@@ -189,40 +218,66 @@ Main application container element
                 '_routePageChanged(routeData.page)'
             ],
 
-            listeners: {
-                'neon-animation-finish': '_animationFinish'
-            },
-
-
             created: function() {
                 Polymer.RenderStatus.afterNextRender(this, function() {
-                    this.importHref(this.resolveUrl('lazy-resources.html'), null, null, true);
+                    // this.importHref(this.resolveUrl('lazy-resources.html'), null, null, true);
                 });
             },
 
-            ready: function() {
-                this.playAnimation('entry');
-            },
-
-            _animationFinish: function() {
-                this.removeAttribute('loading');
-                
-            },
-
             _pageChanged: function(page) {
-                var resolvedPageUrl = this.resolveUrl(page + '-page.html');
+                // Show footer when page load successful (1)
                 var main = this;
-                main.$.footer.setAttribute('loading', '');
+                                        this.$.messageIcon.removeAttribute('selected');
+                        this.$.infoIcon.removeAttribute('selected');
+                        this.$.phoneIcon.removeAttribute('selected');
+                if (page == 'message' || page == 'info' || page == 'phone') {
+                    if (page == 'message') {
+                        this.$.messageIcon.setAttribute('selected', '');
+
+                    } else if (page == 'info') {
+                        this.$.infoIcon.setAttribute('selected', '');
+
+                    } else if (page == 'phone') {
+                        this.$.phoneIcon.setAttribute('selected', '');
+                        
+                    } else {
+
+                    }
+
+                } else {
+
+                    
+                }
+
+                switch(page) {
+                    case 'message': 
+                        this.$.messageIcon.setAttribute('selected', '');
+                        break;
+                    case 'info': 
+                        this.$.infoIcon.setAttribute('selected', '');
+                        break;
+                    case 'phone': 
+                        this.$.phoneIcon.setAttribute('selected', '');
+                        break;
+                    default:
+                        this.$.messageIcon.removeAttribute('selected');
+                        this.$.infoIcon.removeAttribute('selected');
+                        this.$.phoneIcon.removeAttribute('selected');
+                }
+                
+                main.$.header.scroll({top: 0});
+                main.$.progress.removeAttribute('loaded');
+                var resolvedPageUrl = this.resolveUrl(page + '-page.html');
                 this.importHref(resolvedPageUrl, function() {
-                    main.$.footer.removeAttribute('loading');
+                    main.$.progress.setAttribute('loaded', '');
+                    return;
                 }, this._show404, true);
-                // Scroll to top on page change
-                this.$.header.scroll({top: 0});
             },
 
             _routePageChanged: function(page) {
                 // Set to home page if page is undefined
                 this.page = page || 'home';
+
             },
 
             _show404: function() {

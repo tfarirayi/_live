@@ -23,7 +23,7 @@ Message form element with lambda function
                 display: block;
                 background-color: #ECEFF1;
                 background-color: #37474F;
-                border: 1px solid rgba(255,138,101 ,0.7);
+                border: 1px ridge rgba(255,138,101 ,0.7);
                 border-radius: 8px;
                 box-sizing: border-box;
                 padding: 13px;
@@ -37,6 +37,7 @@ Message form element with lambda function
             paper-input-container {
                 text-align: left;
                 font-size: 15px;
+                padding: 3px;
                 --paper-input-container-input-color: rgba(207,216,220 ,1);
                 --paper-input-container-invalid-color: rgba(207,216,220 ,0.8);
                 --paper-input-container-color: #455A64;
@@ -131,13 +132,13 @@ Message form element with lambda function
         <!-- Email field -->
         <paper-input-container  always-float-label>
             <label>Email</label>
-            <input is="iron-input" type="email" prevent-invalid-input on-input="revalidate" spellcheck="false" label="Email" bind-value="{{email}}">
+            <input is="iron-input" type="email" prevent-invalid-input on-input="revalidateEmail" spellcheck="false" label="Email" bind-value="{{email}}">
         </paper-input-container>
 
         <!-- Message field -->
         <paper-input-container always-float-label>
             <label>Message</label>
-            <iron-autogrow-textarea id="text" rows="2" minlength="10" value="{{message}}" spellcheck="false" class="paper-input-input"></iron-autogrow-textarea>
+            <iron-autogrow-textarea id="text" prevent-invalid-input rows="2" on-input="revalidateMessage" minlength="10" value="{{message}}" spellcheck="false" class="paper-input-input"></iron-autogrow-textarea>
         </paper-input-container>
 
         <!-- Submit button -->
@@ -184,8 +185,13 @@ Message form element with lambda function
             sent: Boolean
         },
 
-        revalidate: function(e) {
-            this.invalid =  !e.target.validate();
+        revalidateEmail: function(e) {
+            this.invalidEmail =  !e.target.validate();
+        },
+
+        revalidateMessage: function(e) {
+            this.invalidMessage = !e.target.validate();
+
         },
 
         ready: function() {
@@ -225,15 +231,15 @@ Message form element with lambda function
             var main = this;
             var result = function(data, err) {
                 if (data == '200') {
-                    main.response = "Message sent.";
+                    main.response = "Message sent!";
                     main.message = "";
 
                 } else {
-                    main.response = "Message failed.";
+                    main.response = "Message failed. Try again!";
                 }
             };
 
-            if (this.message && !this.invalid && this.email) {
+            if (this.message && !this.emailInvalid && !this.messageInvalid && this.email) {
                 this.response = 'Sending...';
                 lambda.invoke(lambdaParams, function(err, data) {
                     if (err) result(err);
@@ -243,7 +249,8 @@ Message form element with lambda function
             } else {
                 if (!this.message) this.response = 'Empty message.';
                 if (!this.email) this.response = 'Empty email.';
-                if (this.invalid) this.response = 'Check your email.';
+                if (this.emailInvalid) this.response = 'Check your email.';
+                if (this.messageInvalid) this.response = 'Message too short.';
             }
         },
 

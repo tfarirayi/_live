@@ -48,7 +48,7 @@ Universal styles
 
         u {
             text-decoration: none;
-            border-bottom: 1px dotted #FF8A65;
+            border-bottom: 1px dotted rgba(255,138,101 ,0.7);
         }
 
         u.title {
@@ -58,7 +58,7 @@ Universal styles
         }
 
         a.top-icon {
-            padding: 0px 8px;
+            padding: 0px 6px;
         }
 
         .dim-title {
@@ -103,13 +103,11 @@ Universal styles
             font-size: 14px;
             line-height: 150%;
             padding: 56px 0px;
-            @apply(--layout-center);
-            @apply(--layout-center-justified);
-            @apply(--layout-horizontal);
+            height: 112px;
         }
 
         .my-footer[loading] {
-            display: none;
+            visibility: hidden;
         }
 
         .footer-date {
