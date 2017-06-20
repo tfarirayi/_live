@@ -24,6 +24,8 @@ Main application container element
 <!-- Paper elements -->
 <link rel="import" href="../bower_components/paper-styles/shadow.html">
 <link rel="import" href="../bower_components/paper-progress/paper-progress.html">
+<!-- Vaadin -->
+<link rel="import" href="../bower_components/vaadin-icons/vaadin-icons.html">
 <!-- Google fonts -->
 <link href='//fonts.googleapis.com/css?family=Arvo|Space+Mono|Raleway|Oswald|Roboto|Source+Code+Pro' rel='stylesheet'>
 <!-- Custom elements -->
@@ -45,16 +47,15 @@ Main application container element
         app-header {
             background-color: rgba(207,216,220 ,0.9);
             border-radius: 0px 0px 8px 8px;
-            border: 1px outset rgba(255,138,101 ,0.7);   
+            border: 1px outset rgba(255,138,101 ,0.8);   
             border-top: none;                      
-            color: rgba(55,71,79 ,1);
-            height: 124px;
+            height: 120px;
             @apply(--shadow-elevation-4dp);
         }
        
         app-toolbar.top-bar {
             color: rgba(38,50,56 ,1);
-            height: 64px;
+            height: 62px;
             text-shadow: 1px 1px rgba(255,138,101 ,0.8);
             @apply(--layout-horizontal);
             @apply(--layout-end);
@@ -62,7 +63,8 @@ Main application container element
         }
 
         app-toolbar.bottom-bar {
-            height: 58px;
+            height: 56px;
+            color: rgba(38,50,56 ,0.9);
             @apply(--layout-horizontal);
             @apply(--layout-center);
             @apply(--layout-center-justified);
@@ -71,7 +73,7 @@ Main application container element
         paper-button.home-button, a {
             color: inherit;
             font-family: 'Space Mono', monospace;
-            font-size: 18px;
+            font-size: 19px;
             padding: 0px;
             text-align: center;
             text-decoration: none;
@@ -118,6 +120,8 @@ Main application container element
 
         iron-icon {
             padding: 3px;
+            --iron-icon-height: 26px;
+            --iron-icon-width: 26px;
         }
 
         iron-icon[selected] {
@@ -145,21 +149,20 @@ Main application container element
                 <app-toolbar class="top-bar">
                     <div class="bottom main-title">
                         <a href="/home" tabindex="-1" class="home-link">
-                            <!--<paper-button class="home-button" noink><span class="logo">Orange House</span><span class="logo">Web Academy </span></paper-button>-->
-                            <iron-image src="../images/logo.png" style="width: 120px; height: 26px;" sizing="contain"></iron-image>
+                            <paper-button class="home-button" noink><span class="logo">Orange House</span><span class="logo">Web Academy </span></paper-button>
                         </a>
                     </div>
                 </app-toolbar>
                 <!-- Toolbar Bottom -->
                 <app-toolbar class="bottom-bar" sticky>
                     <a href="/info" class="top-icon">
-                        <iron-icon id="infoIcon" icon="my-icons:info-outline"></iron-icon>
-                    </a>
-                    <a href="/phone" class="top-icon">
-                        <iron-icon id="phoneIcon" icon="my-icons:phone-iphone"></iron-icon>
+                        <iron-icon id="infoIcon" icon="vaadin:info"></iron-icon>
                     </a>
                     <a href="/message" class="top-icon">
-                        <iron-icon id="messageIcon" icon="my-icons:mail"></iron-icon>
+                        <iron-icon id="messageIcon" icon="vaadin:envelope-o"></iron-icon>
+                    </a>
+                    <a href="/phone" class="top-icon">
+                        <iron-icon id="phoneIcon" icon="vaadin:mobile-retro"></iron-icon>
                     </a>
                 </app-toolbar>
                 </app-header>
@@ -175,6 +178,9 @@ Main application container element
 
                         <ebooking-page 
                             id="ebooking"></ebooking-page>
+
+                        <eshop-page 
+                            id="eshop"></eshop-page>
 
                         <efolio-page 
                             id="efolio"></efolio-page>
@@ -227,44 +233,8 @@ Main application container element
             _pageChanged: function(page) {
                 // Show footer when page load successful (1)
                 var main = this;
-                                        this.$.messageIcon.removeAttribute('selected');
-                        this.$.infoIcon.removeAttribute('selected');
-                        this.$.phoneIcon.removeAttribute('selected');
-                if (page == 'message' || page == 'info' || page == 'phone') {
-                    if (page == 'message') {
-                        this.$.messageIcon.setAttribute('selected', '');
 
-                    } else if (page == 'info') {
-                        this.$.infoIcon.setAttribute('selected', '');
 
-                    } else if (page == 'phone') {
-                        this.$.phoneIcon.setAttribute('selected', '');
-                        
-                    } else {
-
-                    }
-
-                } else {
-
-                    
-                }
-
-                switch(page) {
-                    case 'message': 
-                        this.$.messageIcon.setAttribute('selected', '');
-                        break;
-                    case 'info': 
-                        this.$.infoIcon.setAttribute('selected', '');
-                        break;
-                    case 'phone': 
-                        this.$.phoneIcon.setAttribute('selected', '');
-                        break;
-                    default:
-                        this.$.messageIcon.removeAttribute('selected');
-                        this.$.infoIcon.removeAttribute('selected');
-                        this.$.phoneIcon.removeAttribute('selected');
-                }
-                
                 main.$.header.scroll({top: 0});
                 main.$.progress.removeAttribute('loaded');
                 var resolvedPageUrl = this.resolveUrl(page + '-page.html');

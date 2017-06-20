@@ -16,7 +16,7 @@ E-Booking page element
 <!-- Neon elements -->
 <link rel="import" href="../bower_components/neon-animation/animations/cascaded-animation.html">
 <link rel="import" href="../bower_components/neon-animation/animations/fade-in-animation.html">
-<link rel="import" href="../bower_components/neon-animation/neon-animatable-behavior.html">
+<link rel="import" href="../bower_components/neon-animation/neon-animation-runner-behavior.html">
 <link rel="import" href="../bower_components/neon-animation/animations/slide-right-animation.html">
 <!-- Custom elements -->
 <link rel="import" href="collapse-button.html">
@@ -40,7 +40,7 @@ E-Booking page element
     <!-- Column 1 -->
     <div class="section">
 
-        <div id="animate_one" class="sub-section">
+        <div id="animateOne" class="sub-section">
             <!-- Inner Content -->
             <paper-material class="content" elevation="[[raise]]">
                 <div class="sep-title charge">
@@ -60,14 +60,9 @@ E-Booking page element
                 </p>
 
                 <p class="text">
-                    <u class="title dim-title">Suitable for:</u><br>Product based Businesses
+                    The Ebooking implementation is designed for service businesses. It's a website with a built-in booking system, managed through the provided Web Portal.
                 </p>
-                <p class="text">
-                    Your organisation will be registered on the <em>relevant</em> set of cloud services detailed in the INFRASTRUCTURE &amp; COSTS section below, which outlines the maximum service accounts required for the available features.
-                </p>
-                <p class="text notes">
-                    The relevant service accounts for individual implementations differ and will be determined at the design stage. Visit the reference links for official provider pricing &amp; documentation.
-                </p>
+
                 <collapse-button title="After Sales">
                     <p>&bull; Monitor your website and resolve technical issues, including your cloud infrastructure accounts.</p>
                     <p>&bull; Provide web related tips and advice regarding your implementation.</p>
@@ -91,7 +86,7 @@ E-Booking page element
             </paper-material>
         </div>
 
-        <div id="animate_two" class="sub-section">
+        <div id="animateTwo" class="sub-section">
             <!-- Inner Content -->
             <paper-material class="content" elevation="[[raise]]">
                 <div class="sep-title charge">
@@ -118,7 +113,7 @@ E-Booking page element
     <!-- Column 2 -->
     <div class="section">
 
-        <div id="animate_three" class="sub-section">
+        <div id="animateThree" class="sub-section">
         <!-- Inner Content -->
          <paper-material class="content" elevation="[[raise]]">
              <div class="sep-title charge">
@@ -144,7 +139,7 @@ E-Booking page element
             </paper-material>
         </div>
 
-        <div id="animate_four" class="sub-section">
+        <div id="animateFour" class="sub-section">
             <!-- Inner Content -->
             <paper-material class="content" elevation="[[raise]]">
                 <div class="sep-title charge">
@@ -176,28 +171,37 @@ E-Booking page element
     Polymer ({
         is: 'eshop-page',
 
+        behaviors: [
+            Polymer.NeonAnimationRunnerBehavior
+        ],
+
         properties: {
 
             raise: {
                 type: Number,
                 value: 1
+            },
+
+            animationConfig: {
+                value: function() {
+                    return {
+                        'entry': {             
+                            name: 'cascaded-animation',
+                            animation: 'fade-in-animation',
+                            nodes: [this.$.animateOne, this.$.animateTwo, this.$.animateThree, this.$.animateFour],
+                            nodeDelay: 110,
+                            timing: {
+                                duration: 600
+                            }
+                        }
+                    }
+                }
             }
 
         },
 
-        created: function() {
-            this.removeAttribute('unresolved');
-        },
-
         ready: function() {
-        },
-
-        contact: function() {
-            this.fire('contact', {})
-        },
-
-        log: function(event) {
-            console.log(event);
+            this.playAnimation('entry');
         }
 
     });
