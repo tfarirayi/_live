@@ -7,7 +7,7 @@
     {
         "ref": "https://aws.amazon.com/dynamodb/",
         "name": "AWS DynamoDB",
-        "desc": "Database for customer & order records"
+        "desc": "Database service for customer & order records"
     },
     {
         "ref": "https://aws.amazon.com/lambda/",

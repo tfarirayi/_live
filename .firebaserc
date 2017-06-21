@@ -2,6 +2,7 @@
   "projects": {
     "default": "kiosk-f8d09",
     "staging": "test1-c13c2",
-    "prod": "ohwd-ff3d8"
+    "prod": "ohwd-ff3d8",
+    "production": "ohwd-ff3d8"
   }
 }

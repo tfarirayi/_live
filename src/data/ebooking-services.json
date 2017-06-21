@@ -7,12 +7,12 @@
     {
         "ref": "https://aws.amazon.com/dynamodb/",
         "name": "AWS DynamoDB",
-        "desc": "Customer & booking records"
+        "desc": "Database service for customer & booking records"
     },
     {
         "ref": "https://aws.amazon.com/api-gateway/",
         "name": "AWS API Gateway",
-        "desc": "Booking cycle logic"
+        "desc": "Booking cycle endpoints"
     },
     {
         "ref": "https://www.mailgun.com/pricing",
