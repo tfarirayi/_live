@@ -27,7 +27,7 @@ Main application container element
 <!-- Vaadin -->
 <link rel="import" href="../bower_components/vaadin-icons/vaadin-icons.html">
 <!-- Google fonts -->
-<link href='//fonts.googleapis.com/css?family=Arvo|Space+Mono|Rajdhani|Raleway|Dosis|Oswald|Roboto|Source+Code+Pro' rel='stylesheet'>
+<link href='//fonts.googleapis.com/css?family=Arvo|Space+Mono|Oswald|Rajdhani|Raleway|Dosis|Oswald|Roboto|Source+Code+Pro' rel='stylesheet'>
 <!-- Custom elements -->
 <link rel="import" href="my-icons.html">
 <link rel="import" href="my-styles.html">
@@ -47,32 +47,33 @@ Main application container element
         app-header {
             background-color: rgba(207,216,220 ,0.9);
             /*border-radius: 0px 0px 8px 8px;*/
-            border-top: 1px solid rgba(255,138,101 ,0.8);   
+            /*border-top: 1px solid rgba(255,138,101 ,0.8);   */
             /*border-top: none;                      */
-            height: 120px;
+            height: 116px;
             @apply(--shadow-elevation-4dp);
         }
        
         app-toolbar.top-bar {
-            color: rgba(38,50,56 ,1);
-            height: 68px;
+            color: rgba(38,50,56 ,0.9);
+            height: 64px;
             @apply(--layout-horizontal);
             @apply(--layout-end);
             @apply(--layout-center-justified);
         }
 
         app-toolbar.bottom-bar {
-            color: rgba(38,50,56 ,0.8);
-            height: 46px;
+            color: rgba(38,50,56 ,1);
+            height: 50px;
             @apply(--layout-horizontal);
             @apply(--layout-center);
             @apply(--layout-center-justified);
         }
 
         .abbr {
-            color: rgba(38,50,56 ,1);
+            color: rgba(38,50,56 ,0.9);
             text-shadow: 1px 1px rgba(255,138,101 ,0.8);
-            font-weight: 600;
+            font-weight: 500;
+            letter-spacing: 1px;
         }
 
         .tm {
@@ -92,8 +93,8 @@ Main application container element
         a.home-link {
             color: inherit;
             outline: none;
-            font-family: 'Rajdhani', sans-serif;
-            font-size: 21px;
+            font-family: 'Arvo', sans-serif;
+            font-size: 20px;
             padding: 0px;
             text-align: center;
             text-decoration: none;
