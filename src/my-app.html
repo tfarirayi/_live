@@ -27,7 +27,7 @@ Main application container element
 <!-- Vaadin -->
 <link rel="import" href="../bower_components/vaadin-icons/vaadin-icons.html">
 <!-- Google fonts -->
-<link href='//fonts.googleapis.com/css?family=Arvo|Space+Mono|Oswald|Rajdhani|Raleway|Dosis|Oswald|Roboto|Source+Code+Pro' rel='stylesheet'>
+<link href='//fonts.googleapis.com/css?family=Arvo|Space+Mono|Oswald|Rajdhani|Zilla+Slab|Raleway|Dosis|Oswald|Roboto|Source+Code+Pro' rel='stylesheet'>
 <!-- Custom elements -->
 <link rel="import" href="my-icons.html">
 <link rel="import" href="my-styles.html">
@@ -49,13 +49,13 @@ Main application container element
             /*border-radius: 0px 0px 8px 8px;*/
             /*border-top: 1px solid rgba(255,138,101 ,0.8);   */
             /*border-top: none;                      */
-            height: 116px;
+            height: 0px;
             @apply(--shadow-elevation-4dp);
         }
        
         app-toolbar.top-bar {
             color: rgba(38,50,56 ,0.9);
-            height: 64px;
+            height: 42px;
             @apply(--layout-horizontal);
             @apply(--layout-end);
             @apply(--layout-center-justified);
@@ -63,7 +63,7 @@ Main application container element
 
         app-toolbar.bottom-bar {
             color: rgba(38,50,56 ,1);
-            height: 50px;
+            height: 42px;
             @apply(--layout-horizontal);
             @apply(--layout-center);
             @apply(--layout-center-justified);
@@ -72,7 +72,9 @@ Main application container element
         .abbr {
             color: rgba(38,50,56 ,0.9);
             text-shadow: 1px 1px rgba(255,138,101 ,0.8);
-            font-weight: 500;
+            font-weight: 600;
+            font-size: 22px;
+            font-family: 'Zilla Slab', sans-serif;
             letter-spacing: 1px;
         }
 
@@ -92,10 +94,13 @@ Main application container element
 
         a.home-link {
             color: inherit;
+            color: rgba(38,50,56 ,0.9);
             outline: none;
-            font-family: 'Arvo', sans-serif;
-            font-size: 20px;
+            font-family: 'Zilla Slab', sans-serif;
+            font-size: 22px;
+            font-weight: 600;
             padding: 0px;
+            letter-spacing: 1px;
             text-align: center;
             text-decoration: none;
             text-transform: none;
@@ -104,7 +109,7 @@ Main application container element
         
         /* Reset link style */
         a:focus {
-            font-weight: normal;
+            font-weight: 600;
             text-decoration: none;
         }
 
@@ -151,28 +156,11 @@ Main application container element
 
             <!-- Header Layout Container -->
             <app-header-layout effects="blend-background" fullbleed>
-                <app-header id="header" condenses reveals>
+                <app-header id="header"  reveals>
                 <!-- Toolbar Top -->
-                <paper-progress id="progress" class="slow" indeterminate></paper-progress>
-                <app-toolbar class="top-bar">
-                    <div class="bottom main-title">
-                        <a href="/home" tabindex="-1" class="home-link">
-                            <span class="logo"><span class="abbr">O</span>range <span class="abbr">H</span>ouse</span><span class="logo"><span class="abbr">W</span>eb <span class="abbr">A</span>cademy</span>
-                        </a>
-                    </div>
-                </app-toolbar>
+                <!--<paper-progress id="progress" class="slow" indeterminate></paper-progress>-->
                 <!-- Toolbar Bottom -->
-                <app-toolbar class="bottom-bar" sticky>
-                    <a href="/info" class="top-icon">
-                        <iron-icon id="infoIcon" icon="vaadin:info"></iron-icon>
-                    </a>
-                    <a href="/message" class="top-icon">
-                        <iron-icon id="messageIcon" icon="vaadin:envelope-o"></iron-icon>
-                    </a>
-                    <a href="/phone" class="top-icon">
-                        <iron-icon id="phoneIcon" icon="vaadin:mobile-retro"></iron-icon>
-                    </a>
-                </app-toolbar>
+
                 </app-header>
 
                     <!-- Routing Display -->
@@ -235,14 +223,15 @@ Main application container element
             _pageChanged: function(page) {
                 // Handle scope, Resolve page url
                 var main = this;
+                var progress = document.querySelector('#progress');
                 var resolvedPageUrl = this.resolveUrl(page + '-page.html');
                 // Scroll header to top on each page change, Show Loader
                 main.$.header.scroll({top: 0});
-                main.$.progress.removeAttribute('loaded');
+                progress.removeAttribute('loaded');
 
                 // Import resolve url page and remove loader on success
                 this.importHref(resolvedPageUrl, function() {
-                    main.$.progress.setAttribute('loaded', '');
+                    progress.setAttribute('loaded', '');
                     return;
                 }, this._show404, true);
             },

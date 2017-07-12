@@ -77,6 +77,9 @@
 
     <!-- App element -->
     <link rel="import" href="/src/my-app.html">
+    <!-- Progress bar -->
+    <link rel="import" href="/bower_components/polymer/polymer.html">
+    <link rel="import" href="/bower_components/paper-progress/paper-progress.html">
 
     <style is="custom-style">
       body {
@@ -84,12 +87,30 @@
         overflow-y: scroll; 
         @apply(--layout-fullbleed);
         @apply(--layout-vertical);
+      }
 
+      paper-progress.slow {
+        width: 100%;
+        margin: auto;
+        position: fixed;
+        z-index: 1000;
+        top: 0;
+        left: 0;
+        right: 0;
+        --paper-progress-indeterminate-cycle-duration: 4s;
+        --paper-progress-container-color: rgba(207,216,220 ,0.8);
+        --paper-progress-height: 2px;
+        --paper-progress-active-color: rgba(255,138,101 ,0.7);
+      }
+
+      paper-progress.slow[loaded] {
+        display: none;
       }
     </style>
  
   </head>
   <body>
+    <paper-progress id="progress" class="slow" indeterminate></paper-progress>
     <my-app unresolved></my-app>
     <noscript>
       Please enable JavaScript to view this website.

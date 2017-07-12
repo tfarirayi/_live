@@ -2,7 +2,6 @@
 Regular impl page element
 @tfarirayi
 -->
-
 <!-- Polymer dependency -->
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <!-- Iron elements -->
@@ -22,7 +21,6 @@ Regular impl page element
 <link rel="import" href="collapse-button.html">
 <link rel="import" href="service-button.html">
 
-
 <dom-module id="efolio-page">
 <template>
      <style include="my-styles">
@@ -33,7 +31,12 @@ Regular impl page element
             margin: auto;
             padding: 4px;
             line-height: 120%;
-            font-family: 'Arvo', serif;
+            font-family: 'Zilla Slab', serif;
+            text-shadow: 1px 1px black;
+        }
+
+        paper-material .text {
+            font-size: 18px;
         }
     </style>
     <!-- Local dom here  -->
@@ -45,7 +48,7 @@ Regular impl page element
                 <paper-material class="content" elevation="[[raise]]">
                     <div class="sep-title charge">
                         <p>
-                            <u class="title dim-title">Charge:</u> 320 GBP
+                            <u class="title dim-title">Charge:</u> 319 GBP
                         </p>
                     </div>
                     
@@ -79,8 +82,7 @@ Regular impl page element
 
                 </paper-material>
             </div>
-        </div>
-        <div class="section">
+
             <div class="sub-section" id="animateTwo">
                 <!-- Inner Content -->
                 <paper-material class="content" elevation="[[raise]]">
